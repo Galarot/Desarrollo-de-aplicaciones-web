@@ -1968,188 +1968,888 @@
       },
       {
         "id": 282,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Vegeta",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/vegetasvsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Saiyan" }
       },
       {
         "id": 283,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Piccolo (Fused with Nail)",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/piccolosp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Namekiano" }
       },
       {
         "id": 284,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan Goku",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/gokusssp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Saiyan" }
       },
       {
         "id": 285,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Android #18",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/androidsp9.png",
+        "atributos": { "genero": "Mujer", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 286,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Cell Perfect Form",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/cellrdsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 287,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Trunks",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/trunksstsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Saiyan Hibrido" }
       },
       {
         "id": 288,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 2 Gohan (Kid)",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/gohanteensssp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Saiyan Hibrido" }
       },
       {
         "id": 289,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "MR Satan",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/satansp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Humano" }
       },
       {
         "id": 290,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Perfect Cell",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/perfectcellsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 291,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Piccolo (Fused with kami)",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/piccolosp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Namekiano" }
       },
       {
         "id": 292,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan Trunks",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/trunkssssp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Saiyan Hibrido" }
       },
       {
         "id": 293,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Cell (1st Form)",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/cellstsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 294,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Perfect Cell",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/perfectcellsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 295,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Cell Perfect Form",
+        "anio": 2022,
+        "art_cart_url": "./public/assets/multimedia/arts/cellrdsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 296,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Cell Perfect Form",
+        "anio": 2023,
+        "art_cart_url": "./public/assets/multimedia/arts/cellrdsp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 297,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan Gohan (kid)",
+        "anio": 2023,
+        "art_cart_url": "./public/assets/multimedia/arts/gohanteensssp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Saiyan Hibrido" }
       },
       {
         "id": 298,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Android #18",
+        "anio": 2023,
+        "art_cart_url": "./public/assets/multimedia/arts/androidsp7.png",
+        "atributos": { "genero": "Mujer", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 299,
-        "nombre": "",
+        "nombre": "Cell (1st Form)",
         "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "art_cart_url": "./public/assets/multimedia/arts/cellstsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 300,
-        "nombre": "",
+        "nombre": "Android #16",
         "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "art_cart_url": "./public/assets/multimedia/arts/androidsp8.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 301,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Piccolo (Fused with kami)",
+        "anio": 2025,
+        "art_cart_url": "./public/assets/multimedia/arts/piccolosp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Namekiano" }
       },
       {
         "id": 302,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Trunks",
+        "anio": 2025,
+        "art_cart_url": "./public/assets/multimedia/arts/trunksstsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Saiyan Hibrido" }
       },
       {
         "id": 303,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Cell (2nd Form)",
+        "anio": 2025,
+        "art_cart_url": "./public/assets/multimedia/arts/cellndsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
       },
       {
         "id": 304,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 3 Goku",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/gokusssp10.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
       },
       {
         "id": 305,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Majin Buu Inocente",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/buustsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "Majin Buu Saga", "raza": "Majin" }
       },
       {
         "id": 306,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Vegito",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/vegitosp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
       },
       {
         "id": 307,
+        "nombre": "Super Saiyan Trunks (kid)",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/trunksteensssp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan Hibrido" }
+      },
+      {
+        "id": 308,
+        "nombre": "Android #18",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/androidsp10.png",
+        "atributos": { "genero": "Mujer", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Android" }
+      },
+      {
+        "id": 309,
+        "nombre": "Android #18",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/androidsp11.png",
+        "atributos": { "genero": "Mujer", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Android" }
+      },
+      {
+        "id": 310,
+        "nombre": "Majin Buu (kid)",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/buufinalsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Majin" }
+      },
+      {
+        "id": 311,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buufinalsp2.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 312,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buugohansp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 313,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buugohansp2.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 314,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buugohansp3.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 315,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buugotenkssp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 316,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buundsp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 317,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buurdsp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 318,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buurdsp2.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 319,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/buustsp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 320,
+        "nombre": "Dabura",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/daburasp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 321,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gohansssp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 322,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gohanultimatesp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 323,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gotenkssp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 324,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gotenkssssp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 325,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gotenkssssp2.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 326,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gotenkssssp3.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 327,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gotenteensssp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 328,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gotenteensssp2.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 329,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gotenteensssp3.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 330,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gokusssp6.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 331,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gokusssp7.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 332,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gokusssp8.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 333,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gokusssp9.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 334,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/gokusssp11.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 335,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/greatsaiyamansp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 336,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/puipuisp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 337,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/shinsp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 338,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/tienshinhansp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 339,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/trunksteensssp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 340,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/trunksteensssp3.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 341,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/vegetamsp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 342,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/vegetamsp2.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 343,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/vegetasp2.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 344,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/vegetasp3.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 345,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/vegitosvsp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 346,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/videlsp.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 347,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/videlsp2.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 348,
         "nombre": "",
         "anio": 2024,
         "art_cart_url": "./public/assets/multimedia/arts/.png",
         "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
       },
       {
-        "id": 308,
+        "id": 349,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 350,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 351,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 352,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 353,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 354,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 355,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 356,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 357,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 358,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 359,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 360,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 361,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 362,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 363,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 364,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 365,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 366,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 367,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 368,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 369,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 370,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 371,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 372,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 373,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 374,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 375,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 376,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 377,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 378,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 379,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 380,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 381,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 382,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 383,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 384,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 385,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 386,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 387,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 388,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 389,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 390,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 391,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 392,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 393,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 394,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 395,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 396,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 397,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 398,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 399,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 400,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 401,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 402,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 403,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 404,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 405,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 406,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 407,
+        "nombre": "",
+        "anio": 2024,
+        "art_cart_url": "./public/assets/multimedia/arts/.png",
+        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+      },
+      {
+        "id": 408,
         "nombre": "",
         "anio": 2024,
         "art_cart_url": "./public/assets/multimedia/arts/.png",
