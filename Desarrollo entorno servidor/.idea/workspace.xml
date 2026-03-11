@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="165ab3a5-cffb-41b0-b33f-1a3f0c11d796" name="Changes" comment="si">
-      <change afterPath="$PROJECT_DIR$/pruebaexamen/conexion.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pruebaexamen/libro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebaexamen/README-ALUMNOS.md" beforeDir="false" afterPath="$PROJECT_DIR$/pruebaexamen/README-ALUMNOS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebaexamen/test_conexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/pruebaexamen/test_conexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Desarrollo entorno servidor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Desarrollo entorno servidor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +32,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -44,8 +42,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Galarot/Desarrollo_entorno_servidor.git&quot;,
-    &quot;accountId&quot;: &quot;7333167e-982f-4a7a-905c-6bfb14b4ba73&quot;
+    &quot;url&quot;: &quot;git@github.com:Galarot/Desarrollo-de-aplicaciones-web.git&quot;,
+    &quot;accountId&quot;: &quot;6fe11df0-2fe0-4651-a215-ec4c25a8eb57&quot;
   }
 }</component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
@@ -58,27 +56,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;PHP Script.pruebas.php.executor&quot;: &quot;Run&quot;,
-    &quot;PHP Script.test_conexion.php.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/usua5pc17/ESD-USB/pendrive/DAW/Desarrollo entorno servidor/RecursosExament234&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "PHP Script.pruebas.php.executor": "Run",
+    "PHP Script.test_conexion.php.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/usua5pc17/Escritorio/ProyecFinal/Proyecto_final_Spin_Sound",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/RecursosExament234" />
@@ -104,8 +104,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-PS-252.28238.9" />
-        <option value="bundled-php-predefined-a98d8de5180a-58f58c5035b3-com.jetbrains.php.sharedIndexes-PS-252.28238.9" />
+        <option value="bundled-php-predefined-a98d8de5180a-0e0d91225499-com.jetbrains.php.sharedIndexes-PS-253.31033.138" />
       </set>
     </attachedChunks>
   </component>
@@ -122,6 +121,8 @@
       <workItem from="1764677835545" duration="1820000" />
       <workItem from="1764679663090" duration="2276000" />
       <workItem from="1764748694740" duration="7203000" />
+      <workItem from="1771575322133" duration="1374000" />
+      <workItem from="1771836855105" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="si">
       <option name="closed" value="true" />

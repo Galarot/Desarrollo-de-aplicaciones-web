@@ -78,6 +78,7 @@ function elegir(id) {
             elegidosEnRonda.clear();
             intentos = 0;
             contadorIntentos.textContent = intentos;
+            imagenArte.style.transition = 'none';
             seleccionarPersonaje();
         }, 2000);
     } else {

@@ -1134,7 +1134,7 @@
     },
     {
         "id": 163,
-        "nombre": "Hipermega Rildo",
+        "nombre": "Hyper Mega Rilldo",
         "anio": 2019,
         "art_cart_url": "./public/assets/multimedia/arts/hypermegarilldoex.png",
         "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Extreme", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "No especifica" }
@@ -2338,199 +2338,199 @@
     },
     {
         "id": 335,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Gran Saiyaman",
+        "anio": 2020,
         "art_cart_url": "./public/assets/multimedia/arts/greatsaiyamansp.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan Hibrido" }
     },
     {
         "id": 336,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Pui Pui",
+        "anio": 2023,
         "art_cart_url": "./public/assets/multimedia/arts/puipuisp.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Majin" }
     },
     {
         "id": 337,
-        "nombre": "",
+        "nombre": "Shin",
         "anio": 2024,
         "art_cart_url": "./public/assets/multimedia/arts/shinsp.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Kaioshin" }
     },
     {
         "id": 338,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Tien",
+        "anio": 2023,
         "art_cart_url": "./public/assets/multimedia/arts/tienshinhansp.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Humano" }
     },
     {
         "id": 339,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Super Saiyan Trunks (kid)",
+        "anio": 2026,
         "art_cart_url": "./public/assets/multimedia/arts/trunksteensssp.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan Hibrido" }
     },
     {
         "id": 340,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Super Saiyan Trunks (kid)",
+        "anio": 2020,
         "art_cart_url": "./public/assets/multimedia/arts/trunksteensssp3.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan Hibrido" }
     },
     {
         "id": 341,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Majin Vegeta",
+        "anio": 2023,
         "art_cart_url": "./public/assets/multimedia/arts/vegetamsp.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
     },
     {
         "id": 342,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Majin Vegeta",
+        "anio": 2018,
         "art_cart_url": "./public/assets/multimedia/arts/vegetamsp2.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
     },
     {
         "id": 343,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Vegeta",
+        "anio": 2021,
         "art_cart_url": "./public/assets/multimedia/arts/vegetasp2.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
     },
     {
         "id": 344,
-        "nombre": "",
+        "nombre": "Vegeta",
         "anio": 2024,
         "art_cart_url": "./public/assets/multimedia/arts/vegetasp3.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
     },
     {
         "id": 345,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Super Vegito",
+        "anio": 2020,
         "art_cart_url": "./public/assets/multimedia/arts/vegitosvsp.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
     },
     {
         "id": 346,
-        "nombre": "",
+        "nombre": "Videl",
         "anio": 2024,
         "art_cart_url": "./public/assets/multimedia/arts/videlsp.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Mujer", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Humano" }
     },
     {
         "id": 347,
-        "nombre": "",
-        "anio": 2024,
+        "nombre": "Videl",
+        "anio": 2019,
         "art_cart_url": "./public/assets/multimedia/arts/videlsp2.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "atributos": { "genero": "Mujer", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Humano" }
     },
     {
         "id": 348,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Pan",
+        "anio": 2018,
+        "art_cart_url": "./public/assets/multimedia/arts/pansp.png",
+        "atributos": { "genero": "Mujer", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan Hibrido" }
     },
     {
         "id": 349,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Pan",
+        "anio": 2023,
+        "art_cart_url": "./public/assets/multimedia/arts/pansp2.png",
+        "atributos": { "genero": "Mujer", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan Hibrido" }
     },
     {
         "id": 350,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan Goku",
+        "anio": 2025,
+        "art_cart_url": "./public/assets/multimedia/arts/gokukidgtsssp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 351,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan Goku",
+        "anio": 2022,
+        "art_cart_url": "./public/assets/multimedia/arts/gokukidgtsssp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 352,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan Goku",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/gokukidgtsssp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 353,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Hyper Mega Rilldo",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/hypermegarilldosp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "No especifica" }
     },
     {
         "id": 354,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Hyper Mega Rilldo",
+        "anio": 2025,
+        "art_cart_url": "./public/assets/multimedia/arts/hypermegarilldosp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "No especifica" }
     },
     {
         "id": 355,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Bra & Vegeta (Assist)",
+        "anio": 2023,
+        "art_cart_url": "./public/assets/multimedia/arts/bullasp.png",
+        "atributos": { "genero": "Mujer/Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan Hibrido/Saiyan" }
     },
     {
         "id": 356,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 3 Goku",
+        "anio": 2021,
+        "art_cart_url": "./public/assets/multimedia/arts/gokukidgtsssp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 357,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 4 Goku",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/gokusssp12.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 358,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Baby 2",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/superbabysp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 359,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Majuub",
+        "anio": 2021,
+        "art_cart_url": "./public/assets/multimedia/arts/superuubsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Humano" }
     },
     {
         "id": 360,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Trunks (Baby)",
+        "anio": 2023,
+        "art_cart_url": "./public/assets/multimedia/arts/trunksgtsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan Hibrido" }
     },
     {
         "id": 361,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Vegeta Baby",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/vegetababysp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 362,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan Vegeta",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/vegetagtsssp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 363,

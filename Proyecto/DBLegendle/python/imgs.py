@@ -69,8 +69,5 @@ def procesar_mismo_directorio(directorio):
 
     print(f"\nFIN")
 
-# --- RUTA PARA TU LINUX ---
-ruta_arts = "C:/Users/Manu/Desktop/ProyectDBDLE/Desarrollo-de-aplicaciones-web/Proyecto/DBLegendle/public/assets/multimedia/splash"
-
-#ruta_arts = "C:/Users/Manu/Desktop/ProyectDBDLE/Desarrollo-de-aplicaciones-web/Proyecto/imagenestemp"
+ruta_arts = "/home/usua5pc17/Escritorio/DAW/Proyecto/imagenestemp"
 procesar_mismo_directorio(ruta_arts)
