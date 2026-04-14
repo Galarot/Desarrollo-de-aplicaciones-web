@@ -10,7 +10,7 @@ let pruebaDia = {};
 
 function seleccionasPerso() {
     const idMin = 1;
-    const idMax = 363;
+    const idMax = 366;
     //temporal ya que algunos en la base de datos no estan definidos del tdo
     const rango = personajes.filter(p => p.id >= idMin && p.id <= idMax);
 
@@ -92,10 +92,10 @@ function compararAtributos(usuario) {
         let color;
         if (opcionUsu === opcionAtri) {
             color = "bg-green-600";
-        } else if (key === "raza") {
-            const razasUsu = opcionUsu.split("/");
-            const razasAtri = opcionAtri.split("/");
-            const tieneCoincidencia = razasUsu.some(raza => razasAtri.includes(raza));
+        } else if (key === "raza" || key === "afinidad") {
+            const valsUsu = opcionUsu.split("/");
+            const valsAtri = opcionAtri.split("/");
+            const tieneCoincidencia = valsUsu.some(v => valsAtri.includes(v));
             color = tieneCoincidencia ? "bg-orange-400" : "bg-red-600";
         } else {
             color = "bg-red-600";

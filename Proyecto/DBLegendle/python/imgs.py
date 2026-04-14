@@ -69,5 +69,5 @@ def procesar_mismo_directorio(directorio):
 
     print(f"\nFIN")
 
-ruta_arts = "/home/usua5pc17/Escritorio/DAW/Proyecto/imagenestemp"
+ruta_arts = "C:\\Users\\Manu\\Desktop\\ProyectDBDLE\\Desarrollo-de-aplicaciones-web\\Proyecto\\imagenestemp"
 procesar_mismo_directorio(ruta_arts)

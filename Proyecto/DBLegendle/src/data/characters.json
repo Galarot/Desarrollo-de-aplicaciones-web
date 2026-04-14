@@ -857,7 +857,7 @@
         "nombre": "Android #18",
         "anio": 2019,
         "art_cart_url": "./public/assets/multimedia/arts/androidex7.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Extreme", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Android Saga", "raza": "Android" }
+        "atributos": { "genero": "Mujer", "afinidad": "Morado", "rareza": "Extreme", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Android Saga", "raza": "Android" }
     },
     {
         "id": 124,
@@ -2534,31 +2534,31 @@
     },
     {
         "id": 363,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super 17",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/supersp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Android" }
     },
     {
         "id": 364,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super 17",
+        "anio": 2022,
+        "art_cart_url": "./public/assets/multimedia/arts/supersp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Android" }
     },
     {
         "id": 365,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Android #17",
+        "anio": 2022,
+        "art_cart_url": "./public/assets/multimedia/arts/android17sp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Android" }
     },
     {
         "id": 366,
-        "nombre": "",
+        "nombre": "Cell Perfect Form & Frieza Final Form",
         "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "art_cart_url": "./public/assets/multimedia/arts/friezathsp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado/Azul", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Lineage of Evil/Android" }
     },
     {
         "id": 367,
