@@ -2562,59 +2562,59 @@
     },
     {
         "id": 367,
-        "nombre": "",
+        "nombre": "Yi Shenron",
         "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "art_cart_url": "./public/assets/multimedia/arts/shenronsp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
     },
     {
         "id": 368,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 4 Vegeta",
+        "anio": 2019,
+        "art_cart_url": "./public/assets/multimedia/arts/vegetasssp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 369,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Omega Shenron",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/shenronsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
     },
     {
         "id": 370,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 4 Goku",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/gokussfpsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 371,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Omega Shenron",
+        "anio": 2020,
+        "art_cart_url": "./public/assets/multimedia/arts/shenronssp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
     },
     {
         "id": 372,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Eis Shenron",
+        "anio": 2021,
+        "art_cart_url": "./public/assets/multimedia/arts/shenronsp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
     },
     {
         "id": 373,
-        "nombre": "",
-        "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Nouva Shenron",
+        "anio": 2021,
+        "art_cart_url": "./public/assets/multimedia/arts/shenronsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
     },
     {
         "id": 374,
-        "nombre": "",
+        "nombre": "Rage Shenron",
         "anio": 2024,
-        "art_cart_url": "./public/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "art_cart_url": "./public/assets/multimedia/arts/shenronsp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
     },
     {
         "id": 375,
