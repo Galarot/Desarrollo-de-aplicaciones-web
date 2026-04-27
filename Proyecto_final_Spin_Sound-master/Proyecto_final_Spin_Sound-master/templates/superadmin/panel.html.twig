@@ -1,0 +1,310 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel de Super Administrador - Spin&Sound{% endblock %}
+
+
+{% block body %}
+<main class="flex-1 animate-reveal">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Header del Panel -->
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#e00000" viewBox="0 0 256 256">
+                    <path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"></path>
+                </svg>
+                <h1 class="text-4xl font-bold tracking-tight">Panel de Super Administrador</h1>
+            </div>
+            <p class="text-on-surface-muted-dark">Gestión completa de usuarios del sistema</p>
+        </div>
+
+        <!-- Gestión de Usuarios -->
+        <section class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold tracking-tight">Gestión de Usuarios</h2>
+            </div>
+
+            <!-- Formulario de acción masiva -->
+            <div id="bulk-actions" class="hidden mb-4 p-4 bg-blue-900/20 border border-blue-700 rounded-lg">
+                <form id="bulk-form" method="post" action="{{ path('app_superadmin_bulk_action') }}" onsubmit="return confirmBulkAction()">
+                    <input type="hidden" name="_token" value="{{ csrf_token('bulk-action') }}">
+                    <div class="flex flex-wrap items-end gap-4">
+                        <div class="flex-1 min-w-[200px]">
+                            <label class="block text-sm font-medium mb-2">Acción</label>
+                            <select name="action" id="bulk-action" class="w-full px-4 py-2 bg-white border border-gray-700 rounded-lg text-black" required>
+                                <option value="" class="text-black">Seleccionar...</option>
+                                <option value="ban" class="text-black">Banear seleccionados</option>
+                                <option value="unban" class="text-black">Desbanear seleccionados</option>
+                                <option value="delete" class="text-black">Eliminar permanentemente</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="px-6 py-2 bg-[#e00000] hover:bg-[#c00000] text-white font-bold rounded-lg transition-colors">
+                            Aplicar
+                        </button>
+                        <button type="button" onclick="clearSelection()" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-colors">
+                            Cancelar
+                        </button>
+                    </div>
+                    <p class="text-sm text-blue-300 mt-2"><span id="selected-count">0</span> usuarios seleccionados</p>
+                </form>
+            </div>
+
+            <div class="bg-surface-dark border border-gray-800 rounded-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-[#1a1f23] border-b border-gray-800">
+                            <tr>
+                                <th class="px-6 py-4 text-left">
+                                    <input type="checkbox" id="select-all" class="w-4 h-4 rounded border-gray-600 text-[#e00000] focus:ring-[#e00000]">
+                                </th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">ID</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Nombre</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Email</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Teléfono</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Roles</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Estado</th>
+                                <th class="px-6 py-4 text-right text-sm font-semibold">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800">
+                            {% for usuario in usuarios %}
+                            <tr class="hover:bg-[#1a1f23] transition-colors">
+                                <td class="px-6 py-4">
+                                    <input type="checkbox" name="ids[]" value="{{ usuario.id }}" form="bulk-form" class="usuario-checkbox w-4 h-4 rounded border-gray-600 text-[#e00000] focus:ring-[#e00000]">
+                                </td>
+                                <td class="px-6 py-4 text-sm">{{ usuario.id }}</td>
+                                <td class="px-6 py-4 font-medium">{{ usuario.nombre }}</td>
+                                <td class="px-6 py-4 text-sm text-on-surface-muted-dark">{{ usuario.email }}</td>
+                                <td class="px-6 py-4 text-sm">{{ usuario.telefono ?? '-' }}</td>
+                                <td class="px-6 py-4 text-sm">
+                                    <div class="flex flex-col gap-2">
+                                        <!-- Checkbox ADMIN -->
+                                        <label class="flex items-center gap-2 cursor-pointer hover:bg-blue-900/20 px-2 py-1 rounded transition-colors">
+                                            <input 
+                                                type="checkbox" 
+                                                {% if 'ROLE_ADMIN' in usuario.roles %}checked{% endif %}
+                                                onchange="toggleRole({{ usuario.id }}, 'admin', this)"
+                                                class="w-4 h-4 rounded border-gray-600 text-blue-600 focus:ring-blue-500"
+                                            >
+                                            <span class="text-xs font-semibold text-blue-300">ADMIN</span>
+                                        </label>
+                                        
+                                        <!-- Checkbox SUPER_ADMIN -->
+                                        <label class="flex items-center gap-2 cursor-pointer hover:bg-purple-900/20 px-2 py-1 rounded transition-colors">
+                                            <input 
+                                                type="checkbox" 
+                                                {% if 'ROLE_SUPER_ADMIN' in usuario.roles %}checked{% endif %}
+                                                onchange="toggleRole({{ usuario.id }}, 'super_admin', this)"
+                                                class="w-4 h-4 rounded border-gray-600 text-purple-600 focus:ring-purple-500"
+                                            >
+                                            <span class="text-xs font-semibold text-purple-300">SUPER_ADMIN</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    {% if usuario.deleteAt %}
+                                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-900 text-red-300">
+                                            BANEADO
+                                        </span>
+                                    {% else %}
+                                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-900 text-green-300">
+                                            ACTIVO
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a href="{{ path('app_usuario_show', {id: usuario.id}) }}" class="p-2 hover:bg-blue-900/30 rounded transition-colors" title="Ver">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+                                                <path d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path>
+                                            </svg>
+                                        </a>
+
+                                        {% if usuario.deleteAt %}
+                                            <form method="post" action="{{ path('app_superadmin_unban_user', {id: usuario.id}) }}" style="display: inline;">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('unban' ~ usuario.id) }}">
+                                                <button type="submit" class="p-2 hover:bg-green-900/30 rounded transition-colors" title="Desbanear">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#22c55e" viewBox="0 0 256 256">
+                                                        <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        {% else %}
+                                            <form method="post" action="{{ path('app_superadmin_ban_user', {id: usuario.id}) }}" style="display: inline;">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('ban' ~ usuario.id) }}">
+                                                <button type="submit" class="p-2 hover:bg-yellow-900/30 rounded transition-colors" title="Banear" onclick="return confirm('¿Estás seguro de banear este usuario?');">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#eab308" viewBox="0 0 256 256">
+                                                        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"></path>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        {% endif %}
+
+                                        <form method="post" action="{{ path('app_superadmin_delete_user', {id: usuario.id}) }}" style="display: inline;">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ usuario.id) }}">
+                                            <button type="submit" class="p-2 hover:bg-red-900/30 rounded transition-colors" title="Eliminar permanentemente" onclick="return confirm('¿Estás seguro de ELIMINAR PERMANENTEMENTE este usuario? Esta acción no se puede deshacer.');">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ef4444" viewBox="0 0 256 256">
+                                                    <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="8" class="px-6 py-8 text-center text-on-surface-muted-dark">No hay usuarios registrados</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section>
+            <h2 class="text-2xl font-bold tracking-tight mb-6">Estadísticas del Sistema</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-blue-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#3b82f6" viewBox="0 0 256 256">
+                                <path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold">{{ usuarios|length }}</p>
+                            <p class="text-sm text-on-surface-muted-dark">Total Usuarios</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-green-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22c55e" viewBox="0 0 256 256">
+                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold">{{ usuarios|filter(u => u.deleteAt is null)|length }}</p>
+                            <p class="text-sm text-on-surface-muted-dark">Usuarios Activos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-red-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ef4444" viewBox="0 0 256 256">
+                                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold">{{ usuarios|filter(u => u.deleteAt is not null)|length }}</p>
+                            <p class="text-sm text-on-surface-muted-dark">Usuarios Baneados</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-purple-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#a855f7" viewBox="0 0 256 256">
+                                <path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold">Super Admin</p>
+                            <p class="text-sm text-on-surface-muted-dark">Sesión Activa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    // Función para toggle de roles
+    async function toggleRole(userId, role, checkbox) {
+        const originalState = checkbox.checked;
+        
+        try {
+            const response = await fetch(`/superadmin/usuario/${userId}/toggle-role/${role}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: `_token={{ csrf_token('toggle-role') }}`
+            });
+
+            if (response.ok) {
+                const data = await response.text();
+                if (typeof showToast === 'function') {
+                    showToast(originalState ? `Rol ${role} añadido` : `Rol ${role} eliminado`);
+                }
+            } else {
+                checkbox.checked = !originalState;
+                if (typeof showToast === 'function') {
+                    showToast('Error al cambiar el rol', true);
+                }
+            }
+        } catch (error) {
+            checkbox.checked = !originalState;
+            console.error('Error:', error);
+        }
+    }
+
+    // Selección masiva de usuarios
+    const selectAll = document.getElementById('select-all');
+    const checkboxes = document.querySelectorAll('.usuario-checkbox');
+    const bulkActions = document.getElementById('bulk-actions');
+    const selectedCount = document.getElementById('selected-count');
+    const bulkActionSelect = document.getElementById('bulk-action');
+
+    selectAll.addEventListener('change', function() {
+        checkboxes.forEach(cb => cb.checked = this.checked);
+        updateBulkActions();
+    });
+
+    checkboxes.forEach(cb => {
+        cb.addEventListener('change', updateBulkActions);
+    });
+
+    function updateBulkActions() {
+        const selected = document.querySelectorAll('.usuario-checkbox:checked').length;
+        selectedCount.textContent = selected;
+
+        if (selected > 0) {
+            bulkActions.classList.remove('hidden');
+        } else {
+            bulkActions.classList.add('hidden');
+        }
+
+        selectAll.checked = selected === checkboxes.length && checkboxes.length > 0;
+    }
+
+    function clearSelection() {
+        checkboxes.forEach(cb => cb.checked = false);
+        selectAll.checked = false;
+        updateBulkActions();
+        bulkActionSelect.value = '';
+    }
+
+    function confirmBulkAction() {
+        const action = bulkActionSelect.value;
+        const count = document.querySelectorAll('.usuario-checkbox:checked').length;
+
+        if (action === 'delete') {
+            return confirm(`¿Estás seguro de ELIMINAR PERMANENTEMENTE ${count} usuarios? Esta acción no se puede deshacer.`);
+        } else if (action === 'ban') {
+            return confirm(`¿Estás seguro de banear ${count} usuarios?`);
+        } else if (action === 'unban') {
+            return confirm(`¿Estás seguro de desbanear ${count} usuarios?`);
+        }
+        return true;
+    }
+</script>
+{% endblock %}

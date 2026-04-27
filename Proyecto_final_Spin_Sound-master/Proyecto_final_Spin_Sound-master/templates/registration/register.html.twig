@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spin&Sound | Register{% endblock %}
+
+{% block body %}
+    <div class="flex min-h-screen items-center justify-center bg-background-dark">
+        <div class="w-full max-w-2xl px-6 py-12">
+            <div class="bg-surface-dark rounded-xl shadow-lg p-8">
+                <div class="mb-8 text-center">
+                    <h1 class="text-4xl font-black text-white mb-2">Crear cuenta</h1>
+                    <p class="text-slate-400">Regístrate para empezar a coleccionar vinilos</p>
+                </div>
+
+                {{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
+
+                {{ form_errors(registrationForm) }}
+
+                {# Nombre real #}
+                {% if registrationForm.nombre is defined %}
+                    <div class="space-y-2">
+                        {{ form_label(registrationForm.nombre, 'Nombre completo', {'label_attr': {'class': 'text-xs font-bold text-slate-400 uppercase tracking-[0.2em]'}}) }}
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#e00000] transition-colors duration-200">
+                                <span class="material-symbols-outlined text-xl">badge</span>
+                            </div>
+                            {{ form_widget(registrationForm.nombre, {'attr': {'placeholder': 'Tu nombre', 'class': 'block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#e00000]/50 focus:border-[#e00000] transition-colors duration-200 font-medium'}}) }}
+                            {{ form_errors(registrationForm.nombre) }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {# Nombre de usuario #}
+                {% if registrationForm.username is defined %}
+                    <div class="space-y-2">
+                        {{ form_label(registrationForm.username, 'Nombre de usuario', {'label_attr': {'class': 'text-xs font-bold text-slate-400 uppercase tracking-[0.2em]'}}) }}
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#e00000] transition-colors duration-200">
+                                <span class="material-symbols-outlined text-xl">alternate_email</span>
+                            </div>
+                            {{ form_widget(registrationForm.username, {'attr': {'placeholder': 'usuario123', 'class': 'block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#e00000]/50 focus:border-[#e00000] transition-colors duration-200 font-medium'}}) }}
+                            {{ form_errors(registrationForm.username) }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {# Email #}
+                {% if registrationForm.email is defined %}
+                    <div class="space-y-2">
+                        {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'text-xs font-bold text-slate-400 uppercase tracking-[0.2em]'}}) }}
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#e00000] transition-colors duration-200">
+                                <span class="material-symbols-outlined text-xl">mail</span>
+                            </div>
+                            {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'name@example.com', 'class': 'block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#e00000]/50 focus:border-[#e00000] transition-colors duration-200 font-medium'}}) }}
+                            {{ form_errors(registrationForm.email) }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {# Teléfono #}
+                {% if registrationForm.telefono is defined %}
+                    <div class="space-y-2">
+                        {{ form_label(registrationForm.telefono, 'Teléfono (opcional)', {'label_attr': {'class': 'text-xs font-bold text-slate-400 uppercase tracking-[0.2em]'}}) }}
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#e00000] transition-colors duration-200">
+                                <span class="material-symbols-outlined text-xl">phone</span>
+                            </div>
+                            {{ form_widget(registrationForm.telefono, {'attr': {'placeholder': '+34 123 456 789', 'class': 'block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#e00000]/50 focus:border-[#e00000] transition-colors duration-200 font-medium'}}) }}
+                            {{ form_errors(registrationForm.telefono) }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {# Dirección #}
+                {% if registrationForm.direccion is defined %}
+                    <div class="space-y-2">
+                        {{ form_label(registrationForm.direccion, 'Dirección', {'label_attr': {'class': 'text-xs font-bold text-slate-400 uppercase tracking-[0.2em]'}}) }}
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#e00000] transition-colors duration-200">
+                                <span class="material-symbols-outlined text-xl">home</span>
+                            </div>
+                            {{ form_widget(registrationForm.direccion, {'attr': {'placeholder': 'Calle, número, ciudad', 'class': 'block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#e00000]/50 focus:border-[#e00000] transition-colors duration-200 font-medium'}}) }}
+                            {{ form_errors(registrationForm.direccion) }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {# Contraseña #}
+                {% if registrationForm.plainPassword is defined %}
+                    <div class="space-y-2">
+                        {{ form_label(registrationForm.plainPassword.first, 'Contraseña', {'label_attr': {'class': 'text-xs font-bold text-slate-400 uppercase tracking-[0.2em]'}}) }}
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#e00000] transition-colors duration-200">
+                                <span class="material-symbols-outlined text-xl">lock</span>
+                            </div>
+                            {{ form_widget(registrationForm.plainPassword.first, {'attr': {'placeholder': 'Mínimo 8 caracteres', 'class': 'block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#e00000]/50 focus:border-[#e00000] transition-colors duration-200 font-medium'}}) }}
+                        </div>
+                        {{ form_errors(registrationForm.plainPassword.first) }}
+                    </div>
+
+                    <div class="space-y-2">
+                        {{ form_label(registrationForm.plainPassword.second, 'Repetir contraseña', {'label_attr': {'class': 'text-xs font-bold text-slate-400 uppercase tracking-[0.2em]'}}) }}
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-[#e00000] transition-colors duration-200">
+                                <span class="material-symbols-outlined text-xl">lock</span>
+                            </div>
+                            {{ form_widget(registrationForm.plainPassword.second, {'attr': {'placeholder': 'Repite la contraseña', 'class': 'block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#e00000]/50 focus:border-[#e00000] transition-colors duration-200 font-medium'}}) }}
+                        </div>
+                        {{ form_errors(registrationForm.plainPassword.second) }}
+
+                    </div>
+                {% endif %}
+
+                {# Términos #}
+                {% if registrationForm.agreeTerms is defined %}
+                    <div class="flex items-center gap-3">
+                        {{ form_widget(registrationForm.agreeTerms) }}
+                        {{ form_label(registrationForm.agreeTerms, 'Acepto los términos y condiciones', {'label_attr': {'class': 'text-sm text-slate-400'}}) }}
+                        {{ form_errors(registrationForm.agreeTerms) }}
+                    </div>
+                {% endif %}
+
+                {# Submit #}
+                <div>
+                    <button type="submit" class="w-full py-4 rounded-xl font-extrabold text-lg text-background-dark" style="background-color: #e00000;">Crear cuenta</button>
+                </div>
+
+                {{ form_end(registrationForm) }}
+
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-slate-400">¿Ya tienes cuenta? <a href="{{ path('app_login') }}" class="text-primary font-bold hover:underline">Inicia sesión</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.js-toggle-password');
+            if (!btn) return;
+            const container = btn.closest('.relative');
+            const input = container ? container.querySelector('input') : null;
+            if (!input) return;
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.querySelector('.material-symbols-outlined').textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                btn.querySelector('.material-symbols-outlined').textContent = 'visibility';
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,13 @@
+body {
+    background-color: skyblue;
+}
+#global_search {
+    border: 1.5px solid #4b5563 !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#global_search:focus {
+    outline: none !important;
+    border-color: #e00000 !important;
+    box-shadow: 0 0 0 2px #e00000 !important;
+}

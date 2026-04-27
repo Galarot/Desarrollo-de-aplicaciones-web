@@ -1,0 +1,526 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel de Administrador - Spin&Sound{% endblock %}
+
+{% block body %}
+<main class="flex-1 animate-reveal">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Header del Panel -->
+        <div class="mb-12">
+            <div class="flex items-center gap-4 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#e00000" viewBox="0 0 256 256">
+                    <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                </svg>
+                <h1 class="text-4xl font-bold tracking-tight">Panel de Administrador</h1>
+            </div>
+            <p class="text-on-surface-muted-dark">Gestiona el contenido de Spin&Sound</p>
+        </div>
+
+        <!-- Mensajes Flash -->
+        {% for message in app.flashes('success') %}
+            <div class="mb-6 bg-green-900/30 border border-green-700 text-green-300 px-6 py-4 rounded-lg">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="mb-6 bg-red-900/30 border border-red-700 text-red-300 px-6 py-4 rounded-lg">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <!-- Búsqueda en Discogs -->
+        <section class="mb-12">
+            <div class="bg-surface-dark border border-gray-800 rounded-lg p-6">
+                <h2 class="text-2xl font-bold tracking-tight mb-6">Añadir Vinilo desde Discogs</h2>
+
+                <div class="space-y-4">
+                    <!-- Buscador -->
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Buscar álbum por título o artista</label>
+                        <div class="relative">
+                            <input
+                                type="text"
+                                id="discogs-search"
+                                placeholder="Ej: Pink Floyd Dark Side..."
+                                class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#e00000] focus:border-[#e00000]"
+                            />
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                <svg id="search-spinner" class="hidden animate-spin h-5 w-5 text-[#e00000]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resultados de búsqueda -->
+                    <div id="search-results" class="hidden">
+                        <h3 class="text-lg font-semibold mb-3">Resultados:</h3>
+                        <div id="results-container" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                    </div>
+
+                    <!-- Formulario para añadir vinilo -->
+                    <div id="add-form" class="hidden mt-6 p-4 bg-background-dark border border-gray-700 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Añadir a la tienda</h3>
+                        <form id="add-vinilo-form" method="post" action="{{ path('app_admin_add_from_discogs') }}" class="space-y-4">
+                            <input type="hidden" name="_token" value="{{ csrf_token('add-vinilo') }}" />
+                            <input type="hidden" name="discogs_id" id="selected-discogs-id" />
+
+                            <div id="selected-album-info" class="flex gap-4 mb-4 p-3 bg-gray-800 rounded-lg"></div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="precio" class="block text-sm font-medium mb-2">Precio (€) *</label>
+                                    <input
+                                        type="number"
+                                        name="precio"
+                                        id="precio"
+                                        step="0.01"
+                                        min="0.01"
+                                        required
+                                        placeholder="29.99"
+                                        class="w-full px-4 py-3 bg-background-dark border border-gray-700 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-[#e00000]"
+                                    />
+                                </div>
+                                <div>
+                                    <label for="stock" class="block text-sm font-medium mb-2">Stock *</label>
+                                    <input
+                                        type="number"
+                                        name="stock"
+                                        id="stock"
+                                        min="0"
+                                        required
+                                        placeholder="10"
+                                        class="w-full px-4 py-3 bg-background-dark border border-gray-700 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-[#e00000]"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <button
+                                    type="submit"
+                                    class="flex-1 bg-[#e00000] hover:bg-[#c00000] text-white font-bold px-6 py-3 rounded-lg transition-colors"
+                                >
+                                    Añadir a la tienda
+                                </button>
+                                <button
+                                    type="button"
+                                    onclick="document.getElementById('add-form').classList.add('hidden')"
+                                    class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-colors"
+                                >
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gestión de Vinilos -->
+        <section class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold tracking-tight">Gestión de Vinilos</h2>
+                <a href="{{ path('app_vinilo_new') }}" class="inline-flex items-center gap-2 bg-[#e00000] hover:bg-[#c00000] text-white font-bold px-6 py-3 rounded-full transition-all hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                    </svg>
+                    Añadir Vinilo
+                </a>
+            </div>
+
+            <!-- Filtros de búsqueda -->
+            <div class="mb-6 bg-surface-dark border border-gray-800 rounded-lg p-4">
+                <form method="get" action="{{ path('app_admin_panel') }}" class="flex flex-wrap gap-4">
+                    <div class="flex-1 min-w-[250px]">
+                        <input type="text" name="busqueda" value="{{ busqueda }}" placeholder="Buscar por título..." class="w-full px-4 py-2 bg-white border border-gray-700 rounded-lg text-black">
+                    </div>
+                    <div class="flex-1 min-w-[200px]">
+                        <select name="genero" class="w-full px-4 py-2 bg-white border border-gray-700 rounded-lg text-black">
+                            <option value="">Todos los géneros</option>
+                            {% for genero in generos %}
+                                <option value="{{ genero.nombre }}" {% if generoFiltro == genero.nombre %}selected{% endif %}>{{ genero.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="px-6 py-2 bg-[#e00000] hover:bg-[#c00000] text-white font-bold rounded-lg transition-colors">
+                        Buscar
+                    </button>
+                    {% if busqueda or generoFiltro %}
+                        <a href="{{ path('app_admin_panel') }}" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-colors">
+                            Limpiar
+                        </a>
+                    {% endif %}
+                </form>
+            </div>
+
+            <!-- Formulario de edición masiva -->
+            <div id="bulk-actions" class="hidden mb-4 p-4 bg-blue-900/20 border border-blue-700 rounded-lg">
+                <form id="bulk-form" method="post" action="{{ path('app_admin_bulk_update') }}" onsubmit="return confirmBulkAction()">
+                    <input type="hidden" name="_token" value="{{ csrf_token('bulk-update') }}">
+                    <div class="flex flex-wrap items-end gap-4">
+                        <div class="flex-1 min-w-[200px]">
+                            <label class="block text-sm font-medium mb-2">Acción</label>
+                            <select name="action" id="bulk-action" class="w-full px-4 py-2 bg-white border border-gray-700 rounded-lg text-black" required>
+                                <option value="" class="text-black">Seleccionar...</option>
+                                <option value="update" class="text-black">Actualizar precio/stock</option>
+                                <option value="delete" class="text-black">Eliminar seleccionados</option>
+                            </select>
+                        </div>
+                        <div id="precio-field" class="flex-1 min-w-[150px] hidden">
+                            <label class="block text-sm font-medium mb-2">Nuevo Precio (€)</label>
+                            <input type="number" name="precio" step="0.01" min="0" class="w-full px-4 py-2 bg-white border border-gray-700 rounded-lg text-black">
+                        </div>
+                        <div id="stock-field" class="flex-1 min-w-[150px] hidden">
+                            <label class="block text-sm font-medium mb-2">Nuevo Stock</label>
+                            <input type="number" name="stock" min="0" class="w-full px-4 py-2 bg-white border border-gray-700 rounded-lg text-black">
+                        </div>
+                        <button type="submit" class="px-6 py-2 bg-[#e00000] hover:bg-[#c00000] text-white font-bold rounded-lg transition-colors">
+                            Aplicar
+                        </button>
+                        <button type="button" onclick="clearSelection()" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-colors">
+                            Cancelar
+                        </button>
+                    </div>
+                    <p class="text-sm text-blue-300 mt-2"><span id="selected-count">0</span> vinilos seleccionados</p>
+                </form>
+            </div>
+
+            <div class="bg-surface-dark border border-gray-800 rounded-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-[#1a1f23] border-b border-gray-800">
+                            <tr>
+                                <th class="px-6 py-4 text-left">
+                                    <input type="checkbox" id="select-all" class="w-4 h-4 rounded border-gray-600 text-[#e00000] focus:ring-[#e00000]">
+                                </th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Imagen</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Título</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Artista</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Precio</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">Stock</th>
+                                <th class="px-6 py-4 text-right text-sm font-semibold">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800">
+                            {% for vinilo in vinilos %}
+                            <tr class="hover:bg-[#1a1f23] transition-colors">
+                                <td class="px-6 py-4">
+                                    <input type="checkbox" name="ids[]" value="{{ vinilo.id }}" form="bulk-form" class="vinilo-checkbox w-4 h-4 rounded border-gray-600 text-[#e00000] focus:ring-[#e00000]">
+                                </td>
+                                <td class="px-6 py-4">
+                                    {% if vinilo.imagen %}
+                                    <img src="{{ vinilo.imagen }}" alt="{{ vinilo.titulo }}" class="w-12 h-12 object-cover rounded">
+                                    {% else %}
+                                    <div class="w-12 h-12 bg-gray-800 rounded flex items-center justify-center">
+                                        <svg fill="currentColor" class="w-6 h-6 text-gray-600" viewBox="0 0 256 256">
+                                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-96a40,40,0,1,1-40-40A40,40,0,0,1,168,120Zm-16,0a24,24,0,1,0-24,24A24,24,0,0,0,152,120Z"/>
+                                        </svg>
+                                    </div>
+                                    {% endif %}
+                                </td>
+                                <td class="px-6 py-4 font-medium">{{ vinilo.titulo }}</td>
+                                <td class="px-6 py-4 text-on-surface-muted-dark">
+                                    {% if vinilo.artistas.first %}
+                                        {{ vinilo.artistas.first.nombre }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <td class="px-6 py-4 text-white font-semibold">{{ vinilo.precio }}€</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-3 py-1 rounded-full text-xs font-semibold {% if vinilo.stock > 10 %}bg-green-900 text-green-300{% elseif vinilo.stock > 0 %}bg-yellow-900 text-yellow-300{% else %}bg-red-900 text-red-300{% endif %}">
+                                        {{ vinilo.stock }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a href="{{ path('app_vinilo_show', {id: vinilo.id}) }}" class="p-2 hover:bg-blue-900/30 rounded transition-colors" title="Ver">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+                                                <path d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="{{ path('app_vinilo_edit', {id: vinilo.id}) }}" class="p-2 hover:bg-yellow-900/30 rounded transition-colors" title="Editar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+                                                <path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.68,147.31,64l24-24L216,84.68Z"></path>
+                                            </svg>
+                                        </a>
+                                        <form method="post" action="{{ path('app_admin_toggle_novedad', {id: vinilo.id}) }}" style="display: inline;">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('toggle-novedad' ~ vinilo.id) }}">
+                                            <button type="submit" class="p-2 hover:bg-{% if vinilo.esNovedad %}green{% else %}red{% endif %}-900/30 rounded transition-colors" title="{% if vinilo.esNovedad %}Quitar de novedades{% else %}Añadir a novedades{% endif %}">
+                                                {% if vinilo.esNovedad %}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#22c55e" viewBox="0 0 256 256">
+                                                    <path d="M184,32H72A16,16,0,0,0,56,48V224a8,8,0,0,0,12.24,6.78L128,193.43l59.77,37.35A8,8,0,0,0,200,224V48A16,16,0,0,0,184,32Z"></path>
+                                                </svg>
+                                                {% else %}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ef4444" viewBox="0 0 256 256">
+                                                    <path d="M184,32H72A16,16,0,0,0,56,48V224a8,8,0,0,0,12.24,6.78L128,193.43l59.77,37.35A8,8,0,0,0,200,224V48A16,16,0,0,0,184,32Zm0,177.57-51.77-32.35a8,8,0,0,0-8.48,0L72,209.57V48H184Z"></path>
+                                                </svg>
+                                                {% endif %}
+                                            </button>
+                                        </form>
+                                        <form method="post" action="{{ path('app_admin_vinilo_delete', {id: vinilo.id}) }}" style="display: inline;" onsubmit="return confirm('¿Estás seguro de eliminar este vinilo?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete-vinilo' ~ vinilo.id) }}">
+                                            <button type="submit" class="p-2 hover:bg-red-900/30 rounded transition-colors" title="Eliminar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ef4444" viewBox="0 0 256 256">
+                                                    <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="7" class="px-6 py-8 text-center text-on-surface-muted-dark">No hay vinilos registrados</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas Rápidas -->
+        <section>
+            <h2 class="text-2xl font-bold tracking-tight mb-6">Estadísticas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-[#e00000]/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e00000" viewBox="0 0 256 256">
+                                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-96a40,40,0,1,1-40-40A40,40,0,0,1,168,120Zm-16,0a24,24,0,1,0-24,24A24,24,0,0,0,152,120Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold">{{ vinilos|length }}</p>
+                            <p class="text-sm text-on-surface-muted-dark">Total Vinilos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-green-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22c55e" viewBox="0 0 256 256">
+                                <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold">{{ novedades|length }}</p>
+                            <p class="text-sm text-on-surface-muted-dark">Novedades</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-blue-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#3b82f6" viewBox="0 0 256 256">
+                                <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold">Admin</p>
+                            <p class="text-sm text-on-surface-muted-dark">Sesión Activa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    // Selección masiva de vinilos
+    const selectAll = document.getElementById('select-all');
+    const checkboxes = document.querySelectorAll('.vinilo-checkbox');
+    const bulkActions = document.getElementById('bulk-actions');
+    const selectedCount = document.getElementById('selected-count');
+    const bulkActionSelect = document.getElementById('bulk-action');
+    const precioField = document.getElementById('precio-field');
+    const stockField = document.getElementById('stock-field');
+
+    selectAll.addEventListener('change', function() {
+        checkboxes.forEach(cb => cb.checked = this.checked);
+        updateBulkActions();
+    });
+
+    checkboxes.forEach(cb => {
+        cb.addEventListener('change', updateBulkActions);
+    });
+
+    bulkActionSelect.addEventListener('change', function() {
+        if (this.value === 'update') {
+            precioField.classList.remove('hidden');
+            stockField.classList.remove('hidden');
+        } else {
+            precioField.classList.add('hidden');
+            stockField.classList.add('hidden');
+        }
+    });
+
+    function updateBulkActions() {
+        const selected = document.querySelectorAll('.vinilo-checkbox:checked').length;
+        selectedCount.textContent = selected;
+
+        if (selected > 0) {
+            bulkActions.classList.remove('hidden');
+        } else {
+            bulkActions.classList.add('hidden');
+        }
+
+        selectAll.checked = selected === checkboxes.length && checkboxes.length > 0;
+    }
+
+    function clearSelection() {
+        checkboxes.forEach(cb => cb.checked = false);
+        selectAll.checked = false;
+        updateBulkActions();
+        bulkActionSelect.value = '';
+        precioField.classList.add('hidden');
+        stockField.classList.add('hidden');
+    }
+
+    function confirmBulkAction() {
+        const action = bulkActionSelect.value;
+        const count = document.querySelectorAll('.vinilo-checkbox:checked').length;
+
+        if (action === 'delete') {
+            return confirm(`¿Estás seguro de eliminar ${count} vinilos?`);
+        } else if (action === 'update') {
+            const nuevoPrecio = document.querySelector('input[name="precio"]').value;
+            const nuevoStock = document.querySelector('input[name="stock"]').value;
+            
+            let mensaje = '¿Seguro que quieres realizar el siguiente cambio?\n\n';
+            
+            selectedCheckboxes.forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                const titulo = row.querySelector('td:nth-child(3)').textContent.trim();
+                const precioActual = row.querySelector('td:nth-child(5)').textContent.replace('€', '').trim();
+                const stockActual = row.querySelector('td:nth-child(6) span').textContent.trim();
+                
+                mensaje += `${titulo}:\n`;
+                if (nuevoPrecio) {
+                    mensaje += `  Precio: ${precioActual}€ → ${nuevoPrecio}€\n`;
+                }
+                if (nuevoStock) {
+                    mensaje += `  Stock: ${stockActual} → ${nuevoStock}\n`;
+                }
+                mensaje += '\n';
+            });
+            
+            return confirm(mensaje);
+        }
+        return true;
+    }
+
+    // Búsqueda en Discogs con debounce
+    let searchTimeout;
+    const searchInput = document.getElementById('discogs-search');
+    const searchResults = document.getElementById('search-results');
+    const resultsContainer = document.getElementById('results-container');
+    const searchSpinner = document.getElementById('search-spinner');
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+
+        clearTimeout(searchTimeout);
+
+        if (query.length < 3) {
+            searchResults.classList.add('hidden');
+            return;
+        }
+
+        searchSpinner.classList.remove('hidden');
+
+        searchTimeout = setTimeout(() => {
+            fetch(`{{ path('app_admin_discogs_search') }}?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    searchSpinner.classList.add('hidden');
+                    console.log('Respuesta completa de Discogs:', data); // Debug
+
+                    if (data.error) {
+                        console.error('Error de búsqueda:', data.error);
+                        resultsContainer.innerHTML = `<p class="text-red-400 text-center py-4">${data.error}</p>`;
+                        searchResults.classList.remove('hidden');
+                        return;
+                    }
+
+                    displayResults(data.results || []);
+                })
+                .catch(error => {
+                    searchSpinner.classList.add('hidden');
+                    console.error('Error en la petición:', error);
+                    resultsContainer.innerHTML = '<p class="text-red-400 text-center py-4">Error al conectar con Discogs. Verifica la consola para más detalles.</p>';
+                    searchResults.classList.remove('hidden');
+                });
+        }, 500);
+    });
+
+    function displayResults(results) {
+        resultsContainer.innerHTML = '';
+
+        if (results.length === 0) {
+            resultsContainer.innerHTML = '<p class="text-gray-400 text-center py-4">No se encontraron resultados</p>';
+            searchResults.classList.remove('hidden');
+            return;
+        }
+
+        results.forEach(result => {
+            console.log('Result item:', result); // Debug para ver la estructura
+
+            const div = document.createElement('div');
+            div.className = 'flex items-center gap-4 p-3 bg-gray-800 rounded-lg hover:bg-gray-700 cursor-pointer transition-colors';
+            div.onclick = () => selectAlbum(result);
+
+            // Intentar obtener la imagen de diferentes campos posibles
+            const img = result.thumb || result.cover_image || result.resource_url || '';
+            console.log('Image URL:', img); // Debug
+
+            div.innerHTML = `
+                <div class="w-16 h-16 flex-shrink-0 bg-gray-700 rounded overflow-hidden">
+                    ${img ? `<img src="${img}" alt="${result.title}" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center text-gray-500\\'>🎵</div>'">` : '<div class="w-full h-full flex items-center justify-center text-gray-500 text-2xl">🎵</div>'}
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-semibold truncate">${result.title || 'Sin título'}</h4>
+                    <p class="text-sm text-gray-400 truncate">${result.year || 'Año desconocido'} ${result.format && result.format.length > 0 ? '· ' + result.format.join(', ') : ''}</p>
+                </div>
+                <button class="bg-[#e00000] hover:bg-[#c00000] text-white px-4 py-2 rounded-lg text-sm font-medium flex-shrink-0">
+                    Seleccionar
+                </button>
+            `;
+
+            resultsContainer.appendChild(div);
+        });
+
+        searchResults.classList.remove('hidden');
+    }
+
+    function selectAlbum(album) {
+        console.log('Album seleccionado:', album); // Debug
+
+        document.getElementById('selected-discogs-id').value = album.id;
+
+        const img = album.thumb || album.cover_image || '';
+
+        document.getElementById('selected-album-info').innerHTML = `
+            <div class="w-20 h-20 flex-shrink-0 bg-gray-700 rounded overflow-hidden">
+                ${img ? `<img src="${img}" alt="${album.title}" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center text-gray-500 text-3xl\\'>🎵</div>'">` : '<div class="w-full h-full flex items-center justify-center text-gray-500 text-3xl">🎵</div>'}
+            </div>
+            <div>
+                <h4 class="font-semibold text-lg">${album.title || 'Sin título'}</h4>
+                <p class="text-sm text-gray-400">${album.year || 'Año desconocido'}</p>
+            </div>
+        `;
+
+        document.getElementById('add-form').classList.remove('hidden');
+        searchResults.classList.add('hidden');
+        searchInput.value = '';
+
+        // Scroll al formulario
+        document.getElementById('add-form').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+{% endblock %}

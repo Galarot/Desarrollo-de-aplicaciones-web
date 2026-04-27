@@ -1,0 +1,174 @@
+Proyecto (DBLegendle Symfony 7.0)
+│
+├── 📋 DOCUMENTACIÓN
+│   ├── README.md                 ← LEER PRIMERO
+│   ├── COMPLETADO.md             ← Resumen de lo realizado
+│   ├── INSTALACION.md            ← Pasos de instalación
+│   ├── ESTRUCTURA.md             ← Estructura detallada
+│   ├── Especificación Técnica.md ← Especificaciones
+│   └── imagenestemp/             ← Imágenes temporales
+│
+├── 🔧 CONFIGURACIÓN (RAÍZ)
+│   ├── composer.json             ← Dependencias PHP ⭐
+│   ├── composer.lock             ← Versiones bloqueadas
+│   ├── .env                      ← Variables de entorno
+│   ├── .env.example              ← Plantilla de variables
+│   ├── .env.local                ← CREAR AQUÍ tus variables
+│   ├── .gitignore                ← Ignorar en Git
+│   ├── .editorconfig             ← Configuración editor
+│   └── symfony.lock              ← Lock de Symfony
+│
+├── 🚀 INSTALACIÓN AUTOMÁTICA
+│   ├── install.bat               ← Windows: Ejecutar esto
+│   └── install.sh                ← Linux/Mac: Ejecutar esto
+│
+├── 📦 DEPENDENCIAS (GENERAR CON composer install)
+│   ├── vendor/                   ← Librerías PHP ⭐ (NO incluir en Git)
+│   └── node_modules/             ← Node packages (opcional)
+│
+├── 🐳 DOCKER & DEPLOY
+│   ├── docker-compose.yml        ← Configuración contenedores
+│   └── docker/
+│       └── nginx.conf            ← Configuración Nginx
+│
+├── 🏗️ SYMFONY KERNEL
+│   ├── bin/
+│   │   └── console               ← CLI de Symfony ⭐
+│   │
+│   ├── config/                   ← Configuración de Symfony
+│   │   ├── services.yaml         ← Servicios
+│   │   ├── routes.yaml           ← Rutas
+│   │   ├── packages/
+│   │   │   ├── framework.yaml    ← Framework
+│   │   │   ├── doctrine.yaml     ← Base de datos
+│   │   │   ├── twig.yaml         ← Plantillas
+│   │   │   ├── security.yaml     ← Seguridad
+│   │   │   ├── dev/
+│   │   │   │   └── web_profiler.yaml
+│   │   │   └── prod/
+│   │   │       └── monolog.yaml
+│   │   └── packages/dev/
+│   │
+│   ├── src/                      ← Código fuente PHP ⭐
+│   │   ├── Kernel.php            ← Kernel principal
+│   │   ├── Controller/
+│   │   │   └── DBLegendleController.php ← Controlador principal ⭐
+│   │   ├── Entity/               ← Modelos (vacío por ahora)
+│   │   ├── Repository/           ← Repositorios (vacío)
+│   │   └── Service/              ← Servicios (vacío)
+│   │
+│   ├── templates/                ← Vistas Twig
+│   │   ├── base.html.twig        ← Plantilla base ⭐
+│   │   └── db_legendle/
+│   │       ├── index.html.twig   ← Juego principal ⭐
+│   │       └── artcart.html.twig ← Art Cart ⭐
+│   │
+│   ├── public/                   ← Directorio público (Web root)
+│   │   ├── index.php             ← Bootstrap de la app ⭐
+│   │   ├── .htaccess             ← Configuración Apache
+│   │   └── assets/               ← Recursos estáticos ⭐
+│   │       ├── multimedia/
+│   │       │   ├── logo.png
+│   │       │   ├── arts/         ← Artes de personajes (374 imágenes)
+│   │       │   │   ├── 19h.png
+│   │       │   │   ├── 20h.png
+│   │       │   │   ├── android8sp.png
+│   │       │   │   └── ... más imágenes
+│   │       │   └── splash/       ← Splash arts
+│   │       └── artes/
+│   │           ├── gibletfondo.png
+│   │           └── shallotfondo.png
+│   │
+│   ├── assets/                   ← Recursos del cliente
+│   │   ├── js/
+│   │   ├── styles/
+│   │   └── controllers/
+│   │
+│   ├── tests/                    ← Tests (PHPUnit)
+│   │
+│   ├── migrations/               ← Migraciones BD (Doctrine)
+│   │
+│   └── var/                      ← Archivos generados (NO en Git) ⭐
+│       ├── cache/                ← Caché de Symfony
+│       ├── log/                  ← Archivos de log
+│       │   └── dev.log           ← Log de desarrollo
+│       └── data/
+│           └── app.db            ← BD SQLite (generada)
+│
+├── 📊 DATOS
+│   └── data/                     ← JSON estáticos
+│       ├── characters.json       ← 374 personajes ⭐
+│       ├── splash.json           ← Datos de artes
+│       └── plant.txt             ← Info adicional
+│
+└── 📦 ARCHIVOS ANTIGUOS (PUEDES BORRAR)
+    └── DBLegendle/               ← Tu código original convertido
+        ├── años.txt
+        ├── index.html            ← Convertido a Twig
+        ├── .vscode/
+        ├── public/
+        │   ├── artcart.html      ← Convertido a Twig
+        │   └── assets/           ← Copiado a public/assets/
+        ├── src/
+        │   ├── data/             ← Copiado a data/
+        │   └── js/               ← Integrado en templates
+        └── python/
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🌍 RUTAS PRINCIPALES DISPONIBLES:
+
+  GET  /                → Página principal (juego clásico)
+  GET  /artcart         → Modo Art Cart
+  GET  /api/characters  → API JSON de personajes
+  GET  /api/splash      → API JSON de artes
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⭐ ARCHIVOS CRÍTICOS A CONOCER:
+
+  1. bin/console              → CLI de Symfony (ejecutar comandos)
+  2. public/index.php         → Punto de entrada (siempre)
+  3. src/Controller/DBLegendleController.php → Lógica principal
+  4. templates/db_legendle/   → Vistas (Twig)
+  5. config/packages/         → Configuración
+  6. data/                    → Datos JSON
+  7. public/assets/           → Imágenes
+  8. composer.json            → Dependencias
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 COMANDOS IMPORTANTES:
+
+  composer install              ← Instalar dependencias (primero!)
+  php bin/console cache:clear   ← Limpiar caché
+  php -S localhost:8000 -t public/  ← Ejecutar servidor
+  php bin/console debug:router  ← Ver rutas
+  php bin/console debug:container ← Ver servicios
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📝 CAMBIOS REALIZADOS:
+
+  ✅ Estructura Symfony 7.0 completamente creada
+  ✅ Tu HTML → Convertido a Twig templates
+  ✅ Tu JavaScript → Integrado en templates
+  ✅ Tus datos JSON → Copiadocon acceso vía API
+  ✅ Tus imágenes → En public/assets/
+  ✅ Controlador principal → DBLegendleController.php
+  ✅ Dos páginas funcionales (/ y /artcart)
+  ✅ API REST para datos
+  ✅ Configuración completa
+  ✅ Scripts de instalación automática
+  ✅ Documentación extensiva
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Última actualización: 24 de abril de 2026
+Versión: Symfony 7.0
+Estado: ✅ LISTO PARA USAR

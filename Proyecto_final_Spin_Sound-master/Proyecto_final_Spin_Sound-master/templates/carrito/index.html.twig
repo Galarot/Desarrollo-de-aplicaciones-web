@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spin&Sound | Carrito index{% endblock %}
+
+{% block body %}
+    <h1>Carrito index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carrito in carritos %}
+            <tr>
+                <td>{{ carrito.id }}</td>
+                <td>
+                    <a href="{{ path('app_carrito_show', {'id': carrito.id}) }}">show</a>
+                    <a href="{{ path('app_carrito_edit', {'id': carrito.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_carrito_new') }}">Create new</a>
+{% endblock %}

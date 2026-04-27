@@ -1,0 +1,15 @@
+  ,
+  {
+    "id": ,
+    "nombre": "",
+    "anio": ,
+    "art_cart_url": "./public/assets/multimedia/arts/.png",
+    "atributos": { "genero": "", "afinidad": "", "rareza": "", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+  },
+  {
+    "id": ,
+    "nombre": "",
+    "anio": ,
+    "art_cart_url": "./public/assets/multimedia/arts/.png",
+    "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+  },

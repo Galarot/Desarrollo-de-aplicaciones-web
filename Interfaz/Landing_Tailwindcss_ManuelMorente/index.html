@@ -6,70 +6,7 @@
     <title>Coraline</title>
     <link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Creepster&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-        .imgs {
-            animation: fade 9s infinite;
-            position: absolute;
-            opacity: 0;
-        }
-        .imgs:nth-child(1) { animation-delay: 0s; }
-        .imgs:nth-child(2) { animation-delay: 3s; }
-        .imgs:nth-child(3) { animation-delay: 6s; }
-        
-        .imgs1 {
-            animation: fade2 6s infinite;
-            position: absolute;
-            opacity: 0;
-        }
-        .imgs1:nth-child(1) { animation-delay: 0s; }
-        .imgs1:nth-child(2) { animation-delay: 3s; }
-
-        @keyframes fade2 {
-            0%   { opacity: 0; }
-            10%  { opacity: 1; }
-            50%  { opacity: 1; }
-            65%  { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        @keyframes fade {
-            0%   { opacity: 0; }
-            10%  { opacity: 1; }
-            33%  { opacity: 1; }
-            43%  { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        @theme {
-            --font-coraline: "Almendra Display", serif;
-            --font-spooky: "Creepster", system-ui;
-        }
-
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .animate-reveal {
-            opacity: 1 !important;
-            filter: blur(0);
-            transform: translateY(0) !important;
-            animation: reveal 1.5s ease-out forwards;
-        }
-
-        @keyframes reveal {
-            0% {
-                opacity: 0;
-                filter: blur(10px);
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                filter: blur(0);
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body class="bg-black overflow-x-hidden">
     <header class="relative z-50 bg-[url(multi/fondoCoraline.jpg)] bg-cover bg-center bg-no-repeat min-h-screen flex flex-col items-center">
@@ -250,5 +187,6 @@
             elementsToReveal.forEach(el => observer.observe(el));
         });
     </script>
+    
 </body>
 </html>

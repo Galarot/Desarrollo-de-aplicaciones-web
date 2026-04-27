@@ -1,0 +1,75 @@
+{% extends 'base_react.html.twig' %}
+
+{% block title %}Spin&Sound | Vinilos{% endblock %}
+
+{% block body %}
+<main class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+        <aside class="lg:col-span-1">
+            <div class="sticky top-24 pt-4">
+                {% include 'vinilo/_filters.html.twig' %}
+            </div>
+        </aside>
+
+        <section class="lg:col-span-3">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <h1 class="text-2xl font-bold text-white">
+                    {% if query or genero or artista or precio_max %}
+                        Resultados filtrados
+                        <span class="text-base font-normal text-on-surface-muted-dark">
+                            ({{ vinilos|length }} {{ vinilos|length == 1 ? 'vinilo' : 'vinilos' }})
+                        </span>
+                    {% else %}
+                        Catálogo de Vinilos
+                        <span class="text-base font-normal text-on-surface-muted-dark">
+                            ({{ vinilos|length }})
+                        </span>
+                    {% endif %}
+                </h1>
+            </div>
+
+            {# Etiquetas de filtros activos #}
+            {% if query or genero or artista or precio_max %}
+                <div class="flex flex-wrap gap-2 mb-6">
+                    {% if query %}
+                        <span class="inline-flex items-center gap-1 rounded-full bg-primary/20 px-3 py-1 text-xs text-primary">
+                            🔍 "{{ query }}"
+                            <a href="{{ path('app_vinilo_index', {genero: genero, artista: artista, precio_max: precio_max, orden: orden}) }}" class="hover:text-white">✕</a>
+                        </span>
+                    {% endif %}
+                    {% if genero %}
+                        <span class="inline-flex items-center gap-1 rounded-full bg-primary/20 px-3 py-1 text-xs text-primary">
+                            🎵 {{ genero }}
+                            <a href="{{ path('app_vinilo_index', {q: query, artista: artista, precio_max: precio_max, orden: orden}) }}" class="hover:text-white">✕</a>
+                        </span>
+                    {% endif %}
+                    {% if artista %}
+                        {% for a in artistas %}
+                            {% if (a.id ~ '') == artista %}
+                                <span class="inline-flex items-center gap-1 rounded-full bg-primary/20 px-3 py-1 text-xs text-primary">
+                                    👤 {{ a.nombre }}
+                                    <a href="{{ path('app_vinilo_index', {q: query, genero: genero, precio_max: precio_max, orden: orden}) }}" class="hover:text-white">✕</a>
+                                </span>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if precio_max %}
+                        <span class="inline-flex items-center gap-1 rounded-full bg-primary/20 px-3 py-1 text-xs text-primary">
+                            💶 Máx. {{ precio_max }} €
+                            <a href="{{ path('app_vinilo_index', {q: query, genero: genero, artista: artista, orden: orden}) }}" class="hover:text-white">✕</a>
+                        </span>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {# Lista de vinilos usando componente React #}
+            <div {{ react_component('ViniloList', {
+                vinilos: vinilos|json_encode|raw,
+                favoritosIds: favoritosIds|json_encode|raw,
+                csrfToken: csrf_token('add-to-cart')
+            }) }}></div>
+        </section>
+    </div>
+</main>
+{% endblock %}

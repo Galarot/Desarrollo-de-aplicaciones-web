@@ -1,0 +1,60 @@
+{# templates/vinilo/_filters.html.twig #}
+<form method="get" action="{{ path('app_vinilo_index') }}" class="space-y-4 rounded-xl border border-surface-dark bg-surface-dark p-4">
+    <h3 class="font-semibold text-lg text-white">Filtrar</h3>
+
+    <div>
+        <label for="f_q" class="block text-sm mb-1 text-on-surface-muted-dark">Buscar</label>
+        <input id="f_q" name="q" type="text" value="{{ query|default('') }}"
+               placeholder="Artista o álbum..."
+               style="color: black; background: white;"
+               class="w-full rounded-lg border-0 px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+
+    <div>
+        <label for="f_genero" class="block text-sm mb-1 text-on-surface-muted-dark">Género</label>
+        <select id="f_genero" name="genero" class="w-full rounded-lg px-3 py-2 text-sm" style="color: black; background: white;">
+            <option value="">Todos los géneros</option>
+            {% for g in generos %}
+                <option value="{{ g.nombre }}" {% if g.nombre == genero|default('') %}selected{% endif %}>{{ g.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="f_artista" class="block text-sm mb-1 text-on-surface-muted-dark">Artista</label>
+        <select id="f_artista" name="artista" class="w-full rounded-lg px-3 py-2 text-sm" style="color: black; background: white;">
+            <option value="">Todos los artistas</option>
+            {% for a in artistas %}
+                <option value="{{ a.id }}" {% if (a.id ~ '') == artista|default('') %}selected{% endif %}>{{ a.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="f_precio" class="block text-sm mb-1 text-on-surface-muted-dark">Precio máximo (€)</label>
+        <input id="f_precio" name="precio_max" type="number" min="0" step="0.01"
+               value="{{ precioMax|default('') }}"
+               style="color: black; background: white;"
+               class="w-full rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+
+    <div>
+        <label for="f_orden" class="block text-sm mb-1 text-on-surface-muted-dark">Ordenar por</label>
+        <select id="f_orden" name="orden" class="w-full rounded-lg px-3 py-2 text-sm" style="color: black; background: white;">
+            <option value="">Relevancia</option>
+            <option value="az" {% if orden|default('') == 'az' %}selected{% endif %}>A - Z</option>
+            <option value="precio_asc" {% if orden|default('') == 'precio_asc' %}selected{% endif %}>Precio ascendente</option>
+            <option value="precio_desc" {% if orden|default('') == 'precio_desc' %}selected{% endif %}>Precio descendente</option>
+            <option value="recientes" {% if orden|default('') == 'recientes' %}selected{% endif %}>Más recientes</option>
+        </select>
+    </div>
+
+    <div class="flex items-center gap-2">
+        <button type="submit" class="rounded-lg px-4 py-2 text-sm font-bold text-white" style="background-color: #e00000;">
+            Aplicar
+        </button>
+        <a href="{{ path('app_vinilo_index') }}" class="rounded-lg px-4 py-2 text-sm text-on-surface-muted-dark hover:underline" style="background-color: #e00000;">
+            Limpiar
+        </a>
+    </div>
+</form>

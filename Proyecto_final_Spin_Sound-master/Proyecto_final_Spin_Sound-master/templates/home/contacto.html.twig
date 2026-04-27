@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spin&Sound | Contacto{% endblock %}
+
+{% block body %}
+    <main class="flex-1 bg-[#0b0f13] text-white font-sans">
+
+        {# Hero #}
+        <section class="relative bg-cover bg-center py-24" style="background-image: linear-gradient(to bottom, rgba(11,15,19,0.5), #0b0f13), url('{{ asset('img/fotoHeroContacto.jpg') }}');">
+            <div class="container mx-auto px-4 text-center">
+            <span class="mb-4 inline-block rounded-full bg-[#e00000]/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-[#e00000] border border-[#e00000]/30">
+                Contacto
+            </span>
+                <h1 class="text-5xl font-black uppercase tracking-tighter sm:text-7xl">
+                    Hablemos de <span class="text-[#e00000]">Música</span>
+                </h1>
+                <p class="mx-auto mt-6 max-w-xl text-lg text-gray-400">
+                    ¿Buscas una edición rara o quieres pasarte por la tienda? Estamos al otro lado del surco.
+                </p>
+            </div>
+        </section>
+
+        <div class="container mx-auto px-4 pb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+                {# Bloque Formulario #}
+                <div class="lg:col-span-7 rounded-2xl bg-white/[0.03] backdrop-blur-md border border-white/[0.05] p-8 shadow-2xl">
+                    <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 italic">
+                        <span class="h-1 w-8 bg-[#e00000]"></span>
+                        ENVÍANOS UN MENSAJE
+                    </h2>
+
+                    <form method="POST" action="{{ path('app_contacto') }}" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs uppercase tracking-wider text-gray-500 font-bold ml-1">Nombre</label>
+                                <input type="text" name="nombre" placeholder="Tu Nombre" required
+                                       class="w-full rounded-lg border-0 bg-white/[0.05] px-4 py-4 text-white focus:ring-2 focus:ring-[#e00000] transition-all placeholder:text-gray-700"/>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs uppercase tracking-wider text-gray-500 font-bold ml-1">Apellidos</label>
+                                <input type="text" name="apellidos" placeholder="Tu apellido" required
+                                       class="w-full rounded-lg border-0 bg-white/[0.05] px-4 py-4 text-white focus:ring-2 focus:ring-[#e00000] transition-all placeholder:text-gray-700"/>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-wider text-gray-500 font-bold ml-1">Email</label>
+                            <input type="email" name="email" placeholder="tuEmail@gmail.com" required
+                                   class="w-full rounded-lg border-0 bg-white/[0.05] px-4 py-4 text-white focus:ring-2 focus:ring-[#e00000] transition-all placeholder:text-gray-700"/>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-wider text-gray-500 font-bold ml-1">Mensaje</label>
+                            <textarea rows="4" name="mensaje" placeholder="¿Qué tienes en mente?" required
+                                      class="w-full rounded-lg border-0 bg-white/[0.05] px-4 py-4 text-white focus:ring-2 focus:ring-[#e00000] transition-all resize-none placeholder:text-gray-700"></textarea>
+                        </div>
+
+                        <button type="submit"
+                                class="w-full rounded-full bg-[#e00000] py-4 text-sm font-black uppercase tracking-widest text-white shadow-[0_10px_20px_rgba(224,0,0,0.3)] transition-all hover:bg-[#ff1a1a] hover:scale-[1.01] active:scale-95">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+                {# Bloque Info de contacto manual #}
+                <div class="lg:col-span-5 space-y-4">
+
+                    {# Dirección #}
+                    <div class="group flex items-center gap-5 rounded-2xl bg-white/[0.02] p-6 border border-white/[0.05] transition-all hover:border-[#e00000]/40">
+                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e00000]/10 text-[#e00000] group-hover:bg-[#e00000] group-hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-black uppercase tracking-widest text-gray-500">Dirección</h3>
+                            <p class="text-lg font-medium text-white">Av Dr Oloriz , 6, Granada</p>
+                        </div>
+                    </div>
+
+                    {# Horario #}
+                    <div class="group flex items-center gap-5 rounded-2xl bg-white/[0.02] p-6 border border-white/[0.05] transition-all hover:border-[#e00000]/40">
+                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e00000]/10 text-[#e00000] group-hover:bg-[#e00000] group-hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-black uppercase tracking-widest text-gray-500">Horario</h3>
+                            <p class="text-lg font-medium text-white">Lun – Sáb: 10:00 – 20:00</p>
+                        </div>
+                    </div>
+
+                    {# Email #}
+                    <div class="group flex items-center gap-5 rounded-2xl bg-white/[0.02] p-6 border border-white/[0.05] transition-all hover:border-[#e00000]/40">
+                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e00000]/10 text-[#e00000] group-hover:bg-[#e00000] group-hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-black uppercase tracking-widest text-gray-500">Email</h3>
+                            <p class="text-lg font-medium text-white">spinsound@gmail.com</p>
+                        </div>
+                    </div>
+
+                    {# Teléfono #}
+                    <div class="group flex items-center gap-5 rounded-2xl bg-white/[0.02] p-6 border border-white/[0.05] transition-all hover:border-[#e00000]/40">
+                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e00000]/10 text-[#e00000] group-hover:bg-[#e00000] group-hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-black uppercase tracking-widest text-gray-500">Teléfono</h3>
+                            <p class="text-lg font-medium text-white">+34 900 123 456</p>
+                        </div>
+                    </div>
+
+                    {# Tarjeta roja de acción #}
+                    <div class="mt-8 rounded-2xl bg-[#e00000] p-8 text-white shadow-lg relative overflow-hidden group">
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-2 uppercase tracking-tighter">¿Buscas algo raro?</h3>
+                            <p class="text-sm opacity-90 mb-4">Si el disco no está en nuestras 5.000 referencias, lo encontramos por ti.</p>
+                            <a href="#" class="inline-block text-xs font-black uppercase tracking-widest border-b-2 border-white pb-1 hover:text-black hover:border-black transition-all">Consúltanos</a>
+                        </div>
+                        {# Decoración sutil de fondo para la tarjeta #}
+                        <div class="absolute -right-10 -bottom-10 opacity-20 group-hover:scale-110 transition-transform">
+                            <svg width="150" height="150" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.48 0-4.5-2.02-4.5-4.5s2.02-4.5 4.5-4.5 4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}

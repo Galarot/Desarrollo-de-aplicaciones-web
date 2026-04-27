@@ -1,0 +1,242 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spin&Sound | Sobre Nosotros{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <style>
+
+    </style>
+<main class="flex-1">
+
+    {# Hero #}
+    <section class="relative bg-cover bg-center" style="background-image: linear-gradient(to top, rgba(11,15,19,0.95), rgba(11,15,19,0.4) 60%), url('{{ asset('img/sobreNosotros.jpg') }}');">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex min-h-[45vh] max-w-2xl flex-col items-start justify-center text-left">
+                <span class="mb-4 inline-block rounded-full bg-primary/20 px-4 py-1 text-sm font-semibold text-primary">Nuestra historia</span>
+                <h1 class="text-4xl font-bold leading-tight tracking-tighter text-white sm:text-5xl lg:text-6xl">
+                    Sobre Spin&amp;Sound
+                </h1>
+                <p class="mt-4 text-lg text-on-surface-muted-dark">
+                    Apasionados por la música analógica desde 2015. Tu tienda de referencia en vinilos y cultura musical.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+        {# Quiénes somos #}
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-white mb-6">¿Quiénes somos?</h2>
+                <p class="text-on-surface-muted-dark leading-relaxed mb-4">
+                    En 2026, un grupo de amigos decidió que el mundo digital iba demasiado rápido. Echábamos de menos el ritual: sacar el disco de la funda, colocar la aguja y esperar ese pequeño crack que anuncia que algo bueno va a pasar. Así nació Spin&Sound.
+
+                    Lo que empezó en un rincón del centro de la ciudad, hoy es el refugio de quienes saben que la música no solo se escucha, se toca. Con más de 5.000 tesoros en nuestras estanterías —desde joyas de segunda mano con historia hasta ediciones limitadas que no querrás abrir— y el merchandising que todo fan merece, seguimos girando al mismo ritmo que nuestros platos: con pasión, sin filtros y en analógico.
+                </p>
+                <p class="text-on-surface-muted-dark leading-relaxed">
+                    Hoy contamos con más de <span class="text-primary font-semibold">5.000 referencias</span> en catálogo, entre vinilos nuevos, ediciones limitadas y segunda mano, además de una selección de merchandising exclusivo de tus artistas favoritos.
+                </p>
+            </div>
+            <div class="relative aspect-video rounded-xl overflow-hidden shadow-2xl shadow-black/50">
+                <div class="h-full w-full bg-cover bg-center" style="background-image: url('{{ asset('img/historia.jpg') }}');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+        </section>
+
+
+
+        <section class="w-full my-12">
+            {# Estilos forzados aquí mismo para que nada los sobreescriba #}
+            <style>
+                @keyframes carruselFinal {
+                    0%, 20% { opacity: 1; z-index: 30; }
+                    25%, 100% { opacity: 0; z-index: 1; }
+                }
+
+                .img-vinilo {
+                    position: absolute !important;
+                    top: 0 !important;
+                    left: 0 !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
+                    opacity: 0;
+                    animation: carruselFinal 12s infinite linear !important;
+                }
+
+                /* Delays específicos para que se turnen cada 3 segundos */
+                .delay-1 { animation-delay: 0s !important; }
+                .delay-2 { animation-delay: 3s !important; }
+                .delay-3 { animation-delay: 6s !important; }
+                .delay-4 { animation-delay: 9s !important; }
+            </style>
+
+            <div style="position: relative; width: 100%; max-width: 800px; height: 450px; margin: 0 auto; overflow: hidden; background: #000; border-radius: 12px; border: 1px solid #333;">
+
+                <img class="img-vinilo delay-1" src="{{ asset('img/genteVinilos.jpg') }}" alt="Gente 1">
+                <img class="img-vinilo delay-2" src="{{ asset('img/genteVinilos1.jpg') }}" alt="Gente 2">
+                <img class="img-vinilo delay-3" src="{{ asset('img/genteVinilos2.jpg') }}" alt="Gente 3">
+                <img class="img-vinilo delay-4" src="{{ asset('img/genteVinilos3.jpg') }}" alt="Gente 4">
+
+            </div>
+        </section>
+        {# Cifras #}
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="rounded-xl bg-surface-dark p-8">
+                <p class="text-4xl font-bold text-primary">+5K</p>
+                <p class="mt-2 text-sm text-on-surface-muted-dark">Referencias en catálogo</p>
+            </div>
+            <div class="rounded-xl bg-surface-dark p-8">
+                <p class="text-4xl font-bold text-primary">+1000</p>
+                <p class="mt-2 text-sm text-on-surface-muted-dark">Reseñas positivas</p>
+            </div>
+            <div class="rounded-xl bg-surface-dark p-8">
+                <p class="text-4xl font-bold text-primary">+20K</p>
+                <p class="mt-2 text-sm text-on-surface-muted-dark">Clientes satisfechos</p>
+            </div>
+            <div class="rounded-xl bg-surface-dark p-8">
+                <p class="text-4xl font-bold text-primary">+50</p>
+                <p class="mt-2 text-sm text-on-surface-muted-dark">Géneros musicales</p>
+            </div>
+        </section>
+        {# Misión y valores #}
+        <section class="bg-black py-20 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center">
+                    Nuestra <span class="text-red-600">misión</span> y valores
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <div class="group p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 transition-all duration-300 hover:bg-zinc-900">
+                        <div class="mb-6 flex justify-center md:justify-start">
+                            <div class="h-16 w-16 rounded-full border-2 border-red-600 flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 11a9 9 0 0118 0m-9 0v7m-9-7a2 2 0 012-2h2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5zm10-2a2 2 0 012-2h2a2 2 0 012 2v5a2 2 0 01-2 2h-2a2 2 0 01-2-2v-5z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 text-center md:text-left">Pasión por el sonido</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed text-center md:text-left">
+                            Creemos que la música en vinilo ofrece una experiencia sonora insustituible. Cada disco que vendemos ha pasado por nuestras manos con cariño.
+                        </p>
+                    </div>
+
+                    <div class="group p-8 rounded-2xl bg-zinc-900 border-2 border-red-600 transform scale-105 shadow-[0_0_30px_rgba(220,38,38,0.15)] z-10">
+                        <div class="mb-6 flex justify-center md:justify-start">
+                            <div class="h-16 w-16 rounded-full bg-red-600 flex items-center justify-center">
+                                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 text-center md:text-left">Comunidad</h3>
+                        <p class="text-zinc-300 text-sm leading-relaxed text-center md:text-left">
+                            Somos más que una tienda: somos un punto de encuentro para amantes de la música. Organizamos eventos, presentaciones y sesiones de escucha.
+                        </p>
+                    </div>
+
+                    <div class="group p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 transition-all duration-300 hover:bg-zinc-900">
+                        <div class="mb-6 flex justify-center md:justify-start">
+                            <div class="h-16 w-16 rounded-full border-2 border-red-600 flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 text-center md:text-left">Calidad garantizada</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed text-center md:text-left">
+                            Seleccionamos cada producto con criterio. Trabajamos con los mejores sellos discográficos y distribuidores para ofrecerte siempre lo mejor.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        {# Equipo #}
+        <section class="bg-black py-16 px-4">
+            <h2 class="text-4xl font-extrabold text-white mb-16 text-center uppercase tracking-widest">
+                Os presentamos a <span class="text-red-600">nuestro equipo</span>
+            </h2>
+
+            <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+                <div class="group relative flex flex-col items-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 transition-all duration-300 hover:border-red-600 hover:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                    <div class="absolute -top-12 h-24 w-24 rounded-full bg-black border-4 border-red-600 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-110">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="h-12 w-12 text-white" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center mt-12">
+                        <h3 class="text-xl font-bold text-white mb-1">David Terreu</h3>
+                        <p class="text-xs font-bold uppercase tracking-tighter text-red-600 mb-4">CEO de la empresa</p>
+                        <p class="text-sm leading-relaxed text-zinc-400">David vive por y para la música. Coleccionista desde los 12 años, ha transformado su obsesión personal en un proyecto profesional. Su oído está educado en los clásicos.</p>
+                    </div>
+                </div>
+
+                <div class="group relative flex flex-col items-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 transition-all duration-300 hover:border-red-600 hover:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                    <div class="absolute -top-12 h-24 w-24 rounded-full bg-black border-4 border-red-600 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-110">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="h-12 w-12 text-white" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center mt-12">
+                        <h3 class="text-xl font-bold text-white mb-1">Elena Ortiz</h3>
+                        <p class="text-xs font-bold uppercase tracking-tighter text-red-600 mb-4">Directora de Compras</p>
+                        <p class="text-sm leading-relaxed text-zinc-400">Experta en ediciones limitadas y el mercado de segunda mano. Su gusto personal navega entre el indie y el soul, aportando una sensibilidad especial para descubrir nuevos sonidos.</p>
+                    </div>
+                </div>
+
+                <div class="group relative flex flex-col items-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 transition-all duration-300 hover:border-red-600 hover:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                    <div class="absolute -top-12 h-24 w-24 rounded-full bg-black border-4 border-red-600 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-110">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="h-12 w-12 text-white" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center mt-12">
+                        <h3 class="text-xl font-bold text-white mb-1">Manuel Morente</h3>
+                        <p class="text-xs font-bold uppercase tracking-tighter text-red-600 mb-4">Responsable de Comunidad</p>
+                        <p class="text-sm leading-relaxed text-zinc-400">El puente entre los platos y la calle. Manuel conecta la tienda con la escena musical local, transformando una compra en una experiencia cultural compartida.</p>
+                    </div>
+                </div>
+
+                <div class="group relative flex flex-col items-center p-8 rounded-2xl bg-zinc-900 border border-zinc-800 transition-all duration-300 hover:border-red-600 hover:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                    <div class="absolute -top-12 h-24 w-24 rounded-full bg-black border-4 border-red-600 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-110">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="h-12 w-12 text-white" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center mt-12">
+                        <h3 class="text-xl font-bold text-white mb-1">Daniel Aybar</h3>
+                        <p class="text-xs font-bold uppercase tracking-tighter text-red-600 mb-4">Encargado de Marketing</p>
+                        <p class="text-sm leading-relaxed text-zinc-400">Marketing y DJing se unen para proyectar nuestra identidad. Daniel es la pieza clave para integrar el negocio con el latido de los artistas y la escena actual.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {# CTA #}
+        <section class="rounded-xl bg-surface-dark p-12 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">¿Quieres conocernos en persona?</h2>
+            <p class="text-on-surface-muted-dark mb-8 max-w-xl mx-auto">Visítanos en nuestra tienda o explora nuestro catálogo online. Estaremos encantados de ayudarte a encontrar tu próximo disco favorito.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="{{ path('app_vinilo_index') }}" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-base font-bold text-white shadow-lg transition-transform hover:scale-105">
+                    Ver catálogo
+                </a>
+                <a href="#" style="background-color: #e00000;" class="inline-flex items-center justify-center rounded-full border border-primary px-8 py-3 text-base font-bold text-primary shadow-lg transition-transform hover:scale-105 hover:bg-primary/10">
+                    Contactar
+                </a>
+            </div>
+        </section>
+
+    </div>
+</main>
+{% endblock %}
+

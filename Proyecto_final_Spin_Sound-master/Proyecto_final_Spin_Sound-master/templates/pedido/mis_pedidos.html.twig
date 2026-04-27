@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mis Pedidos - Spin&Sound{% endblock %}
+
+{% block body %}
+<main class="flex-1 animate-reveal">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-6xl mx-auto">
+            <!-- Mensajes Flash -->
+            {% for message in app.flashes('error') %}
+            <div class="mb-6 bg-red-900/20 border border-red-500 text-red-300 px-6 py-4 rounded-lg">
+                {{ message }}
+            </div>
+            {% endfor %}
+            
+            {% for message in app.flashes('success') %}
+            <div class="mb-6 bg-green-900/20 border border-green-500 text-green-300 px-6 py-4 rounded-lg">
+                {{ message }}
+            </div>
+            {% endfor %}
+            
+            <!-- Header -->
+            <div class="mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <a href="{{ path('app_usuario_index') }}" class="p-2 hover:bg-surface-dark rounded-lg transition-colors" title="Volver al perfil">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+                        </svg>
+                    </a>
+                    <div>
+                        <h1 class="text-3xl font-bold tracking-tight">Mis Pedidos</h1>
+                        <p class="text-sm text-on-surface-muted-dark">Historial de compras realizadas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Pedidos -->
+            {% if pedidos|length > 0 %}
+                <div class="space-y-6">
+                    {% for pedido in pedidos %}
+                    <div class="bg-surface-dark border border-gray-800 rounded-lg overflow-hidden">
+                        <!-- Header del Pedido -->
+                        <div class="bg-[#1a1f23] px-6 py-4 flex items-center justify-between">
+                            <div class="flex items-center gap-6">
+                                <div>
+                                    <p class="text-sm text-on-surface-muted-dark">Pedido</p>
+                                    <p class="font-bold text-white">#{{ pedido.id }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-on-surface-muted-dark">Fecha</p>
+                                    <p class="font-medium text-white">{{ pedido.fecha|date('d/m/Y') }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-on-surface-muted-dark">Total</p>
+                                    <p class="font-bold text-[#e00000]">{{ pedido.total|number_format(2, ',', '.') }} €</p>
+                                </div>
+                            </div>
+                            <span class="px-4 py-2 rounded-full text-sm font-semibold bg-green-900 text-green-300">
+                                Completado
+                            </span>
+                        </div>
+                        
+                        <!-- Detalles del Pedido -->
+                        <div class="p-6">
+                            <h4 class="font-semibold text-white mb-4">Productos</h4>
+                            <div class="space-y-3">
+                                {% for detalle in pedido.detalles %}
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 rounded bg-[#0b0f13] flex items-center justify-center">
+                                        {% if detalle.vinilo and detalle.vinilo.imagen %}
+                                        <img src="{{ detalle.vinilo.imagen }}" alt="{{ detalle.vinilo.titulo }}" class="w-full h-full object-cover rounded">
+                                        {% else %}
+                                        <svg fill="currentColor" class="w-8 h-8 text-gray-600" viewBox="0 0 256 256">
+                                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-96a40,40,0,1,1-40-40A40,40,0,0,1,168,120Zm-16,0a24,24,0,1,0-24,24A24,24,0,0,0,152,120Z"/>
+                                        </svg>
+                                        {% endif %}
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="font-medium text-white">{{ detalle.vinilo ? detalle.vinilo.titulo : 'Producto' }}</p>
+                                        <p class="text-sm text-on-surface-muted-dark">Cantidad: {{ detalle.cantidad }}</p>
+                                    </div>
+                                    <p class="font-bold text-white">{{ (detalle.precio * detalle.cantidad)|number_format(2, ',', '.') }} €</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <!-- Sin Pedidos -->
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-12 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#e00000" viewBox="0 0 256 256" class="mx-auto mb-4 opacity-50">
+                        <path d="M216,64H176a48,48,0,0,0-96,0H40A16,16,0,0,0,24,80V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm88,168H40V80H216V200Z"></path>
+                    </svg>
+                    <h3 class="text-xl font-bold text-white mb-2">No tienes pedidos aún</h3>
+                    <p class="text-on-surface-muted-dark mb-6">Explora nuestro catálogo y realiza tu primera compra</p>
+                    <a href="{{ path('app_vinilo_index') }}" class="inline-flex items-center gap-2 bg-[#e00000] hover:bg-[#c00000] text-white font-bold px-6 py-3 rounded-full transition-all hover:scale-105">
+                        Ver Catálogo
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,38 @@
+# Logs
+/var/log/
+*.log
+
+# Cache
+/var/cache/
+/.env.local
+/.env.local.php
+
+# Code coverage
+/var/coverage/
+
+# Test reports
+/var/test-reports/
+
+# Database
+*.db
+*.sqlite
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Build
+/public/build/
+/public/assets/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.env.*.local

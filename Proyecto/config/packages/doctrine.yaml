@@ -1,0 +1,14 @@
+# Configuration for Doctrine Bundle
+doctrine:
+  dbal:
+    url: '%env(resolve:DATABASE_URL)%'
+
+  orm:
+    auto_generate_proxy_classes: true
+    auto_mapping: true
+    mappings:
+      App:
+        type: attribute
+        dir: '%kernel.project_dir%/src/Entity'
+        prefix: 'App\Entity'
+        alias: App

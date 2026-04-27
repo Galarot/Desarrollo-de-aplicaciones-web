@@ -1,0 +1,93 @@
+{% extends 'base_react.html.twig' %}
+
+{% block title %}{{ vinilo.titulo }} - Spin&Sound{% endblock %}
+
+{% block body %}
+    {% set titulo = vinilo.titulo ?? '—' %}
+    {% set artistaNombre = vinilo.artistas.first ? vinilo.artistas.first.nombre : '—' %}
+    {% set genero = vinilo.generos.first ? vinilo.generos.first.nombre : '—' %}
+    {% set anio = vinilo.fechaLanzamiento ? vinilo.fechaLanzamiento|date('Y') : '—' %}
+
+    <main class="container mx-auto flex-1 px-4 py-8">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-16">
+
+            {# Columna izquierda: imagen #}
+            <div>
+                <div class="mb-2 text-sm text-on-surface-muted-dark">
+                    <a class="hover:text-primary" href="{{ path('app_vinilo_index') }}">Vinilos</a>
+                    <span>/</span>
+                    <a href="{{ path('app_vinilo_index', {genero: genero}) }}" class="text-on-surface-dark hover:text-[#e00000] hover:underline transition-colors">{{ genero }}</a>
+                </div>
+                <div class="relative aspect-[1/1] w-full overflow-hidden rounded-xl shadow-lg bg-surface-dark">
+                    {% if vinilo.imagen %}
+                        <img src="{{ vinilo.imagen }}" alt="{{ vinilo.titulo }}" class="h-full w-full object-cover object-center">
+                    {% else %}
+                        <div class="h-full w-full bg-cover bg-center" style="background-image: url('{{ asset('img/kpop-demon-hunters.webp') }}');"></div>
+                    {% endif %}
+                </div>
+
+                {% if vinilo.discogsId %}
+                    <div class="mt-3 flex items-center gap-2 text-xs text-on-surface-muted-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                        </svg>
+                        Datos de <a href="https://www.discogs.com/release/{{ vinilo.discogsId }}" target="_blank" class="text-primary hover:underline ml-1">Discogs</a>
+                    </div>
+                {% endif %}
+            </div>
+
+            {# Columna derecha: info #}
+            <div class="pt-7">
+                <h1 class="text-3xl font-bold tracking-tighter text-white sm:text-4xl">{{ titulo }}</h1>
+                <a href="{{ path('app_vinilo_index', {artista: vinilo.artistas.first ? vinilo.artistas.first.id : ''}) }}" class="mt-1 text-lg text-primary font-semibold hover:text-[#e00000] hover:underline transition-colors inline-block">{{ artistaNombre }}</a>
+
+                <div class="mt-8">
+                    <p class="text-4xl font-bold text-primary">{{ vinilo.precio }} €</p>
+                    <p class="mt-1 text-sm text-on-surface-muted-dark">Stock: {{ vinilo.stock }} unidades</p>
+                </div>
+
+                <div class="mt-8 flex items-center gap-4">
+                    <form method="post" action="{{ path('app_carrito_add') }}" class="flex-1">
+                        <input type="hidden" name="vinilo_id" value="{{ vinilo.id }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('add-to-cart') }}">
+                        <button type="submit" class="flex h-12 w-full items-center justify-center rounded-lg px-6 font-bold text-white shadow-md transition-transform hover:scale-105" style="background-color: #e00000;">
+                            Añadir al carrito
+                        </button>
+                    </form>
+                    <div {{ react_component('FavoritoButton', {
+                        viniloId: vinilo.id,
+                        isFavorito: isFavorito
+                    }) }} class="flex h-12 w-12"></div>
+                </div>
+
+                {# Detalles del producto #}
+                <div class="mt-10 border-t border-surface-dark pt-8">
+                    <h3 class="text-lg font-bold text-white mb-4">Detalles del producto</h3>
+                    <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                        <dt class="text-on-surface-muted-dark">Artista</dt>
+                        <dd class="text-on-surface-dark">
+                            <a href="{{ path('app_vinilo_index', {artista: vinilo.artistas.first ? vinilo.artistas.first.id : ''}) }}" class="hover:text-[#e00000] hover:underline transition-colors">{{ artistaNombre }}</a>
+                        </dd>
+
+                        <dt class="text-on-surface-muted-dark">Título</dt>
+                        <dd class="text-on-surface-dark">{{ titulo }}</dd>
+
+                        <dt class="text-on-surface-muted-dark">Género</dt>
+                        <dd class="text-on-surface-dark">
+                            <a href="{{ path('app_vinilo_index', {genero: genero}) }}" class="hover:text-[#e00000] hover:underline transition-colors">{{ genero }}</a>
+                        </dd>
+
+                        <dt class="text-on-surface-muted-dark">Año</dt>
+                        <dd class="text-on-surface-dark">{{ anio }}</dd>
+
+                        <dt class="text-on-surface-muted-dark">Formato</dt>
+                        <dd class="text-on-surface-dark">Vinilo</dd>
+
+                        <dt class="text-on-surface-muted-dark">Discos</dt>
+                        <dd class="text-on-surface-dark">1</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

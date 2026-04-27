@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Vinilo - Spin&Sound{% endblock %}
+
+{% block body %}
+<main class="flex-1 animate-reveal">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-3xl mx-auto">
+            <!-- Header -->
+            <div class="mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <a href="{{ path('app_admin_panel') }}" class="p-2 hover:bg-surface-dark rounded-lg transition-colors" title="Volver al panel">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+                        </svg>
+                    </a>
+                    <h1 class="text-3xl font-bold tracking-tight">Editar Vinilo</h1>
+                </div>
+                <p class="text-on-surface-muted-dark">Modifica los datos del vinilo</p>
+            </div>
+
+            <!-- Formulario -->
+            <div class="bg-surface-dark border border-gray-800 rounded-lg p-8 mb-6">
+                {{ include('vinilo/_form.html.twig', {'button_label': 'Actualizar'}) }}
+            </div>
+
+            <!-- Botón Eliminar -->
+            <div class="bg-red-900/10 border border-red-900/50 rounded-lg p-6">
+                <div class="flex items-start gap-4">
+                    <div class="p-2 bg-red-900/20 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ef4444" viewBox="0 0 256 256">
+                            <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-red-400 mb-1">Zona de Peligro</h3>
+                        <p class="text-sm text-on-surface-muted-dark mb-4">Esta acción eliminará permanentemente el vinilo del catálogo.</p>
+                        {{ include('vinilo/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

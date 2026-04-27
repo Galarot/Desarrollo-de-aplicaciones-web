@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spin&Sound | Legal{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        // Aseguramos que el modo oscuro esté activo y la config de Tailwind cargada
+        document.documentElement.classList.add('dark');
+        
+        // Guardar la URL de referencia cuando se carga la página por primera vez
+        if (!sessionStorage.getItem('legalPageReferrer')) {
+            const referrer = document.referrer;
+            if (referrer && !referrer.includes('/usuario/new')) {
+                sessionStorage.setItem('legalPageReferrer', referrer);
+            }
+        }
+        
+        // Función para volver a la página original
+        function volverAtras() {
+            const referrer = sessionStorage.getItem('legalPageReferrer');
+            if (referrer) {
+                sessionStorage.removeItem('legalPageReferrer');
+                window.location.href = referrer;
+            } else {
+                window.history.back();
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="min-h-screen bg-background-dark font-sans text-slate-300">
+        <div class="relative h-[50vh] w-full overflow-hidden flex items-center justify-center">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/50 via-70% to-background-dark z-10"></div>
+            <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=2000&auto=format&fit=crop');"></div>
+
+            <div class="relative z-20 text-center px-4">
+                <h1 class="text-6xl font-black text-white tracking-tighter uppercase italic">Spin & <span class="text-[#e00000]">Sound</span></h1>
+                <p class="mt-4 text-xl text-slate-400 max-w-2xl mx-auto">Transparencia y seguridad para nuestra comunidad de coleccionistas.</p>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 pt-12 pb-24 grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+            <aside class="lg:col-span-1">
+                <nav class="sticky top-24 pt-4 space-y-4">
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-[0.2em] mb-6">Contenido</p>
+                    <a href="#terminos" class="block text-sm font-bold hover:text-[#e00000] transition-colors py-2 border-l-2 border-white/10 pl-4 hover:border-[#e00000]">Términos de Servicio</a>
+                    <a href="#privacidad" class="block text-sm font-bold hover:text-[#e00000] transition-colors py-2 border-l-2 border-white/10 pl-4 hover:border-[#e00000]">Política de Privacidad</a>
+                    <a href="#cookies" class="block text-sm font-bold hover:text-[#e00000] transition-colors py-2 border-l-2 border-white/10 pl-4 hover:border-[#e00000]">Política de Cookies</a>
+
+                    <div class="mt-10 p-6 rounded-2xl bg-white/5 border border-white/10">
+                        <p class="text-white font-bold mb-2 text-sm">¿Tienes dudas?</p>
+                        <p class="text-xs text-slate-500 mb-4">Nuestro equipo legal está para ayudarte.</p>
+                        <a href="mailto:legal@spin&sound.com" class="text-[#e00000] text-sm font-bold hover:underline">legal@spin&sound.com</a>
+                    </div>
+                </nav>
+            </aside>
+
+            <main class="lg:col-span-3 space-y-20">
+
+                <section id="terminos" class="scroll-mt-20">
+                    <div class="flex items-center gap-4 mb-8">
+                    <span class="p-2 bg-[#e00000] rounded-lg text-white">
+                        <span class="material-symbols-outlined">gavel</span>
+                    </span>
+                        <h2 class="text-4xl font-black text-white tracking-tight">Términos de Servicio</h2>
+                    </div>
+
+                    <div class="prose prose-invert prose-slate max-w-none space-y-6 text-slate-400">
+                        <p class="text-lg leading-relaxed">Bienvenido a <span class="text-white font-bold">Spin&Sound</span>. Al acceder a nuestra tienda y realizar una compra, aceptas estar sujeto a los siguientes términos y condiciones.</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                            <div class="bg-white/5 p-6 rounded-xl border border-white/5">
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2">
+                                    <span class="text-[#e00000]">•</span> Disponibilidad de Productos
+                                </h3>
+                                <p class="text-sm">Debido a la naturaleza vintage y limitada de los vinilos, el stock puede variar. Nos reservamos el derecho de cancelar pedidos en caso de errores de inventario.</p>
+                            </div>
+                            <div class="bg-white/5 p-6 rounded-xl border border-white/5">
+                                <h3 class="text-white font-bold mb-3 flex items-center gap-2">
+                                    <span class="text-[#e00000]">•</span> Envíos y Entregas
+                                </h3>
+                                <p class="text-sm">Utilizamos embalajes reforzados para proteger el sonido analógico. Los tiempos de entrega son estimados y no garantizados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-white/10">
+
+                <section id="privacidad" class="scroll-mt-20">
+                    <div class="flex items-center gap-4 mb-8">
+                    <span class="p-2 bg-[#e00000] rounded-lg text-white">
+                        <span class="material-symbols-outlined">shield_person</span>
+                    </span>
+                        <h2 class="text-4xl font-black text-white tracking-tight">Privacidad</h2>
+                    </div>
+
+                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10 space-y-6">
+                        <h3 class="text-xl font-bold text-white">¿Qué datos recolectamos?</h3>
+                        <p class="text-slate-400">En Spin&Sound, valoramos tu privacidad tanto como un vinilo de primera edición. Solo recolectamos:</p>
+                        <ul class="list-disc list-inside space-y-3 text-slate-400 ml-4">
+                            <li><span class="text-white font-medium">Información de contacto:</span> Nombre y correo para gestionar tu cuenta.</li>
+                            <li><span class="text-white font-medium">Datos de envío:</span> Dirección física para que tus discos lleguen seguros.</li>
+                            <li><span class="text-white font-medium">Historial de navegación:</span> Para recomendarte joyas musicales basadas en tus gustos.</li>
+                        </ul>
+                        <p class="pt-4 text-sm italic text-slate-500 italic">Nunca vendemos tus datos a terceros. Tu colección y tus datos están seguros con nosotros.</p>
+                    </div>
+                </section>
+
+                <section id="cookies" class="scroll-mt-20 pb-12">
+                    <div class="flex items-center gap-4 mb-8">
+                    <span class="p-2 bg-[#e00000] rounded-lg text-white">
+                        <span class="material-symbols-outlined">cookie</span>
+                    </span>
+                        <h2 class="text-4xl font-black text-white tracking-tight">Política de Cookies</h2>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Utilizamos cookies para mejorar tu experiencia de navegación. Las cookies nos permiten recordar tus preferencias y mantener activa tu sesión mientras exploras nuestro catálogo. Puedes desactivarlas en cualquier momento desde la configuración de tu navegador, aunque esto podría afectar la funcionalidad de la tienda.
+                    </p>
+
+                    <div class="mt-12 flex justify-center">
+                        <button onclick="volverAtras()" style="background-color: #e00000;" class="px-10 py-4 rounded-xl text-white font-bold text-lg shadow-lg hover:opacity-90 transition-all active:scale-95">
+                            Entendido, volver atrás
+                        </button>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+    </div>
+{% endblock %}

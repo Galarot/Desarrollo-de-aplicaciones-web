@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mis Favoritos - Spin&Sound{% endblock %}
+
+{% block body %}
+<main class="flex-1 animate-reveal">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <a href="{{ path('app_usuario_index') }}" class="p-2 hover:bg-surface-dark rounded-lg transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+                        </svg>
+                    </a>
+                    <div>
+                        <h1 class="text-3xl font-bold tracking-tight">Mis Favoritos</h1>
+                        <p class="text-sm text-on-surface-muted-dark">Vinilos que has marcado como favoritos</p>
+                    </div>
+                </div>
+            </div>
+
+            {% if vinilos|length > 0 %}
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {% for vinilo in vinilos %}
+                    <article class="bg-surface-dark border border-gray-800 rounded-lg overflow-hidden hover:border-[#e00000] transition-all">
+                        <a href="{{ path('app_vinilo_show', {id: vinilo.id}) }}">
+                            <div class="aspect-square bg-[#0b0f13] flex items-center justify-center">
+                                {% if vinilo.imagen %}
+                                    <img src="{{ vinilo.imagen }}" alt="{{ vinilo.titulo }}" class="w-full h-full object-cover">
+                                {% else %}
+                                    <svg fill="currentColor" class="w-24 h-24 text-gray-600" viewBox="0 0 256 256">
+                                        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-96a40,40,0,1,1-40-40A40,40,0,0,1,168,120Zm-16,0a24,24,0,1,0-24,24A24,24,0,0,0,152,120Z"/>
+                                    </svg>
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class="p-4">
+                            <h3 class="font-bold text-white truncate">{{ vinilo.titulo }}</h3>
+                            <p class="text-sm text-[#e00000] font-bold mt-2">{{ vinilo.precio|number_format(2, ',', '.') }} €</p>
+                            <form method="post" action="{{ path('app_favorito_toggle', {viniloId: vinilo.id}) }}" class="mt-3">
+                                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white text-sm font-bold py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256">
+                                        <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192Z"></path>
+                                    </svg>
+                                    Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="bg-surface-dark border border-gray-800 rounded-lg p-12 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#e00000" viewBox="0 0 256 256" class="mx-auto mb-4 opacity-50">
+                        <path d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"></path>
+                    </svg>
+                    <h3 class="text-xl font-bold text-white mb-2">No tienes favoritos aún</h3>
+                    <p class="text-on-surface-muted-dark mb-6">Explora nuestro catálogo y marca tus vinilos favoritos</p>
+                    <a href="{{ path('app_vinilo_index') }}" class="inline-flex items-center gap-2 bg-[#e00000] hover:bg-[#c00000] text-white font-bold px-6 py-3 rounded-full transition-all hover:scale-105">
+                        Ver Catálogo
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

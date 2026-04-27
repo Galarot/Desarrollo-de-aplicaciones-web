@@ -1,0 +1,72 @@
+<style>
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #f8f6f6;
+        font-size: 0.875rem;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group input[type="url"],
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background-color: #0b0f13;
+        border: 1px solid #374151;
+        border-radius: 0.5rem;
+        color: #f8f6f6;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        outline: none;
+        border-color: #e00000;
+        box-shadow: 0 0 0 3px rgba(224, 0, 0, 0.1);
+    }
+    .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+    .form-group select[multiple] {
+        min-height: 120px;
+    }
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+</style>
+
+{{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+    <div class="space-y-6">
+        {% for child in form.children %}
+            {% if child.vars.name != '_token' %}
+            <div class="form-group">
+                {{ form_label(child) }}
+                {{ form_widget(child) }}
+                {{ form_errors(child) }}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit" class="flex-1 bg-[#e00000] hover:bg-[#c00000] text-white font-bold px-6 py-3 rounded-full transition-all hover:scale-105 flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+            </svg>
+            {{ button_label|default('Guardar') }}
+        </button>
+        <a href="{{ path('app_admin_panel') }}" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold px-6 py-3 rounded-full transition-all text-center">
+            Cancelar
+        </a>
+    </div>
+{{ form_end(form) }}

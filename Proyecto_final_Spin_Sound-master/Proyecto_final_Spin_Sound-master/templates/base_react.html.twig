@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Mi aplicación{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo-spin-sound-circular.png') }}?v=2">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <script>document.documentElement.classList.add('dark');</script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#cf6329",
+                        secondary: "#f88931",
+                        rojo: "#e00000",
+                        accent: "#f88913",
+                        "background-light": "#cca983",
+                        "background-dark": "#0b0f13",
+                        "surface-light": "#f8f6f6",
+                        "surface-dark": "#1a1f23",
+                        "on-surface-light": "#0b0f13",
+                        "on-surface-dark": "#f8f6f6",
+                        "on-surface-muted-light": "#5c5f62",
+                        "on-surface-muted-dark": "#a9aeb2",
+                        "subtle-light": "#e5e7eb",
+                        "subtle-dark": "#374151",
+                        "text-light": "#0b0f13",
+                        "text-dark": "#f8f6f6",
+                        "text-muted-light": "#6b7280",
+                        "text-muted-dark": "#cca983",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                        sans: ["Space Grotesk", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "0.75rem",
+                        xl: "1rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <style>
+        html, body {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-reveal {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        [class*="bg-background-light"], [class*="bg-surface-light"],
+        [class*="surface-light"], [class*="subtle-light"] {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+
+        [class*="text-on-surface-light"], [class*="text-text-light"],
+        .text-on-surface-light, .text-text-light {
+            color: #fff !important;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+
+        header a:hover, header a:focus,
+        header nav a:hover, header nav a:focus,
+        #mobile-menu a:hover, #mobile-menu a:focus,
+        footer a:hover, footer a:focus {
+            color: #e00000 !important;
+            transition: color 0.18s ease;
+        }
+    </style>
+
+    <script>
+        window.routes = {
+            app_home: '{{ path('app_home') }}',
+            app_vinilo_index: '{{ path('app_vinilo_index') }}',
+            app_sobre_nosotros: '{{ path('app_sobre_nosotros') }}',
+            app_contacto: '{{ path('app_contacto') }}',
+            app_admin_panel: '{{ path('app_admin_panel') }}',
+            app_superadmin_panel: '{{ path('app_superadmin_panel') }}',
+            app_login: '{{ path('app_login') }}',
+            app_logout: '{{ path('app_logout') }}',
+            app_register: '{{ path('app_register') }}',
+            app_usuario_index: '{{ path('app_usuario_index') }}',
+            app_carrito_show_user: '{{ path('app_carrito_show_user') }}'
+        };
+        window.userRoles = {{ app.user ? app.user.roles|json_encode|raw : '[]' }};
+        window.isAuthenticated = {{ app.user ? 'true' : 'false' }};
+    </script>
+
+    {% block javascripts %}
+        {{ importmap('app') }}
+    {% endblock %}
+</head>
+<body style="background-color: #000 !important; color: #fff !important;">
+<header class="sticky top-0 py-2 z-[110] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a class="flex items-center gap-3" href="{{ path('app_home') }}">
+                    <img src="{{ asset('img/logohori.png') }}"
+                         alt="Spin&Sound logo"
+                         class="h-[145px] w-auto object-contain transition-transform duration-300 ease-in-out hover:scale-110" />
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="text-lg font-bold uppercase tracking-wider hover:text-rojo transition-all duration-200"
+                       href="{{ path('app_vinilo_index') }}"
+                       style="font-family: 'Space Grotesk', sans-serif;">
+                        Vinilos
+                    </a>
+                    <a class="text-lg font-bold uppercase tracking-wider hover:text-rojo transition-all duration-200"
+                       href="{{ path('app_sobre_nosotros') }}"
+                       style="font-family: 'Space Grotesk', sans-serif;">
+                        Sobre nosotros
+                    </a>
+                    <a class="text-lg font-bold uppercase tracking-wider hover:text-rojo transition-all duration-200"
+                       href="{{ path('app_contacto') }}"
+                       style="font-family: 'Space Grotesk', sans-serif;">
+                        Contacto
+                    </a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a class="text-lg font-bold uppercase tracking-wider hover:text-rojo transition-all duration-200"
+                       href="{{ path('app_admin_panel') }}"
+                       style="font-family: 'Space Grotesk', sans-serif;">
+                        Panel Admin
+                    </a>
+                    {% endif %}
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <a class="text-lg font-bold uppercase tracking-wider hover:text-rojo transition-all duration-200"
+                       href="{{ path('app_superadmin_panel') }}"
+                       style="font-family: 'Space Grotesk', sans-serif;">
+                        Panel Super Admin
+                    </a>
+                    {% endif %}
+                </nav>
+
+                <div {{ react_component('MobileMenu') }}></div>
+            </div>
+
+            <div class="flex items-center justify-end gap-4">
+                <div {{ react_component('SearchForm', { 
+                    initialQuery: app.request.query.get('q'),
+                    action: path('app_vinilo_index')
+                }) }}></div>
+
+                <a href="{{ path('app_usuario_index') }}" class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark hover:bg-primary/20 transition-colors overflow-hidden">
+                    {% if app.user and app.user.avatar %}
+                        <img src="{{ app.user.avatar }}" alt="Avatar" class="w-full h-full object-cover">
+                    {% else %}
+                        <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px">
+                            <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                        </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ path('app_carrito_show_user') }}" class="relative flex h-10 w-10 items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark hover:bg-primary/20 transition-colors">
+                    <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px">
+                        <path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+                    </svg>
+                    <div {{ react_component('CartBadge', { initialCount: carrito_count }) }}></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div {{ react_component('ToastContainer') }}></div>
+<div {{ react_component('AjaxFormHandler') }}></div>
+
+{% block body %}
+    <main class="min-h-screen animate-reveal">
+        <div class="container mx-auto px-4 py-8">
+            <h1 class="text-xl font-bold">Contenido</h1>
+            <p>Añade tu contenido en los templates que extiendan base.html.twig</p>
+        </div>
+    </main>
+{% endblock %}
+
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-white-200 dark:border-white-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col items-center gap-8">
+            <div class="flex items-center gap-6 text-on-surface-muted-light dark:text-on-surface-muted-dark">
+                <a class="text-sm hover:text-primary transition-colors" href="{{ path('app_usuario_new') }}#privacidad">Política de privacidad</a>
+                <a class="text-sm hover:text-primary transition-colors" href="{{ path('app_usuario_new') }}">Términos y condiciones</a>
+                <a class="text-sm hover:text-primary transition-colors" href="{{ path('app_contacto') }}">Contacto</a>
+            </div>
+            <div class="flex justify-center space-x-6 text-on-surface-muted-light dark:text-on-surface-muted-dark">
+                <a class="hover:text-primary transition-colors" href="#" aria-label="Twitter / X">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 7.184ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+                    </svg>
+                </a>
+                <a class="hover:text-primary transition-colors" href="#" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a class="hover:text-primary transition-colors" href="#" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-center text-sm text-on-surface-muted-light dark:text-on-surface-muted-dark">© 2025 Spin&Sound. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    {% for message in app.flashes('success') %}
+    if (typeof window.showToast === 'function') {
+        window.showToast('{{ message|e("js") }}');
+    }
+    {% endfor %}
+</script>
+</body>
+</html>

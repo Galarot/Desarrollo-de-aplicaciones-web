@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DBLegendsdle{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.cdnfonts.com/css/edo-sz" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/styles/main.css') }}">
+
+    <style type="text/css">
+        :root {
+            --gray-900: #0a0a0c;
+            --slate-600: #1e293b;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.5)); }
+            50% { filter: drop-shadow(0 0 25px rgba(249, 115, 22, 0.8)); }
+        }
+        
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-glow { animation: glow 2s ease-in-out infinite; }
+    </style>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed">
+    {% block body %}{% endblock %}
+    
+    <!-- <script src="{{ asset('assets/js/main.js') }}"></script> -->
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

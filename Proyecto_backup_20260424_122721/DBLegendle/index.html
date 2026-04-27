@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBLegendsdle</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.cdnfonts.com/css/edo-sz" rel="stylesheet">
+
+    <style type="text/css">
+         :root {
+            --gray-900: #0a0a0c;
+            --slate-600: #1e293b;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        @keyframes glow {
+            0%,
+            100% {
+                filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 25px rgba(249, 115, 22, 0.8));
+            }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed">
+    <img src="public/assets/artes/shallotfondo.png" class="fixed left-0 bottom-0 w-200 h-[80vh] -z-10 opacity-70 transition-opacity hover:opacity-90">
+    <img src="public/assets/artes/gibletfondo.png" class="fixed right-0 bottom-0 w-200 h-[80vh] -z-10 opacity-70 transition-opacity hover:opacity-90">
+    <header class="pt-10 pb-5">
+        <div class="flex items-center justify-center gap-4 animate-float">
+            <img class="w-20 animate-glow" src="public/assets/multimedia/logo.png" alt="">
+            <h1 class="font-['Edo_SZ'] text-6xl bg-gradient-to-br from-orange-400 via-orange-600 to-red-700 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                DBLegendsDle
+            </h1>
+        </div>
+    </header>
+    <main class="flex flex-col items-center justify-center pt-5">
+        <section class="text-center w-150 bg-gradient-to-br from-orange-600 to-red-700 rounded-2xl p-6 shadow-[0_0_30px_rgba(249,115,22,0.4)] border-2 border-orange-400 backdrop-blur-sm">
+            <h2 class="font-['Edo_SZ'] text-3xl text-white drop-shadow-lg mb-3">Adivina el personaje de hoy de Dragon Ball Legends</h2>
+            <p class="font-['Edo_SZ'] text-lg text-orange-50 mb-2">¡¡Contiene todos los personajes del juego, heros, extreme, sparking y ultras todos aquí!!</p>
+            <p class="font-['Edo_SZ'] text-yellow-200 font-bold drop-shadow-md">Última actualización: Legend Super Vegeto</p>
+        </section>
+        <section>
+            <div class="group relative pt-8">
+                <input id="busqueda" type="text" placeholder="Escribe el nombre del personaje..." class="font-['Edo_SZ'] w-120 p-5 bg-slate-900/90 border-3 border-orange-600 text-white rounded-2xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 text-lg backdrop-blur-sm">
+            </div>
+            <div id="result" class="font-['Edo_SZ'] w-120 absolute mt-2 bg-slate-900/95 border-2 border-orange-600 text-white rounded-2xl max-h-80 overflow-y-auto hidden z-50 shadow-[0_0_25px_rgba(0,0,0,0.5)] backdrop-blur-md">
+            </div>
+        </section>
+        <section class="pt-10 flex justify-center">
+            <div class="flex gap-2 mb-3">
+                <div class="w-20 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Personaje
+                </div>
+                <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Género
+                </div>
+                <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Afinidad
+                </div>
+                <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Rareza
+                </div>
+                <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Estilo
+                </div>
+                <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Zenkai?
+                </div>
+                <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Saga
+                </div>
+                <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Raza/ Ocupación
+                </div>
+                <div class="w-20 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">
+                    Año
+                </div>
+            </div>
+        </section>
+        <section id="intentos" class="pb-10">
+        </section>
+
+        <a href="public/artcart.html" class="font-['Edo_SZ'] px-8 py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400 hover:from-orange-500 hover:to-red-600 hover:shadow-[0_0_20px_rgba(249,115,22,0.6)] transition-all duration-300 text-lg font-bold">
+            🎨 Jugar Art Cart
+        </a>
+    </main>
+    <footer class="bg-gradient-to-t from-slate-900 to-slate-800 py-6 mt-70 border-t-2 border-orange-600/30">
+        <div class="flex flex-col items-center gap-4">
+
+            <p class="text-center text-gray-400 font-['Edo_SZ'] text-sm">© 2026 DBLegendsDle</p>
+        </div>
+    </footer>
+    <script src="src/js/main.js"></script>
+</body>
+
+</html>
