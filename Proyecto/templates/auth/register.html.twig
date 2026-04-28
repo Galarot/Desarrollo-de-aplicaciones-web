@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro - DBLegendsDle{% endblock %}
+
+{% block stylesheets %}
+<style>
+    input, a, p, h2, div { font-family: ui-sans-serif, system-ui, sans-serif !important; }
+</style>
+{% endblock %}
+
+{% block body %}
+<img src="{{ asset('assets/artes/shallotfondo.png') }}" class="fixed left-0 bottom-0 w-200 h-[80vh] -z-10 opacity-70">
+<img src="{{ asset('assets/artes/gibletfondo.png') }}" class="fixed right-0 bottom-0 w-200 h-[80vh] -z-10 opacity-70">
+
+<div class="min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md bg-slate-900/90 border-2 border-orange-600 rounded-2xl p-8 shadow-[0_0_40px_rgba(249,115,22,0.3)] backdrop-blur-sm">
+
+        <div class="flex items-center justify-center gap-3 mb-8">
+            <img src="{{ asset('assets/multimedia/logo.png') }}" class="w-12 animate-glow" alt="Logo">
+            <h1 class="font-['Edo_SZ'] text-4xl bg-gradient-to-br from-orange-400 via-orange-600 to-red-700 bg-clip-text text-transparent">
+                DBLegendsDle
+            </h1>
+        </div>
+
+        <h2 class="text-2xl text-white text-center mb-6 font-semibold">Crear Cuenta</h2>
+
+        {% if error %}
+            <div class="mb-4 p-3 bg-red-600/30 border border-red-500 rounded-xl text-red-300 text-sm text-center">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="post" class="flex flex-col gap-4">
+            <input type="email" name="email" placeholder="Correo electrónico" required
+                class="p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
+
+            <input type="text" name="username" placeholder="Nombre de usuario" required
+                class="p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
+
+            <input type="password" name="password" placeholder="Contraseña" required
+                class="p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
+
+            <input type="password" name="confirm_password" placeholder="Confirmar contraseña" required
+                class="p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
+
+            <div class="flex items-center justify-between mt-2">
+                <a href="{{ path('app_login') }}"
+                    class="text-orange-400 hover:text-orange-300 transition-colors duration-200 text-sm underline">
+                    Ya tengo cuenta
+                </a>
+                <button type="submit"
+                    class="font-['Edo_SZ'] px-8 py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400 hover:from-orange-500 hover:to-red-600 hover:shadow-[0_0_20px_rgba(249,115,22,0.6)] transition-all duration-300 font-bold">
+                    Registrarse
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

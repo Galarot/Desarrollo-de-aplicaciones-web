@@ -5,6 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Dotenv\Dotenv;
 
+require dirname(__DIR__).'/vendor/autoload.php';
+
 if (!isset($_SERVER['APP_ENV'])) {
     if (!class_exists(Dotenv::class)) {
         throw new LogicException('APP_ENV environment variable is not defined. You need to define these environment variables in .env file.');

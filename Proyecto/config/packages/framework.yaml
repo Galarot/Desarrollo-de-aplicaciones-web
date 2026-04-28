@@ -13,48 +13,8 @@ framework:
   php_errors:
     log: true
 
-doctrine:
-  dbal:
-    url: '%env(resolve:DATABASE_URL)%'
-
-  orm:
-    auto_generate_proxy_classes: true
-    auto_mapping: true
-    mappings:
-      App:
-        type: attribute
-        dir: '%kernel.project_dir%/src/Entity'
-        prefix: 'App\Entity'
-        alias: App
-
-twig:
-  default_path: '%kernel.project_dir%/templates'
-  debug: '%kernel.debug%'
-  strict_variables: '%kernel.debug%'
-  form_themes: ['bootstrap_5_layout.html.twig']
-
-monolog:
-  handlers:
-    main:
-      type: stream
-      path: '%kernel.logs_dir%/%kernel.environment%.log'
-      level: debug
-      channels: ["!event"]
-
 when@test:
   framework:
     test: true
     session:
       storage_factory_id: session.storage.factory.mock_file
-
-when@prod:
-  monolog:
-    handlers:
-      main:
-        type: fingers_crossed
-        action_level: critical
-        handler: nested
-      nested:
-        type: stream
-        path: php://stderr
-        level: critical
