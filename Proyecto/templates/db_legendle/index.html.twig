@@ -3,59 +3,62 @@
 {% block title %}DBLegendsdle{% endblock %}
 
 {% block body %}
-<img src="{{ asset('assets/artes/shallotfondo.png') }}" class="fixed left-0 bottom-0 w-200 h-[80vh] -z-10 opacity-70 transition-opacity hover:opacity-90">
-<img src="{{ asset('assets/artes/gibletfondo.png') }}" class="fixed right-0 bottom-0 w-200 h-[80vh] -z-10 opacity-70 transition-opacity hover:opacity-90">
+<div class="fixed inset-0 -z-10 flex flex-col md:flex-row">
+    <img src="{{ asset('assets/artes/shallotfondo.png') }}" class="w-full md:w-1/2 h-1/2 md:h-full object-cover opacity-70 transition-opacity hover:opacity-90">
+    <img src="{{ asset('assets/artes/gibletfondo.png') }}" class="w-full md:w-1/2 h-1/2 md:h-full object-cover opacity-70 transition-opacity hover:opacity-90">
+</div>
 
-<header class="pt-10 pb-5">
-    <div class="flex items-center justify-center gap-4 animate-float">
-        <img class="w-20 animate-glow" src="{{ asset('assets/multimedia/logo.png') }}" alt="Logo">
-        <h1 class="font-['Edo_SZ'] text-6xl bg-gradient-to-br from-orange-400 via-orange-600 to-red-700 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+<header class="pt-6 sm:pt-8 md:pt-10 pb-3 sm:pb-4 md:pb-5 px-4">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 animate-float">
+        <img class="w-12 sm:w-16 md:w-20 animate-glow" src="{{ asset('assets/multimedia/logo.png') }}" alt="Logo">
+        <h1 class="font-['Edo_SZ'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-br from-orange-400 via-orange-600 to-red-700 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(249,115,22,0.5)] text-center">
             DBLegendsDle
         </h1>
     </div>
 </header>
 
-<main class="flex flex-col items-center justify-center pt-5">
-    <section class="text-center w-150 bg-gradient-to-br from-orange-600 to-red-700 rounded-2xl p-6 shadow-[0_0_30px_rgba(249,115,22,0.4)] border-2 border-orange-400 backdrop-blur-sm">
-        <h2 class="font-['Edo_SZ'] text-3xl text-white drop-shadow-lg mb-3">Adivina el personaje de hoy de Dragon Ball Legends</h2>
-        <p class="font-['Edo_SZ'] text-lg text-orange-50 mb-2">¡¡Contiene todos los personajes del juego, heros, extreme, sparking y ultras todos aquí!!</p>
-        <p class="font-['Edo_SZ'] text-yellow-200 font-bold drop-shadow-md">Última actualización: Legend Super Vegeto</p>
+<main class="flex flex-col items-center justify-center pt-3 sm:pt-4 md:pt-5">
+    <section class="text-center w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl bg-gradient-to-br from-orange-600 to-red-700 rounded-2xl p-4 sm:p-5 md:p-6 shadow-[0_0_30px_rgba(249,115,22,0.4)] border-2 border-orange-400 backdrop-blur-sm">
+        <h2 class="font-['Edo_SZ'] text-xl sm:text-2xl md:text-3xl text-white drop-shadow-lg mb-2 sm:mb-3">Adivina el personaje de hoy de Dragon Ball Legends</h2>
+        <p class="font-['Edo_SZ'] text-sm sm:text-base md:text-lg text-orange-50 mb-1 sm:mb-2">¡¡Contiene todos los personajes del juego, heros, extreme, sparking y ultras todos aquí!!</p>
+        <p class="font-['Edo_SZ'] text-xs sm:text-sm md:text-base text-yellow-200 font-bold drop-shadow-md">Última actualización: Legend Super Vegeto</p>
     </section>
 
-    <section>
-        <div class="group relative pt-8">
-            <input id="search-input" type="text" placeholder="Escribe el nombre del personaje..." autocomplete="off" onkeydown="if(event.key==='Enter') event.preventDefault()" class="font-['Edo_SZ'] w-120 p-5 bg-slate-900/90 border-3 border-orange-600 text-white rounded-2xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 text-lg backdrop-blur-sm">
+    <section class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
+        <div class="group relative pt-6 sm:pt-8">
+            <input id="search-input" type="text" placeholder="Escribe el nombre del personaje..." autocomplete="off" onkeydown="if(event.key==='Enter') event.preventDefault()" class="font-['Edo_SZ'] w-full p-3 sm:p-4 md:p-5 bg-slate-900/90 border-3 border-orange-600 text-white rounded-2xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all duration-300 text-sm sm:text-base md:text-lg backdrop-blur-sm">
         </div>
-        <div id="result" class="font-['Edo_SZ'] w-120 absolute mt-2 bg-slate-900/95 border-2 border-orange-600 text-white rounded-2xl max-h-80 overflow-y-auto hidden z-60 shadow-[0_0_25px_rgba(0,0,0,0.5)] backdrop-blur-md">
-        </div>
-    </section>
-
-    <section class="pt-10 flex justify-center">
-        <div class="flex gap-2 mb-3">
-            <div class="w-20 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Personaje</div>
-            <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Género</div>
-            <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Afinidad</div>
-            <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Rareza</div>
-            <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Estilo</div>
-            <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Zenkai?</div>
-            <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Saga</div>
-            <div class="w-24 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Raza/ Ocupación</div>
-            <div class="w-20 h-12 flex items-center justify-center text-center text-base font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white">Año</div>
+        <div id="result" class="font-['Edo_SZ'] w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl absolute mt-2 bg-slate-900/95 border-2 border-orange-600 text-white rounded-2xl max-h-60 sm:max-h-80 overflow-y-auto hidden z-60 shadow-[0_0_25px_rgba(0,0,0,0.5)] backdrop-blur-md left-1/2 transform -translate-x-1/2">
         </div>
     </section>
 
-    <section id="intentos" class="pb-10"></section>
+    <section class="pt-6 sm:pt-8 md:pt-10 flex justify-center">
+        <div class="w-full max-w-4xl">
+            <div class="flex gap-1 sm:gap-2 mb-3 justify-center flex-wrap">
+                <div class="w-14 sm:w-16 md:w-18 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Personaje</div>
+                <div class="w-14 sm:w-16 md:w-20 lg:w-24 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Género</div>
+                <div class="w-14 sm:w-16 md:w-20 lg:w-24 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Afinidad</div>
+                <div class="w-14 sm:w-16 md:w-20 lg:w-24 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Rareza</div>
+                <div class="w-14 sm:w-16 md:w-20 lg:w-24 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Estilo</div>
+                <div class="w-14 sm:w-16 md:w-20 lg:w-24 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Zenkai?</div>
+                <div class="w-14 sm:w-16 md:w-20 lg:w-24 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Saga</div>
+                <div class="w-14 sm:w-16 md:w-20 lg:w-24 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Raza/Ocupación</div>
+                <div class="w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm font-bold text-yellow-200 font-['Edo_SZ'] uppercase bg-slate-800/80 rounded-lg border-2 border-white px-1">Año</div>
+            </div>
+        </div>
+    </section>
 
-    <a href="{{ path('app_artcart') }}" class="font-['Edo_SZ'] px-8 py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400 hover:from-orange-500 hover:to-red-600 hover:shadow-[0_0_20px_rgba(249,115,22,0.6)] transition-all duration-300 text-lg font-bold">
-        🎨 Jugar Art Cart
+    <section id="intentos" class="pb-6 sm:pb-8 md:pb-10 px-4">
+        <div class="w-full max-w-4xl mx-auto">
+            <div id="intentos-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-1 sm:gap-2"></div>
+        </div>
+    </section>
+
+    <a href="{{ path('app_artcart') }}" class="font-['Edo_SZ'] px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400 hover:from-orange-500 hover:to-red-600 hover:shadow-[0_0_20px_rgba(249,115,22,0.6)] transition-all duration-300 text-sm sm:text-base md:text-lg font-bold">
+        Jugar Art Cart
     </a>
 </main>
 
-<footer class="bg-gradient-to-t from-slate-900 to-slate-800 py-6 mt-70 border-t-2 border-orange-600/30">
-    <div class="flex flex-col items-center gap-4">
-        <p class="text-center text-gray-400 font-['Edo_SZ'] text-sm">© 2026 DBLegendsDle</p>
-    </div>
-</footer>
 {% endblock %}
 
 {% block javascripts %}
@@ -67,7 +70,7 @@
 
     const input = document.getElementById("search-input");
     const lista = document.getElementById("result");
-    const intentosVarios = document.getElementById("intentos");
+    const intentosVarios = document.getElementById("intentos-container");
 
     let pruebaDia = {};
 
@@ -138,10 +141,10 @@
 
     function compararAtributos(usuario) {
         const fila = document.createElement("div");
-        fila.className = "flex justify-center gap-2 mb-2";
+        fila.className = "col-span-full flex justify-center gap-1 sm:gap-2 mb-2 overflow-x-auto";
 
         let html = `
-            <div class="w-18 h-18 bg-slate-800 border-2 border-slate-700 rounded-md overflow-hidden flex-shrink-0">
+            <div class="w-14 sm:w-16 md:w-18 h-14 sm:h-16 md:h-18 bg-slate-800 border-2 border-slate-700 rounded-md overflow-hidden flex-shrink-0">
                 <img src="${usuario.art_cart_url}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150'">
             </div>
         `;
@@ -163,7 +166,7 @@
             }
 
             html += `
-                <div class="${color} w-24 h-18 flex items-center justify-center text-center text-[18px] font-bold rounded-md border-2 border-white/10 p-1 text-black uppercase font-['Edo_SZ']">
+                <div class="${color} w-14 sm:w-16 md:w-20 lg:w-24 h-14 sm:h-16 md:h-18 flex items-center justify-center text-center text-xs sm:text-sm md:text-base lg:text-lg font-bold rounded-md border-2 border-white/10 p-1 text-black uppercase font-['Edo_SZ']">
                     ${opcionUsu}
                 </div>
             `;
@@ -174,14 +177,14 @@
         const textoFlecha = usuario.anio === pruebaDia.anio ? "" : flecha;
 
         html += `
-            <div class="${colorAnio} w-20 h-16 flex flex-col items-center justify-center font-bold rounded-md border-2 border-white/10 text-black font-['Edo_SZ']">
+            <div class="${colorAnio} w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-18 flex flex-col items-center justify-center font-bold rounded-md border-2 border-white/10 text-black font-['Edo_SZ'] text-xs sm:text-sm md:text-base">
                 <span>${usuario.anio}</span>
                 <span class="text-xs">${textoFlecha}</span>
             </div>
         `;
 
         fila.innerHTML = html;
-        intentosVarios.prepend(fila);
+        intentosVarios.appendChild(fila);
     }
 </script>
 {% endblock %}

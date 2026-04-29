@@ -39,7 +39,7 @@ class AuthController extends AbstractController
         $error = null;
 
         if ($request->isMethod('POST')) {
-            $email = trim($request->request->get('email', ''));
+            $email = trim(mb_strtolower($request->request->get('email', '')));
             $username = trim($request->request->get('username', ''));
             $password = $request->request->get('password', '');
             $confirm = $request->request->get('confirm_password', '');

@@ -31,7 +31,7 @@
     {% block stylesheets %}{% endblock %}
 </head>
 
-<body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed">
+<body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed flex flex-col">
 
     <!-- Icono flotante de usuario -->
     <div class="fixed top-4 right-4 z-50">
@@ -61,7 +61,15 @@
         </a>
         {% endif %}
     </div>
-    {% block body %}{% endblock %}
+    <div class="flex-grow">
+        {% block body %}{% endblock %}
+    </div>
+    
+    <footer class="bg-gradient-to-t from-slate-900 to-slate-800 py-4 sm:py-6 border-t-2 border-orange-600/30 w-full">
+        <div class="flex flex-col items-center gap-2 sm:gap-4 px-4">
+            <p class="text-center text-gray-400 font-['Edo_SZ'] text-xs sm:text-sm">© 2026 DBLegendsDle</p>
+        </div>
+    </footer>
     
     <!-- <script src="{{ asset('assets/js/main.js') }}"></script> -->
     {% block javascripts %}{% endblock %}
