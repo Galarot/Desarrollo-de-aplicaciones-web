@@ -27,7 +27,3 @@ yarn-error.log
 *~
 .DS_Store
 ###< IDE ###
-
-###> Compiled assets ###
-/public/assets/
-###< Compiled assets ###

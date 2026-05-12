@@ -22,7 +22,7 @@ En Windows, también es recomendable tener configurado `scoop` o una instalació
 1. Abre una terminal en la carpeta raíz del proyecto:
 
 ```powershell
-cd "C:\Users\galoc.DESKTOP-F1QQGIG\OneDrive\Escritorio\Trabajos\Desarrollo-de-aplicaciones-web\Proyecto"
+cd "C:\ruta\a\tu\proyecto"
 ```
 
 2. Verifica que PHP esté disponible:
@@ -84,13 +84,15 @@ if (-not (Test-Path var)) { New-Item -ItemType Directory -Path var | Out-Null }
 
 En Windows, una forma de hacerlo es usar permisos o asegurarte de que el usuario actual tenga acceso a la carpeta.
 
-3. Verifica que la base de datos SQLite se pueda crear. El proyecto ejecuta automáticamente el script `public/setup.php` al cargar la aplicación.
+3. Verifica que la base de datos SQLite se pueda crear. El proyecto ejecuta automáticamente el script `public/setup.php` al cargar la aplicación y crea `var/app.db` con la tabla `user`.
 
 ---
 
 ## 5. Asegurar que las imágenes estén en la carpeta pública correcta
 
-El proyecto usa rutas de recursos basadas en `public/assets/`. Si vuelves a desplegar, copia los recursos desde `DBLegendle/public/assets/` a `public/assets/`:
+El proyecto usa rutas de recursos basadas en `public/assets/`. En este repositorio ya están incluidas las imágenes necesarias en `public/assets/`, por lo que no es necesario copiarlas de nuevo si ya existen allí.
+
+Si llegas a desplegar desde una copia sin estos recursos, copia los archivos desde `DBLegendle/public/assets/` a `public/assets/`:
 
 ```powershell
 New-Item -ItemType Directory -Path public\assets -ErrorAction SilentlyContinue | Out-Null
