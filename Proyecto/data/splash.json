@@ -1,141 +1,141 @@
 [{
         "id": 1,
         "nombre": "Super Saiyan Goku",
-        "art_url": "./assets/multimedia/splash/ulgokussj1.png"
+        "art_url": "/assets/multimedia/splash/ulgokussj1.png"
     },
     {
         "id": 2,
         "nombre": "Vegeta",
-        "art_url": "./assets/multimedia/splash/ulvegeta.png"
+        "art_url": "/assets/multimedia/splash/ulvegeta.png"
     },
     {
         "id": 3,
         "nombre": "Omega Shenron",
-        "art_url": "./assets/multimedia/splash/ulomega.png"
+        "art_url": "/assets/multimedia/splash/ulomega.png"
     },
     {
         "id": 4,
         "nombre": "Super Gogeta",
-        "art_url": "./assets/multimedia/splash/ulsupergogeta.png"
+        "art_url": "/assets/multimedia/splash/ulsupergogeta.png"
     },
     {
         "id": 5,
         "nombre": "Super Saiyan God SS Kaioken Goku",
-        "art_url": "./assets/multimedia/splash/ulbluekaioken.png"
+        "art_url": "/assets/multimedia/splash/ulbluekaioken.png"
     },
     {
         "id": 6,
         "nombre": "Super Vegito",
-        "art_url": "./assets/multimedia/splash/ulsupervegeto.png"
+        "art_url": "/assets/multimedia/splash/ulsupervegeto.png"
     },
     {
         "id": 7,
         "nombre": "Legendary Super Saiyan Broly",
-        "art_url": "./assets/multimedia/splash/ulbroly.png"
+        "art_url": "/assets/multimedia/splash/ulbroly.png"
     },
     {
         "id": 8,
         "nombre": "Super Saiyan God SS Gogeta",
-        "art_url": "./assets/multimedia/splash/ulbluegogeta.png"
+        "art_url": "/assets/multimedia/splash/ulbluegogeta.png"
     },
     {
         "id": 9,
         "nombre": "Hit",
-        "art_url": "./assets/multimedia/splash/ulhit.png"
+        "art_url": "/assets/multimedia/splash/ulhit.png"
     },
     {
         "id": 10,
         "nombre": "Super Saiyan Rosé Goku Black",
-        "art_url": "./assets/multimedia/splash/ulrose.png"
+        "art_url": "/assets/multimedia/splash/ulrose.png"
     },
     {
         "id": 11,
         "nombre": "Buu: Kid",
-        "art_url": "./assets/multimedia/splash/ulkidbuu.png"
+        "art_url": "/assets/multimedia/splash/ulkidbuu.png"
     },
     {
         "id": 12,
         "nombre": "Super Saiyan God SS Vegito",
-        "art_url": "./assets/multimedia/splash/ulbluevegeto.png"
+        "art_url": "/assets/multimedia/splash/ulbluevegeto.png"
     },
     {
         "id": 13,
         "nombre": "Super Janemba",
-        "art_url": "./assets/multimedia/splash/uljanemba.png"
+        "art_url": "/assets/multimedia/splash/uljanemba.png"
     },
     {
         "id": 14,
         "nombre": "Ultra Instinct -Sign- Goku",
-        "art_url": "./assets/multimedia/splash/ului.png"
+        "art_url": "/assets/multimedia/splash/ului.png"
     },
     {
         "id": 15,
         "nombre": "Super Saiyan 2 Gohan (Youth)",
-        "art_url": "./assets/multimedia/splash/ulgohanssj2.png"
+        "art_url": "/assets/multimedia/splash/ulgohanssj2.png"
     },
     {
         "id": 16,
         "nombre": "Golden Frieza",
-        "art_url": "./assets/multimedia/splash/ulgolden.png"
+        "art_url": "/assets/multimedia/splash/ulgolden.png"
     },
     {
         "id": 17,
         "nombre": "Super Saiyan 4 Gogeta",
-        "art_url": "./assets/multimedia/splash/ulgogetassj4.png"
+        "art_url": "/assets/multimedia/splash/ulgogetassj4.png"
     },
     {
         "id": 18,
         "nombre": "Turles",
-        "art_url": "./assets/multimedia/splash/ulturles.png"
+        "art_url": "/assets/multimedia/splash/ulturles.png"
     },
     {
         "id": 19,
         "nombre": "Majin Vegeta",
-        "art_url": "./assets/multimedia/splash/ulmajinvegeta.png"
+        "art_url": "/assets/multimedia/splash/ulmajinvegeta.png"
     },
     {
         "id": 20,
         "nombre": "Beast Gohan",
-        "art_url": "./assets/multimedia/splash/ulbeast.png"
+        "art_url": "/assets/multimedia/splash/ulbeast.png"
     },
     {
         "id": 21,
         "nombre": "Perfect Cell",
-        "art_url": "./assets/multimedia/splash/ulcell.png"
+        "art_url": "/assets/multimedia/splash/ulcell.png"
     },
     {
         "id": 22,
         "nombre": "Super Saiyan Goku",
-        "art_url": "./assets/multimedia/splash/ulgokussj1-2.png"
+        "art_url": "/assets/multimedia/splash/ulgokussj1-2.png"
     },
     {
         "id": 23,
         "nombre": "Final Form Frieza: Full Power",
-        "art_url": "./assets/multimedia/splash/ulfreezer.png"
+        "art_url": "/assets/multimedia/splash/ulfreezer.png"
     },
     {
         "id": 24,
         "nombre": "Super Saiyan 4 Vegeta",
-        "art_url": "./assets/multimedia/splash/ulvegetass4.png"
+        "art_url": "/assets/multimedia/splash/ulvegetass4.png"
     },
     {
         "id": 25,
         "nombre": "Half-Corrupted Fusion Zamasu",
-        "art_url": "./assets/multimedia/splash/ulzamasu.png"
+        "art_url": "/assets/multimedia/splash/ulzamasu.png"
     },
     {
         "id": 26,
         "nombre": "Super Full Power Saiyan 4 Goku",
-        "art_url": "./assets/multimedia/splash/ulgokussj4.png"
+        "art_url": "/assets/multimedia/splash/ulgokussj4.png"
     },
     {
         "id": 27,
         "nombre": "Ultimate Gohan Absorbed Buu: Super",
-        "art_url": "./assets/multimedia/splash/ulbuuhan.png"
+        "art_url": "/assets/multimedia/splash/ulbuuhan.png"
     },
     {
         "id": 28,
         "nombre": "Super Saiyan Trunks (Adult)",
-        "art_url": "./assets/multimedia/splash/ultrunks.png"
+        "art_url": "/assets/multimedia/splash/ultrunks.png"
     }
 ]

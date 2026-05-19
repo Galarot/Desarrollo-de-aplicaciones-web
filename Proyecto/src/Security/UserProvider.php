@@ -17,6 +17,7 @@ class UserProvider implements UserProviderInterface
 
     public function loadUserByIdentifier(string $identifier): UserInterface
     {
+        throw new \Exception("PROVIDER CALLED WITH: " . $identifier);
         $identifier = trim($identifier);
         $query = $this->entityManager->getRepository(User::class)
             ->createQueryBuilder('u')

@@ -121,5 +121,5 @@ function compararAtributos(usuario) {
     `;
 
     fila.innerHTML = html;
-    intentosVarios.appendChild(fila);
+    intentosVarios.prepend(fila);
 }
