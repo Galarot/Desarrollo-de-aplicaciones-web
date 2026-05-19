@@ -3570,24 +3570,24 @@
     },
     {
         "id": 511,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Piccolo (Fused with Nail)",
+        "anio": 2021,
+        "art_cart_url": "/assets/multimedia/arts/piccolohlsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Namekiano" }
     },
     {
         "id": 512,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Broly",
+        "anio": 2021,
+        "art_cart_url": "/assets/multimedia/arts/brolybsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
     },
     {
         "id": 513,
-        "nombre": "",
+        "nombre": "Super Saiyan Gogeta",
         "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "art_cart_url": "/assets/multimedia/arts/gogetasssp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
     },
     {
         "id": 514,
