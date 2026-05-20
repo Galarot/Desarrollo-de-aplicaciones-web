@@ -1,7 +1,8 @@
 // DBLegendsdle - Juego Clásico
 // Sistema de adivinanza de personajes con comparación de atributos
 
-const API_BASE = '/index.php/api';
+console.log("main.js cargado correctamente");
+const API_BASE = '/api';
 const userId = document.body.getAttribute('data-user-id');
 let personajes = [];
 let elegidosEnRonda = new Set();
@@ -45,26 +46,39 @@ function seleccionasPerso() {
 }
 
 function sincronizarProgreso() {
-    console.log("Iniciando sincronización para usuario:", userId);
-    // Verificar progreso local
-    if (localStorage.getItem(`dailyWonIndex_${userId}`) === getDailySeed().toString()) {
-        console.log("Progreso detectado en localStorage");
-        winButtons.classList.remove('hidden');
-    }
+    try {
+        console.log("Iniciando sincronización para usuario:", userId);
+        if (!userId) {
+            console.warn("userId no encontrado en el body");
+            return;
+        }
 
-    // Sincronizar con el servidor si está logueado
-    if (userId !== 'guest') {
-        fetch(API_BASE + '/progress/check')
-            .then(r => r.json())
-            .then(data => {
-                console.log("Respuesta del servidor (check):", data);
-                if (data.classic) {
-                    console.log("Servidor confirma victoria hoy");
-                    winButtons.classList.remove('hidden');
-                    localStorage.setItem(`dailyWonIndex_${userId}`, getDailySeed().toString());
-                }
-            })
-            .catch(err => console.error("Error sincronizando progreso:", err));
+        // Verificar progreso local
+        const savedSeed = localStorage.getItem(`dailyWonIndex_${userId}`);
+        if (savedSeed === getDailySeed().toString()) {
+            console.log("Progreso detectado en localStorage");
+            if (winButtons) winButtons.classList.remove('hidden');
+        }
+
+        // Sincronizar con el servidor si está logueado
+        if (userId !== 'guest') {
+            fetch(API_BASE + '/progress/check')
+                .then(r => {
+                    if (!r.ok) throw new Error("Fallo en check progreso: " + r.status);
+                    return r.json();
+                })
+                .then(data => {
+                    console.log("Respuesta del servidor (check):", data);
+                    if (data.classic) {
+                        console.log("Servidor confirma victoria hoy");
+                        if (winButtons) winButtons.classList.remove('hidden');
+                        localStorage.setItem(`dailyWonIndex_${userId}`, getDailySeed().toString());
+                    }
+                })
+                .catch(err => console.error("Error sincronizando progreso:", err));
+        }
+    } catch (e) {
+        console.error("Error crítico en sincronizarProgreso:", e);
     }
 }
 
@@ -80,13 +94,19 @@ btnInfinite.addEventListener('click', () => {
 });
 
 // Cargar datos desde la API
+console.log("Cargando personajes desde la API...");
 fetch(API_BASE + '/characters')
-    .then(response => response.json())
+    .then(response => {
+        console.log("Respuesta API characters recibida:", response.status);
+        if (!response.ok) throw new Error("Error HTTP: " + response.status);
+        return response.json();
+    })
     .then(data => {
+        console.log("Personajes procesados:", data.length);
         personajes = data;
         seleccionasPerso();
         // Si hay texto en el input, actualizar el dropdown
-        if (input.value.trim()) {
+        if (input && input.value.trim()) {
             input.dispatchEvent(new Event('input'));
         }
     })

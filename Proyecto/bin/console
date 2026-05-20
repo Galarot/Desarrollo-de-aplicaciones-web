@@ -2,30 +2,15 @@
 <?php
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Dotenv\Dotenv;
 
-require dirname(__DIR__).'/vendor/autoload.php';
-
-if (!isset($_SERVER['APP_ENV'])) {
-    if (!class_exists(Dotenv::class)) {
-        throw new LogicException('APP_ENV environment variable is not defined. You need to define these environment variables in .env file.');
-    }
-
-    (new Dotenv())->loadEnv(dirname(__DIR__).'/.env');
+if (!file_exists(dirname(__DIR__).'/vendor/autoload_runtime.php')) {
+    throw new LogicException('Symfony Runtime is missing. Try running "composer require symfony/runtime".');
 }
-
-$_SERVER += $_ENV;
-$_SERVER['APP_ENV'] = $_ENV['APP_ENV'] = ($_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? null) ?: 'dev';
-$_SERVER['APP_DEBUG'] = $_SERVER['APP_DEBUG'] ?? $_ENV['APP_DEBUG'] ?? 'prod' !== $_SERVER['APP_ENV'];
-$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = (int) $_SERVER['APP_DEBUG'] || filter_var($_SERVER['APP_DEBUG'], FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
-
-set_time_limit(0);
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
 return function (array $context) {
     $kernel = new App\Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
-    $application = new Application($kernel);
-    return $application;
+    return new Application($kernel);
 };

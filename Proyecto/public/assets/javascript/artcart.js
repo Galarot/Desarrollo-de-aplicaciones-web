@@ -1,7 +1,7 @@
 // DBLegendsdle - Juego Art Cart
 // Sistema de adivinanza por arte/splash con revelación progresiva
 
-const API_BASE = '/index.php/api';
+const API_BASE = '/api';
 const userId = document.body.getAttribute('data-user-id');
 let personajes = [];
 let personajeDelDia = {};

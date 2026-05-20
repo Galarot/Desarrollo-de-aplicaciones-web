@@ -95,7 +95,9 @@ class DBLegendleController extends AbstractController
     #[Route('/api/characters', name: 'api_characters')]
     public function getCharacters(CharacterService $characterService): Response
     {
-        return $this->json($characterService->getAllCharacters());
+        $chars = $characterService->getAllCharacters();
+        error_log("API Characters: cargados " . count($chars) . " personajes");
+        return $this->json($chars);
     }
 
     #[Route('/api/splash', name: 'api_splash')]
