@@ -42,17 +42,17 @@ def procesar_mismo_directorio(directorio):
         
         # 2. Solo letras (ej. 'goku')
         nombre_limpio = "".join(filter(str.isalpha, nombre_personaje))
-        nombre_base_sp = f"{nombre_limpio}sp"
+        nombre_base_ul = f"{nombre_limpio}ul"
         
         # 3. NUEVA LÓGICA: Consultar qué números ya existen en la carpeta
-        siguiente_num = obtener_siguiente_numero(directorio, nombre_base_sp)
+        siguiente_num = obtener_siguiente_numero(directorio, nombre_base_ul)
         
-        # Si es el primero, lo dejamos como gokusp.png, si no, gokusp2.png...
-        # (O si prefieres que el primero sea gokusp1, quita el 'if')
+        # Si es el primero, lo dejamos como gokuul.png, si no, gokuul2.png...
+        # (O si prefieres que el primero sea gokuul1, quita el 'if')
         if siguiente_num == 1:
-            nombre_final = nombre_base_sp
+            nombre_final = nombre_base_ul
         else:
-            nombre_final = f"{nombre_base_sp}{siguiente_num}"
+            nombre_final = f"{nombre_base_ul}{siguiente_num}"
 
         ruta_entrada = os.path.join(directorio, archivo)
         ruta_salida = os.path.join(directorio, f"{nombre_final}.png")

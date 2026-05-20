@@ -934,14 +934,14 @@
         "nombre": "Yi Shenron",
         "anio": 2020,
         "art_cart_url": "/assets/multimedia/arts/shenronex.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Extreme", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Extreme", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
     },
     {
         "id": 135,
         "nombre": "Omega Shenron",
         "anio": 2022,
         "art_cart_url": "/assets/multimedia/arts/shenronsex.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Extreme", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Extreme", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
     },
     {
         "id": 136,
@@ -2565,7 +2565,7 @@
         "nombre": "Yi Shenron",
         "anio": 2024,
         "art_cart_url": "/assets/multimedia/arts/shenronsp5.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
     },
     {
         "id": 368,
@@ -2579,7 +2579,7 @@
         "nombre": "Omega Shenron",
         "anio": 2020,
         "art_cart_url": "/assets/multimedia/arts/shenronsp2.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
     },
     {
         "id": 370,
@@ -2593,28 +2593,28 @@
         "nombre": "Omega Shenron",
         "anio": 2020,
         "art_cart_url": "/assets/multimedia/arts/shenronssp.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
     },
     {
         "id": 372,
         "nombre": "Eis Shenron",
         "anio": 2021,
         "art_cart_url": "/assets/multimedia/arts/shenronsp3.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
     },
     {
         "id": 373,
         "nombre": "Nouva Shenron",
         "anio": 2021,
         "art_cart_url": "/assets/multimedia/arts/shenronsp.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
     },
     {
         "id": 374,
         "nombre": "Rage Shenron",
         "anio": 2024,
         "art_cart_url": "/assets/multimedia/arts/shenronsp4.png",
-        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Dragón Maligno" }
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Sparking", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
     },
     {
         "id": 375,
@@ -3264,7 +3264,7 @@
         "id": 467,
         "nombre": "Super Janemba",
         "anio": 2018,
-        "art_cart_url": "/assets/multimedia/arts/janembasesp.png",
+        "art_cart_url": "/assets/multimedia/arts/janembassp.png",
         "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "Sagas Movies", "raza": "Demon" }
     },
     {
@@ -3355,7 +3355,7 @@
         "id": 480,
         "nombre": "Metal Cooler",
         "anio": 2019,
-        "art_cart_url": "/assets/multimedia/arts/metalcooler.png",
+        "art_cart_url": "/assets/multimedia/arts/metalcoolersp.png",
         "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "Sagas Movies", "raza": "Lineage of Evil" }
     },
     {
@@ -3460,7 +3460,7 @@
         "id": 495,
         "nombre": "Super Saiyan Dios Vegeta",
         "anio": 2020,
-        "art_cart_url": "/assets/multimedia/arts/vegetassgsp3.png",
+        "art_cart_url": "/assets/multimedia/arts/vegetassgsp2.png",
         "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
     },
     {
@@ -3544,7 +3544,7 @@
         "id": 507,
         "nombre": "Bojack Full Power",
         "anio": 2021,
-        "art_cart_url": "/assets/multimedia/arts/bojackfullpowersp.png",
+        "art_cart_url": "/assets/multimedia/arts/bojackfpsp2.png",
         "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "Sagas Movies", "raza": "Hera clan" }
     },
     {
@@ -3845,7 +3845,7 @@
         "id": 550,
         "nombre": "Taitans Yamcha",
         "anio": 2019,
-        "art_cart_url": "/assets/multimedia/arts/.png",
+        "art_cart_url": "/assets/multimedia/arts/yamuchasp2.png",
         "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Sparking", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Anime Original", "raza": "Humano" }
     },
     {
@@ -3859,7 +3859,7 @@
         "id": 552,
         "nombre": "Super Kaioken Goku",
         "anio": 2020,
-        "art_cart_url": "/assets/multimedia/arts/.png",
+        "art_cart_url": "/assets/multimedia/arts/gokussksp.png",
         "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Anime Original", "raza": "Saiyan" }
     },
     {
@@ -3976,7 +3976,7 @@
     },
     {
         "id": 569,
-        "nombre": "Super Saiyan Dios Ultra Super Villano Vegeta",
+        "nombre": "Super Saiyan Dios Ultra Super Villian Vegeta",
         "anio": 2026,
         "art_cart_url": "/assets/multimedia/arts/vegetassgxvsp.png",
         "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Sparking", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Dragon Ball Xenovers 2", "raza": "Saiyan" }
@@ -4060,7 +4060,7 @@
     },
     {
         "id": 581,
-        "nombre": "Señal Ultra Instinto Goku",
+        "nombre": "Ultra Instinc Sign Goku",
         "anio": 2020,
         "art_cart_url": "/assets/multimedia/arts/gokuuissp.png",
         "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
@@ -4090,7 +4090,7 @@
         "id": 585,
         "nombre": "Super Saiyan Rose Goku Black",
         "anio": 2021,
-        "art_cart_url": "/assets/multimedia/arts/.png",
+        "art_cart_url": "/assets/multimedia/arts/gokublackrosesp4.png",
         "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan" }
     },
     {
@@ -4172,93 +4172,758 @@
     },
     {
         "id": 597,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "LF", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Bardock",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/bardocksp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Anime Original", "raza": "Saiyan" }
     },
     {
         "id": 598,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "LF", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Jiren Full Power",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/jirenfpsp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Universe Survival Saga", "raza": "Universe 11" }
     },
     {
         "id": 599,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "LF", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Android #17 & Android #18",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/androidsp23.png",
+        "atributos": { "genero": "Hombre/Mujer", "afinidad": "Rojo", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Android Saga", "raza": "Android" }
     },
     {
         "id": 600,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "LF", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Ultra Instinct Goku",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/gokuuisp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
     },
     {
         "id": 601,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "LF", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 3 Goku",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/gokusssp21.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
     },
     {
         "id": 602,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "LF", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Beast Gohan",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/gohanshbsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan Hibrido" }
     },
     {
         "id": 603,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "LF", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Cooler (Final Form)",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/coolerndsp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Sagas Movies", "raza": "Lineage of Evil" }
     },
     {
         "id": 604,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "LF", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan Trunks",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/trunkssssp7.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Android Saga", "raza": "Saiyan Hibrido" }
     },
     {
         "id": 605,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 4 Goku & Super Saiyan 4 Vegeta",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/vegetasssp6.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
     },
     {
         "id": 606,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Android #17",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/androidsp24.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Android" }
     },
     {
         "id": 607,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 2 Trunks & Super Saiyan Blue Vegeta",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/vegetassgsssp9.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan Hibrido/Saiyan" }
     },
     {
         "id": 608,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Ultra Instinc Sign Goku",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gokuuissp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
     },
     {
         "id": 609,
-        "nombre": "",
-        "anio": null,
-        "art_cart_url": "/assets/multimedia/arts/.png",
-        "atributos": { "genero": "", "afinidad": "", "rareza": "Sparking", "estilo": "", "zenkai": "", "saga": "", "raza": "" }
+        "nombre": "Super Saiyan 3 Goku & Super Saiyan 3 Vegeta",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/vegetasssp7.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 610,
+        "nombre": "Goku & Frieza Final Form",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/friezathsp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado/Azul", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan/Lineage of Evil" }
+    },
+    {
+        "id": 611,
+        "nombre": "Gamma 1 & Gamma 2",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gammasp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Android" }
+    },
+    {
+        "id": 612,
+        "nombre": "Orange Piccolo",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/orangepiccolosp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Namekiano" }
+    },
+    {
+        "id": 613,
+        "nombre": "Cell Perfect Form",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/cellrdsp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Android" }
+    },
+    {
+        "id": 614,
+        "nombre": "Super Saiyan Goku",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gokusssp22.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Frieza Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 615,
+        "nombre": "Goku(Kid)",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gokuteensp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 616,
+        "nombre": "Super Gogeta",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gogetasssp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 617,
+        "nombre": "Super Saiyan Blue Evolution Vegeta & Super Saiyan Blue Kaioken Goku",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gokussgsskaiousp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 618,
+        "nombre": "Beast Gohan",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gohanshbsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 619,
+        "nombre": "Goku & Bardock",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/bardocksp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul/Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Game Original", "raza": "Saiyan" }
+    },
+    {
+        "id": 620,
+        "nombre": "Goku(Kid)",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gokukidgtsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Defensa", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 621,
+        "nombre": "Super 17",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/super17sp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Android" }
+    },
+    {
+        "id": 622,
+        "nombre": "Super Vegeta",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/super17sp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Cell Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 623,
+        "nombre": "Super Baby 2",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/superbabysp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "GT Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 624,
+        "nombre": "Vegeta",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/vegetasp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Saiyan Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 625,
+        "nombre": "Super Saiyan Blue Gogeta",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gtbsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 626,
+        "nombre": "Super Vegito",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/vegitosvsp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 627,
+        "nombre": "Super Saiyan Dios Goku",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gokussgsp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 628,
+        "nombre": "Ultimate Gohan",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gohanultimatesp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 629,
+        "nombre": "Omega Shenron",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/shenronssp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
+    },
+    {
+        "id": 630,
+        "nombre": "Super Saiyan Legendario Broly",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/brolysssp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 631,
+        "nombre": "Goku",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gokusp15.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 632,
+        "nombre": "Super Saiyan 3 Gotenks",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gotenkssssp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 633,
+        "nombre": "Super Saiyan Blue Vegito",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/vegitossgsssp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 634,
+        "nombre": "Super Saiyan Rose Goku Black",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gokublackrosesp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 635,
+        "nombre": "Super Saiyan 3 Goku",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gokusssp23.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 636,
+        "nombre": "Super Saiyan Goku (Mini)",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gokukiddmsssp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Zenkai", "saga": "Daima", "raza": "Saiyan" }
+    },
+    {
+        "id": 637,
+        "nombre": "Super Saiyan Trunks (kid)",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/trunkstfsssp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul/Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 638,
+        "nombre": "Fusion Zamasu",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/zamasmsp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Kaioshin/Saiyan" }
+    },
+    {
+        "id": 639,
+        "nombre": "Super Saiyan Goku",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gokusssp24.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 640,
+        "nombre": "Super Saiyan 3 Vegeta",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/vttsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Daima", "raza": "Saiyan" }
+    },
+    {
+        "id": 641,
+        "nombre": "Super Saiyan 4 Goku",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gkfsp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Daima", "raza": "Saiyan" }
+    },
+    {
+        "id": 642,
+        "nombre": "Piccolo Daimaku",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/piccolokingsp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Dragon Ball", "raza": "Namekiano" }
+    },
+    {
+        "id": 643,
+        "nombre": "Goku(Kid)",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gokuteensp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Dragon Ball", "raza": "Saiyan" }
+    },
+    {
+        "id": 644,
+        "nombre": "Goku Kaioken",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gokuksp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Saiyan Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 645,
+        "nombre": "Vegeta",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/vegetatsp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Saiyan Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 646,
+        "nombre": "Ultra Instinct Goku",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gokuuisp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 647,
+        "nombre": "Super Saiyan Blue Evolution Vegeta",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/vegetassgssevosp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 648,
+        "nombre": "Super Saiyan 2 Kefla",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/keflasssp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 649,
+        "nombre": "Metal Cooler",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/metalcoolersp4.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Lineage of Evil" }
+    },
+    {
+        "id": 650,
+        "nombre": "Super Saiyan 3 Goku (Kid)",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gokukidgtsssp5.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 651,
+        "nombre": "Android #13 Full Power",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/androidmsp2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Android" }
+    },
+    {
+        "id": 652,
+        "nombre": "Super Gogeta",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gogetasssp6.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 653,
+        "nombre": "Super Janemba",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/janembassp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Demon" }
+    },
+    {
+        "id": 654,
+        "nombre": "Super Saiyan 2 Gohan (Kid)",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gohanteenssdiesp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 655,
+        "nombre": "Super Saiyan 2 Goku & Hit",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/hitsp3.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado/Rojo", "rareza": "LF", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan/Universe 6" }
+    },
+    {
+        "id": 656,
+        "nombre": "Super Saiyan 3 Vegeta (Mini)",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/vegetakiddmsssp.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "LF", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Daima", "raza": "Saiyan" }
+    },
+    {
+        "id": 657,
+        "nombre": "Super Saiyan Goku",
+        "anio": 2021,
+        "art_cart_url": "/assets/multimedia/arts/gokussul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Frieza Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 658,
+        "nombre": "Vegeta",
+        "anio": 2021,
+        "art_cart_url": "/assets/multimedia/arts/vegetaul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Ultra", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Frieza Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 659,
+        "nombre": "Omega Shenron",
+        "anio": 2021,
+        "art_cart_url": "/assets/multimedia/arts/shenronsul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Ultra", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Shadow Dragon" }
+    },
+    {
+        "id": 660,
+        "nombre": "Super Gogeta",
+        "anio": 2021,
+        "art_cart_url": "/assets/multimedia/arts/gogetassul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 661,
+        "nombre": "Super Saiyan Blue Kaioken Goku",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/gokussgsskaiouul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Ultra", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 662,
+        "nombre": "Super Vegito",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/vegitosvul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Ultra", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 663,
+        "nombre": "Super Saiyan Legendario Broly",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/brolyssul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 664,
+        "nombre": "Super Saiyan Blue Gogeta",
+        "anio": 2022,
+        "art_cart_url": "/assets/multimedia/arts/gogetassgssul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 665,
+        "nombre": "Hit",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/hitul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Champa Saga", "raza": "Universe 6" }
+    },
+    {
+        "id": 666,
+        "nombre": "Super Saiyan Rose Goku Black",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gokublackroseul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 667,
+        "nombre": "Majin Buu (kid)",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/buufinalul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Ultra", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Majin" }
+    },
+    {
+        "id": 668,
+        "nombre": "Super Saiyan Blue Vegito",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/vegitossgssul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 669,
+        "nombre": "Super Janmeba",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/janembasul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Demon" }
+    },
+    {
+        "id": 670,
+        "nombre": "Ultra Instinc Sign Goku",
+        "anio": 2023,
+        "art_cart_url": "/assets/multimedia/arts/gokuuisul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Ultra", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 671,
+        "nombre": "Super Saiyan 2 Gohan (Kid)",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gohanteenssul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Ultra", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 672,
+        "nombre": "Golden Frieza",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/friezagoldul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Lineage of Evil" }
+    },
+    {
+        "id": 673,
+        "nombre": "Super Saiyan 4 Gogeta",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gogetassul2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 674,
+        "nombre": "Turles",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/turlesul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Ultra", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 675,
+        "nombre": "Majin Vegeta",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/vegetamul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 676,
+        "nombre": "Beast Gohan",
+        "anio": 2024,
+        "art_cart_url": "/assets/multimedia/arts/gohanshbul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 677,
+        "nombre": "Perfect Cell",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/perfectcellul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Ultra", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
+    },
+    {
+        "id": 678,
+        "nombre": "Super Saiyan Goku",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/gokussul2.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Frieza Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 679,
+        "nombre": "Frieza Full Power",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/friezafpul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Ultra", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Frieza Saga", "raza": "Lineage of Evil" }
+    },
+    {
+        "id": 680,
+        "nombre": "Super Saiyan 4 Vegeta",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/vegetassul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Ultra", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 681,
+        "nombre": "Corrupted Fusion Zamasu",
+        "anio": 2025,
+        "art_cart_url": "/assets/multimedia/arts/zamasmdul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Kaioshin/Saiyan" }
+    },
+    {
+        "id": 682,
+        "nombre": "Buuhan",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/buugohanul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Majin" }
+    },
+    {
+        "id": 683,
+        "nombre": "Super Saiyan Trunks",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/trunksfuturessul.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Ultra", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 684,
+        "nombre": "Super Vegito",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/vegitolr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Majin Buu Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 685,
+        "nombre": "Piccolo (Fused with kami)",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/piccololr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Legend", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Namekiano" }
+    },
+    {
+        "id": 686,
+        "nombre": "Super Saiyan 3 Goku (Mini)",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/gokussj3lr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Legend", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Daima", "raza": "Saiyan" }
+    },
+    {
+        "id": 687,
+        "nombre": "Bardock",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/bardocklr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Legend", "estilo": "Defensa", "zenkai": "Sin zenkai", "saga": "Anime Original", "raza": "Saiyan" }
+    },
+    {
+        "id": 688,
+        "nombre": "Super Saiyan Rose Ultra Super Villian Goku Black",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/roselr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Future Trunks Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 689,
+        "nombre": "Super Saiyan 4 Gogeta",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/gogetassj4lr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "GT Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 690,
+        "nombre": "Frieza Full Power",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/friezafplr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Legend", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Frieza Saga", "raza": "Lineage of Evil" }
+    },
+    {
+        "id": 691,
+        "nombre": "Super Saiyan 2 Gohan (Youth)",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/gohanssj2lr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Saiyan Hibrido" }
+    },
+    {
+        "id": 692,
+        "nombre": "Perfect Cell",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/cellperfectlr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Legend", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Cell Saga", "raza": "Android" }
+    },
+    {
+        "id": 693,
+        "nombre": "Super Saiyan Blue Kaioken Goku",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/gokussjgsskkk.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Legend", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Saiyan" }
+    },
+    {
+        "id": 694,
+        "nombre": "Hit",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/hitlr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Universe 6" }
+    },
+    {
+        "id": 695,
+        "nombre": "Jiren Full Power",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/jirenlr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Universe Survival Saga", "raza": "Universe 11" }
+    },
+    {
+        "id": 696,
+        "nombre": "Super Saiyan 3 Goku (Dragon Fist)",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/gokudragonfistlr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Amarillo", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 697,
+        "nombre": "Tapion",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/tapionlr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Legend", "estilo": "Apoyo", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Other" }
+    },
+    {
+        "id": 698,
+        "nombre": "Super Saiyan Broly (Full Power)",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/brolyfplr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Legend", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 699,
+        "nombre": "Super Saiyan Blue Gogeta",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/gogetabluenlr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Azul", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Sagas Movies", "raza": "Saiyan" }
+    },
+    {
+        "id": 700,
+        "nombre": "Ultra Ego Vegeta",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/vegetaegolr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Manga", "raza": "Saiyan" }
+    },
+    {
+        "id": 701,
+        "nombre": "Granolah",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/granolahlr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Verde", "rareza": "Legend", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Manga", "raza": "Cerealian" }
+    },
+    {
+        "id": 702,
+        "nombre": "Moro",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/morolr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Legend", "estilo": "Energia", "zenkai": "Sin zenkai", "saga": "Manga", "raza": "Other" }
+    },
+    {
+        "id": 703,
+        "nombre": "Gas (Full Power)",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/gaslr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Rojo", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Manga", "raza": "Heeter" }
+    },
+    {
+        "id": 704,
+        "nombre": "Black Frieza",
+        "anio": 2026,
+        "art_cart_url": "/assets/multimedia/arts/friezablacklr.png",
+        "atributos": { "genero": "Hombre", "afinidad": "Morado", "rareza": "Legend", "estilo": "Fisico", "zenkai": "Sin zenkai", "saga": "Manga", "raza": "Lineage of Evil" }
     }
 ]

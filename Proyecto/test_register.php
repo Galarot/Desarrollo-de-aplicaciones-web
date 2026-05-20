@@ -1,24 +1,31 @@
 <?php
-$url = 'http://localhost:8000/register';
-$data = [
-    'email' => 'test_zencoder@gmail.com',
-    'username' => 'test_zencoder',
-    'password' => 'password123',
-    'confirm_password' => 'password123'
-];
+require_once __DIR__ . '/vendor/autoload.php';
+use App\Kernel;
+use Symfony\Component\Dotenv\Dotenv;
+use App\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
 
-$options = [
-    'http' => [
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-        'method'  => 'POST',
-        'content' => http_build_query($data),
-        'ignore_errors' => true
-    ]
-];
-$context  = stream_context_create($options);
-$result = file_get_contents($url, false, $context);
+(new Dotenv())->loadEnv(__DIR__ . '/.env');
 
-echo "Response headers:\n";
-print_r($http_response_header);
-echo "\nResponse body:\n";
-echo substr($result, 0, 500);
+$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
+$kernel->boot();
+$container = $kernel->getContainer();
+$em = $container->get('doctrine.orm.entity_manager');
+$hasher = $container->get('security.user_password_hasher');
+
+$email = 'manual_test@example.com';
+$username = 'manualtest';
+$pass = 'Pass123!';
+
+$existing = $em->getRepository(User::class)->findOneBy(['email' => $email]);
+if ($existing) {
+    echo "User already exists\n";
+} else {
+    $user = new User();
+    $user->setEmail($email);
+    $user->setUsername($username);
+    $user->setPassword($hasher->hashPassword($user, $pass));
+    $em->persist($user);
+    $em->flush();
+    echo "User created successfully\n";
+}

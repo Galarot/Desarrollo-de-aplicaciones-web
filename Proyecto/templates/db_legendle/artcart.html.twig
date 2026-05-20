@@ -45,10 +45,27 @@
         <div id="guessesGrid" class="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"></div>
     </section>
     
-    <a href="{{ path('app_home') }}" class="font-['Edo_SZ'] px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400 hover:from-orange-500 hover:to-red-600 hover:shadow-[0_0_20px_rgba(249,115,22,0.6)] transition-all duration-300 text-sm sm:text-base md:text-lg font-bold">
-        Volver al Clásico
-    </a>
+    <div id="artcart-buttons" class="flex gap-4 pb-10">
+        <a href="{{ path('app_home') }}" class="font-['Edo_SZ'] px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400 hover:from-orange-500 hover:to-red-600 hover:shadow-[0_0_20px_rgba(249,115,22,0.6)] transition-all duration-300 text-sm sm:text-base md:text-lg font-bold">
+            Volver al Clásico
+        </a>
+        <button id="infinite-mode-art" class="hidden font-['Edo_SZ'] px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-yellow-600 to-orange-700 text-white rounded-xl border-2 border-yellow-400 hover:from-yellow-500 hover:to-orange-600 hover:shadow-[0_0_20px_rgba(234,179,8,0.6)] transition-all duration-300 text-sm sm:text-base md:text-lg font-bold">
+            Modo Infinito
+        </button>
+    </div>
 </main>
+
+<script>
+    (function() {
+        const today = new Date();
+        const dailySeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+        const userId = document.body.getAttribute('data-user-id');
+        if (localStorage.getItem(`dailyWonIndex_${userId}`) !== dailySeed.toString()) {
+            alert('Debes completar el desafío diario en el modo Clásico primero.');
+            window.location.href = "{{ path('app_home') }}";
+        }
+    })();
+</script>
 
 {% endblock %}
 

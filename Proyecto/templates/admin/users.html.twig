@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Usuarios{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-8">
+    <div class="bg-slate-900/90 border-2 border-orange-600 rounded-2xl p-6 shadow-xl">
+        <h1 class="font-['Edo_SZ'] text-4xl text-white mb-8 text-center bg-gradient-to-br from-orange-400 to-red-700 bg-clip-text text-transparent">
+            Panel de Administración - Usuarios
+        </h1>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-white border-collapse">
+                <thead>
+                    <tr class="border-b-2 border-orange-600/40 text-orange-400 font-['Edo_SZ'] uppercase text-sm">
+                        <th class="p-4">ID</th>
+                        <th class="p-4">Usuario</th>
+                        <th class="p-4">Email</th>
+                        <th class="p-4">Roles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr class="border-b border-white/10 hover:bg-orange-600/10 transition-colors">
+                            <td class="p-4">{{ user.id }}</td>
+                            <td class="p-4 font-bold">{{ user.username }}</td>
+                            <td class="p-4">{{ user.email }}</td>
+                            <td class="p-4">
+                                {% for role in user.roles %}
+                                    <span class="px-2 py-1 bg-orange-600/30 border border-orange-500 rounded-md text-xs mr-1">
+                                        {{ role }}
+                                    </span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="p-4 text-center text-gray-400 italic">No hay usuarios registrados.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-8 flex justify-center">
+            <a href="{{ path('app_home') }}" class="font-['Edo_SZ'] px-6 py-2 bg-slate-800 text-white rounded-xl border border-white/20 hover:bg-slate-700 transition-all">
+                Volver al Inicio
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

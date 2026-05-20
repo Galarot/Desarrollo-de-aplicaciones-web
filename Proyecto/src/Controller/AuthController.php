@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,36 +37,26 @@ class AuthController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        $error = null;
+        $user = new User();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
 
-        if ($request->isMethod('POST')) {
-            $email = trim(mb_strtolower($request->request->get('email', '')));
-            $username = trim($request->request->get('username', ''));
-            $password = $request->request->get('password', '');
-            $confirm = $request->request->get('confirm_password', '');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $hasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
 
-            if (!$email || !$username || !$password || !$confirm) {
-                $error = 'Todos los campos son obligatorios.';
-            } elseif ($password !== $confirm) {
-                $error = 'Las contraseñas no coinciden.';
-            } elseif (strlen($password) < 6) {
-                $error = 'La contraseña debe tener al menos 6 caracteres.';
-            } elseif ($em->getRepository(User::class)->findOneBy(['email' => $email])) {
-                $error = 'Ya existe una cuenta con ese correo.';
-            } elseif ($em->getRepository(User::class)->findOneBy(['username' => $username])) {
-                $error = 'Ese nombre de usuario ya está en uso.';
-            } else {
-                $user = new User();
-                $user->setEmail($email);
-                $user->setUsername($username);
-                $user->setPassword($hasher->hashPassword($user, $password));
-                $em->persist($user);
-                $em->flush();
+            $em->persist($user);
+            $em->flush();
 
-                return $this->redirectToRoute('app_login');
-            }
+            return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('auth/register.html.twig', ['error' => $error]);
+        return $this->render('auth/register.html.twig', [
+            'registrationForm' => $form->createView(),
+        ]);
     }
 }

@@ -26,12 +26,21 @@
         
         .animate-float { animation: float 3s ease-in-out infinite; }
         .animate-glow { animation: glow 2s ease-in-out infinite; }
+        
+        /* Ocultar scrollbar pero mantener funcionalidad */
+        .custom-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 
     {% block stylesheets %}{% endblock %}
 </head>
 
-<body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed flex flex-col">
+<body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed flex flex-col" data-user-id="{{ app.user ? app.user.id : 'guest' }}">
 
     <!-- Icono flotante de usuario -->
     <div class="fixed top-4 right-4 z-50">
@@ -47,6 +56,11 @@
                 <div class="px-4 py-3 border-b border-orange-600/40">
                     <p class="font-['Edo_SZ'] text-orange-400 text-sm truncate">{{ app.user.username }}</p>
                 </div>
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_admin_users') }}" class="block px-4 py-3 font-['Edo_SZ'] text-yellow-400 hover:bg-orange-600/20 transition-colors duration-200 text-sm border-b border-orange-600/40">
+                    Panel Admin
+                </a>
+                {% endif %}
                 <a href="{{ path('app_logout') }}" class="block px-4 py-3 font-['Edo_SZ'] text-white hover:bg-orange-600/20 transition-colors duration-200 text-sm">
                     Cerrar sesión
                 </a>
