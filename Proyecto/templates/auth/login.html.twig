@@ -28,7 +28,7 @@
             </div>
         {% endif %}
 
-        <form method="post" action="{{ path('app_login') }}" class="flex flex-col gap-4">
+        <form method="post" action="{{ path('app_login') }}" class="flex flex-col gap-4" data-turbo="false">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
             <input type="text" name="_username" value="{{ last_username }}" placeholder="Correo electrónico o nombre de usuario"
@@ -38,7 +38,7 @@
                 class="p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
 
             <div class="flex items-center justify-between mt-2">
-                <a href="{{ path('app_register') }}"
+                <a href="{{ path('app_register') }}" data-turbo="false"
                     class="text-orange-400 hover:text-orange-300 transition-colors duration-200 text-sm underline">
                     Registrarse
                 </a>

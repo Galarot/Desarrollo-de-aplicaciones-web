@@ -1,6 +1,8 @@
 // DBLegendsdle - Juego Art Cart
 // Sistema de adivinanza por arte/splash con revelación progresiva
 
+(function () {
+
 const API_BASE = '/api';
 const userId = document.body.getAttribute('data-user-id');
 let personajes = [];
@@ -171,6 +173,8 @@ function elegir(event, id) {
     }
 }
 
+window.elegir = elegir;
+
 function agregarIntento(personaje, correcto) {
     const fila = document.createElement("div");
     const color = correcto ? 'border-green-500 bg-green-600/20' : 'border-red-500 bg-red-600/20';
@@ -209,3 +213,4 @@ function actualizarZoom() {
     imagenArte.style.transform = `scale(${zoom})`;
     imagenArte.style.transformOrigin = origenes[esquina];
 }
+})();

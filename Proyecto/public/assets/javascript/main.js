@@ -1,6 +1,8 @@
 // DBLegendsdle - Juego Clásico
 // Sistema de adivinanza de personajes con comparación de atributos
 
+(function () {
+
 console.log("main.js cargado correctamente");
 const API_BASE = '/api';
 const userId = document.body.getAttribute('data-user-id');
@@ -172,6 +174,8 @@ function elegir(event, id) {
     lista.classList.add("hidden");
 }
 
+window.elegir = elegir;
+
 function compararAtributos(usuario) {
     const fila = document.createElement("div");
     fila.className = "flex justify-center gap-2 mb-2 flex-nowrap min-w-max px-4";
@@ -219,3 +223,4 @@ function compararAtributos(usuario) {
     fila.innerHTML = html;
     intentosVarios.prepend(fila);
 }
+})();

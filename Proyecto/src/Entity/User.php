@@ -36,6 +36,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
+    #[ORM\Column(options: ['default' => false])]
+    private bool $banned = false;
+
     public function getId(): ?int { return $this->id; }
 
     public function getEmail(): string { return $this->email; }
@@ -53,6 +56,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
     public function setRoles(array $roles): static { $this->roles = $roles; return $this; }
+
+    public function isBanned(): bool { return $this->banned; }
+    public function setBanned(bool $banned): static { $this->banned = $banned; return $this; }
 
     public function getPassword(): string { return $this->password; }
     public function setPassword(string $password): static { $this->password = $password; return $this; }
