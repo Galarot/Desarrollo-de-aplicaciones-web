@@ -11,6 +11,11 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uuser", "-ppassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
     networks:
       - dblegends_net
 
@@ -27,7 +32,8 @@ services:
       APP_SECRET: c6177b079069d2551532889218d6e386
       DEFAULT_URI: http://localhost:8000
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - dblegends_net
 

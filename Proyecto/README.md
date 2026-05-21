@@ -8,7 +8,36 @@ Bienvenido a **DBLegendle**, un juego interactivo basado en Symfony para adivina
 - **Composer** ([Descargar](https://getcomposer.org/download/))
 - **Node.js y npm** (opcional, para compilación de assets avanzada)
 
-## 🚀 Instalación
+## Arranque rapido con Docker
+
+La forma recomendada para mover el proyecto entre equipos es usar Docker. Desde
+la raiz del proyecto:
+
+```bash
+docker compose up --build
+```
+
+Luego abre:
+
+```text
+http://localhost:8000
+```
+
+El contenedor de PHP instala `vendor/` automaticamente si no existe, espera a
+MySQL y ejecuta las migraciones. Por eso, al clonar en otro equipo no deberia
+hacer falta instalar PHP, Composer ni dependencias manualmente en Windows.
+
+Si quieres reiniciar tambien la base de datos local de Docker:
+
+```bash
+docker compose down -v
+docker compose up --build
+```
+
+Importante: `public/assets/` contiene imagenes, JavaScript y CSS necesarios para
+que la aplicacion funcione, asi que debe subirse al repositorio.
+
+## 🚀 Instalación manual
 
 ### 1. Instalar dependencias PHP
 

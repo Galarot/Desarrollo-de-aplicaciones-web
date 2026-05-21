@@ -125,7 +125,7 @@ input.addEventListener('input', () => {
         )
         .map(p => `
             <div onclick="elegir(event, ${p.id})" class="flex items-center p-3 hover:bg-orange-600/20 cursor-pointer border-b border-white/10 text-white font-['Edo_SZ']">
-                <img src="${p.art_cart_url}" class="w-10 h-10 rounded-full border border-orange-500 mr-3">
+                <img src="${p.art_cart_url}" class="w-10 h-10 rounded-full border border-orange-500 mr-3" onerror="this.src='/assets/multimedia/logo.png'">
                 <span>${p.nombre}</span>
             </div>
         `).join('');
@@ -178,7 +178,7 @@ function compararAtributos(usuario) {
 
     let html = `
         <div class="w-24 sm:w-28 md:w-32 h-20 sm:h-24 md:h-28 bg-slate-800 border-2 border-slate-700 rounded-md overflow-hidden flex-shrink-0">
-            <img src="${usuario.art_cart_url}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150'">
+            <img src="${usuario.art_cart_url}" class="w-full h-full object-cover" onerror="this.src='/assets/multimedia/logo.png'">
         </div>
     `;
 

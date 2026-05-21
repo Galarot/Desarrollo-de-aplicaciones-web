@@ -28,6 +28,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
+COPY docker/entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
+
 # Permisos para Symfony
 RUN chown -R www-data:www-data /var/www/html
 
@@ -38,4 +41,5 @@ RUN echo "pm.max_children = 20" >> /usr/local/etc/php-fpm.d/zz-docker.conf && \
     echo "pm.max_spare_servers = 10" >> /usr/local/etc/php-fpm.d/zz-docker.conf
 
 EXPOSE 9000
+ENTRYPOINT ["docker-entrypoint"]
 CMD ["php-fpm"]
