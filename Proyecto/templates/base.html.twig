@@ -42,11 +42,6 @@
                 <div class="px-4 py-3 border-b border-orange-600/40">
                     <p class="font-['Edo_SZ'] text-orange-400 text-sm truncate">{{ app.user.username }}</p>
                 </div>
-                {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('app_admin_users') }}" class="block px-4 py-3 font-['Edo_SZ'] text-yellow-400 hover:bg-orange-600/20 transition-colors duration-200 text-sm border-b border-orange-600/40">
-                    Panel Admin
-                </a>
-                {% endif %}
                 <a href="{{ path('app_logout') }}" data-turbo="false" class="block px-4 py-3 font-['Edo_SZ'] text-white hover:bg-orange-600/20 transition-colors duration-200 text-sm">
                     Cerrar sesión
                 </a>

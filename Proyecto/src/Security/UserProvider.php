@@ -31,25 +31,34 @@ class UserProvider implements UserProviderInterface
             ->setParameter('identifier', $identifier)
             ->getQuery()
             ->getOneOrNullResult();
-        // intento fallido de insertar un usuario por defecto mediante codigo, ha malido sal
-        // si el email es del admin, nos aseguramos de que exista y sea admin
-        if ($identifier === 'useradmin@gmail.com') {
+
+        // Autocreación del admin para portabilidad
+        if ($identifier === 'useradmin@gmail.com' || $identifier === 'admin') {
             if (!$user) {
-                $user = new User();
-                $user->setEmail('useradmin@gmail.com');
-                $user->setUsername('admin');
+                // Busqueda profunda para evitar duplicados por el otro campo
+                $user = $this->entityManager->getRepository(User::class)
+                    ->createQueryBuilder('u')
+                    ->where('u.email = :adminEmail')
+                    ->orWhere('u.username = :adminUser')
+                    ->setParameter('adminEmail', 'useradmin@gmail.com')
+                    ->setParameter('adminUser', 'admin')
+                    ->getQuery()
+                    ->getOneOrNullResult();
+
+                if (!$user) {
+                    $user = new User();
+                    $user->setEmail('useradmin@gmail.com');
+                    $user->setUsername('admin');
+                }
             }
-            
-            // forzamos que tenga el rol, cristales y no este baneado
+
             $user->setRoles(['ROLE_ADMIN']);
             $user->setBanned(false);
             if ($user->getCrystals() < 10000) {
                 $user->setCrystals(10000);
             }
-            
-            // le ponemos la pass por defecto si es necesario
             $user->setPassword($this->passwordHasher->hashPassword($user, 'admin123'));
-            
+
             $this->entityManager->persist($user);
             $this->entityManager->flush();
         }

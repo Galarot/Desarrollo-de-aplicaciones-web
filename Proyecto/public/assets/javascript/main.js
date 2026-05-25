@@ -89,6 +89,7 @@ function seleccionasPerso() {
             const aleatorio = Math.floor(Math.random() * rango.length);
             pruebaDia = rango[aleatorio];
         }
+        console.log("Personaje objetivo:", pruebaDia.nombre);
     }
 }
 

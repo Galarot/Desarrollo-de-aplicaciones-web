@@ -98,6 +98,7 @@ function seleccionarPersonaje() {
         }
 
         imagenArte.src = personajeDelDia.art_url;
+        console.log("Personaje objetivo (Art Cart):", personajeDelDia.nombre);
         actualizarZoom();
     }
 }
