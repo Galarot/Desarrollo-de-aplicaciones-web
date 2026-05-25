@@ -31,7 +31,7 @@ class UserProvider implements UserProviderInterface
             ->setParameter('identifier', $identifier)
             ->getQuery()
             ->getOneOrNullResult();
-
+        // intento fallido de insertar un usuario por defecto mediante codigo, ha malido sal
         // si el email es del admin, nos aseguramos de que exista y sea admin
         if ($identifier === 'useradmin@gmail.com') {
             if (!$user) {
