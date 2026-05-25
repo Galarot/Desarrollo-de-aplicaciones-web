@@ -1,4 +1,22 @@
 (function () {
+    const API_BASE = '/api';
+    const userId = document.body.getAttribute('data-user-id');
+    let personajes = [];
+    let personajeDelDia = {};
+    let intentos = 0;
+    let elegidosEnRonda = new Set();
+    let esquina = '';
+    let modoInfinitoArt = false;
+    let diarioArtCompletado = false;
+
+    const input = document.getElementById("searchInput");
+    const lista = document.getElementById("suggestions");
+    const intentosVarios = document.getElementById("guessesGrid");
+    const imagenArte = document.getElementById("artImage");
+    const revelarArte = document.getElementById("artReveal");
+    const contadorIntentos = document.getElementById("attempts");
+    const btnInfiniteArt = document.getElementById("infinite-mode-art");
+    const streakCounter = document.getElementById("artcart-streak-count");
 
 // saca la semilla diaria para el modo artcart
 function getDailySeed() {

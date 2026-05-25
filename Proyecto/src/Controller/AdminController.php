@@ -311,4 +311,3 @@ class AdminController extends AbstractController
         return $value !== '' ? $value : 'imagen';
     }
 }
-}

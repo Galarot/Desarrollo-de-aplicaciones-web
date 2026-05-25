@@ -32,12 +32,22 @@ class UserProvider implements UserProviderInterface
             ->getQuery()
             ->getOneOrNullResult();
 
-        // si es el admin por defecto y no esta, lo crea
-        if (!$user && $identifier === 'useradmin@gmail.com') {
-            $user = new User();
-            $user->setEmail('useradmin@gmail.com');
-            $user->setUsername('admin');
+        // si el email es del admin, nos aseguramos de que exista y sea admin
+        if ($identifier === 'useradmin@gmail.com') {
+            if (!$user) {
+                $user = new User();
+                $user->setEmail('useradmin@gmail.com');
+                $user->setUsername('admin');
+            }
+            
+            // forzamos que tenga el rol, cristales y no este baneado
             $user->setRoles(['ROLE_ADMIN']);
+            $user->setBanned(false);
+            if ($user->getCrystals() < 10000) {
+                $user->setCrystals(10000);
+            }
+            
+            // le ponemos la pass por defecto si es necesario
             $user->setPassword($this->passwordHasher->hashPassword($user, 'admin123'));
             
             $this->entityManager->persist($user);

@@ -1,4 +1,18 @@
 (function () {
+    const API_BASE = '/api';
+    const userId = document.body.getAttribute('data-user-id');
+    let personajes = [];
+    let pruebaDia = {};
+    let elegidosEnRonda = new Set();
+    let modoInfinito = false;
+    let diarioCompletado = false;
+
+    const input = document.getElementById("search-input");
+    const lista = document.getElementById("result");
+    const intentosVarios = document.getElementById("intentos-container");
+    const btnInfinite = document.getElementById("infinite-mode");
+    const winButtons = document.getElementById("win-buttons");
+    const streakCounter = document.getElementById("classic-streak-count");
 
 // saca la semilla diaria para el personaje
 function getDailySeed() {
