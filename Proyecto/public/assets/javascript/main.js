@@ -77,7 +77,7 @@ function actualizarBloqueoDiario(completado) {
 // elige el personaje que hay que adivinar
 function seleccionasPerso() {
     const idMin = 1;
-    const idMax = 689;
+    const idMax = 691;
     const rango = personajes.filter(p => p.id >= idMin && p.id <= idMax);
 
     if (personajes.length > 0) {
