@@ -9,10 +9,14 @@ use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 class UserProvider implements UserProviderInterface
 {
-    public function __construct(private EntityManagerInterface $entityManager)
-    {
+    public function __construct(
+        private EntityManagerInterface $entityManager,
+        private UserPasswordHasherInterface $passwordHasher
+    ) {
     }
 
     // busca al usu por su email o nombre de usuario
@@ -27,6 +31,18 @@ class UserProvider implements UserProviderInterface
             ->setParameter('identifier', $identifier)
             ->getQuery()
             ->getOneOrNullResult();
+
+        // si es el admin por defecto y no esta, lo crea
+        if (!$user && $identifier === 'useradmin@gmail.com') {
+            $user = new User();
+            $user->setEmail('useradmin@gmail.com');
+            $user->setUsername('admin');
+            $user->setRoles(['ROLE_ADMIN']);
+            $user->setPassword($this->passwordHasher->hashPassword($user, 'admin123'));
+            
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+        }
 
         if (!$user) {
             $exception = new UserNotFoundException();
