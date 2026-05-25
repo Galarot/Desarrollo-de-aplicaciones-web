@@ -4,53 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}DBLegendsdle{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/multimedia/logo.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.cdnfonts.com/css/edo-sz" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/styles/main.css') }}">
-
-    <style type="text/css">
-        :root {
-            --gray-900: #0a0a0c;
-            --slate-600: #1e293b;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.5)); }
-            50% { filter: drop-shadow(0 0 25px rgba(249, 115, 22, 0.8)); }
-        }
-        
-        .animate-float { animation: float 3s ease-in-out infinite; }
-        .animate-glow { animation: glow 2s ease-in-out infinite; }
-        
-        /* Ocultar scrollbar pero mantener funcionalidad */
-        .custom-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/styles/main.css') }}?v=20260525-2">
 
     {% block stylesheets %}{% endblock %}
 </head>
 
 <body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed flex flex-col" data-user-id="{{ app.user ? app.user.id : 'guest' }}">
 
+    <div class="fixed top-4 left-4 z-50 flex items-center gap-2 px-3 py-2 bg-slate-900/90 border-2 border-cyan-400 rounded-xl shadow-[0_0_18px_rgba(34,211,238,0.35)] backdrop-blur-md">
+        <img src="{{ asset('assets/multimedia/ccs.png') }}" class="w-7 h-7 object-contain" alt="CCS">
+        <span id="crystal-count" class="font-['Edo_SZ'] text-cyan-100 text-base sm:text-lg">{{ app.user ? app.user.crystals|number_format(0, ',', '.') : 0 }}</span>
+    </div>
+
     <!-- Icono flotante de usuario -->
     <div class="fixed top-4 right-4 z-50 flex items-start gap-3">
-        <a href="{{ path('app_admin_users') }}" data-turbo="false"
-            class="w-12 h-12 bg-gradient-to-br from-slate-800 to-slate-950 border-2 border-yellow-400 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.35)] hover:shadow-[0_0_25px_rgba(234,179,8,0.65)] transition-all duration-300"
-            title="Panel admin">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2 4 5.5v6c0 5 3.4 9.7 8 10.5 4.6-.8 8-5.5 8-10.5v-6L12 2Zm0 3.2 5 2.2v4.1c0 3.3-2 6.5-5 7.4-3-.9-5-4.1-5-7.4V7.4l5-2.2Zm0 2.8a2.5 2.5 0 0 0-1 4.8V16h2v-3.2A2.5 2.5 0 0 0 12 8Z"/>
-            </svg>
-        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_admin_users') }}" data-turbo="false"
+                class="w-12 h-12 bg-gradient-to-br from-slate-800 to-slate-950 border-2 border-yellow-400 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.35)] hover:shadow-[0_0_25px_rgba(234,179,8,0.65)] transition-all duration-300"
+                title="Panel admin">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2 4 5.5v6c0 5 3.4 9.7 8 10.5 4.6-.8 8-5.5 8-10.5v-6L12 2Zm0 3.2 5 2.2v4.1c0 3.3-2 6.5-5 7.4-3-.9-5-4.1-5-7.4V7.4l5-2.2Zm0 2.8a2.5 2.5 0 0 0-1 4.8V16h2v-3.2A2.5 2.5 0 0 0 12 8Z"/>
+                </svg>
+            </a>
+        {% endif %}
         {% if app.user %}
         <div class="relative group">
             <button onclick="document.getElementById('user-menu').classList.toggle('hidden')"
@@ -93,6 +72,26 @@
     </footer>
     
     <!-- <script src="{{ asset('assets/js/main.js') }}"></script> -->
+    <script>
+        window.updateCrystalCounter = function (value) {
+            const counter = document.getElementById('crystal-count');
+            const amount = Number(value || 0);
+            if (counter) {
+                counter.textContent = new Intl.NumberFormat('es-ES').format(amount);
+            }
+        };
+
+        if (document.body.dataset.userId !== 'guest') {
+            fetch('/api/summon/status')
+                .then((response) => response.ok ? response.json() : null)
+                .then((data) => {
+                    if (data && typeof data.crystals !== 'undefined') {
+                        window.updateCrystalCounter(data.crystals);
+                    }
+                })
+                .catch(() => {});
+        }
+    </script>
     {% block javascripts %}{% endblock %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
 </body>

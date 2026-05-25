@@ -10298,7 +10298,7 @@
             "genero": "Hombre",
             "afinidad": "Amarillo",
             "rareza": "Legend",
-            "estilo": "DEFENSA",
+            "estilo": "Defensa",
             "zenkai": "Sin zenkai",
             "saga": "Anime Original",
             "raza": "Saiyan"
@@ -10321,257 +10321,47 @@
     },
     {
         "id": 689,
-        "nombre": "Super Saiyan 4 Gogeta",
+        "nombre": "Super Saiyan Legendario Broly",
         "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/gogetassul2.png",
+        "art_cart_url": "/assets/multimedia/arts/brolylr.png",
         "atributos": {
             "genero": "Hombre",
             "afinidad": "Verde",
             "rareza": "Legend",
-            "estilo": "Fisico",
+            "estilo": "Defensa",
             "zenkai": "Sin zenkai",
-            "saga": "GT Saga",
+            "saga": "Sagas Movies",
             "raza": "Saiyan"
         }
     },
     {
         "id": 690,
-        "nombre": "Frieza Full Power",
+        "nombre": "Super Saiyan Blue Gogeta",
         "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/friezafpul.png",
+        "art_cart_url": "/assets/multimedia/arts/gogetablueul2.png",
         "atributos": {
             "genero": "Hombre",
-            "afinidad": "Amarillo",
-            "rareza": "Legend",
+            "afinidad": "Rojo",
+            "rareza": "Ultra",
             "estilo": "Energia",
             "zenkai": "Sin zenkai",
-            "saga": "Frieza Saga",
-            "raza": "Lineage of Evil"
+            "saga": "Sagas Movies",
+            "raza": "Saiyan"
         }
     },
     {
         "id": 691,
-        "nombre": "Super Saiyan 2 Gohan (Youth)",
+        "nombre": "Paragus & Broly (Assist)",
         "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/gohanteenssul.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Rojo",
-            "rareza": "Legend",
-            "estilo": "Fisico",
-            "zenkai": "Sin zenkai",
-            "saga": "Cell Saga",
-            "raza": "Saiyan Hibrido"
-        }
-    },
-    {
-        "id": 692,
-        "nombre": "Perfect Cell",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/perfectcellul.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Verde",
-            "rareza": "Legend",
-            "estilo": "Energia",
-            "zenkai": "Sin zenkai",
-            "saga": "Cell Saga",
-            "raza": "Android"
-        }
-    },
-    {
-        "id": 693,
-        "nombre": "Super Saiyan Blue Kaioken Goku",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/gokussgsskaiouul.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Azul",
-            "rareza": "Legend",
-            "estilo": "Energia",
-            "zenkai": "Sin zenkai",
-            "saga": "Universe Survival Saga",
-            "raza": "Saiyan"
-        }
-    },
-    {
-        "id": 694,
-        "nombre": "Hit",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/hitul.png",
+        "art_cart_url": "/assets/multimedia/arts/paragussp.png",
         "atributos": {
             "genero": "Hombre",
             "afinidad": "Morado",
-            "rareza": "Legend",
-            "estilo": "Fisico",
-            "zenkai": "Sin zenkai",
-            "saga": "Universe Survival Saga",
-            "raza": "Universe 6"
-        }
-    },
-    {
-        "id": 695,
-        "nombre": "Jiren Full Power",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/jirenfpsp3.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Verde",
-            "rareza": "Legend",
-            "estilo": "Fisico",
-            "zenkai": "Sin zenkai",
-            "saga": "Universe Survival Saga",
-            "raza": "Universe 11"
-        }
-    },
-    {
-        "id": 696,
-        "nombre": "Super Saiyan 3 Goku (Dragon Fist)",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/gokussj3lr.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Amarillo",
-            "rareza": "Legend",
+            "rareza": "Sparking",
             "estilo": "Fisico",
             "zenkai": "Sin zenkai",
             "saga": "Sagas Movies",
             "raza": "Saiyan"
-        }
-    },
-    {
-        "id": 697,
-        "nombre": "Tapion",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/tapionsp3.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "ROJO",
-            "rareza": "HERO",
-            "estilo": "Apoyo",
-            "zenkai": "Sin zenkai",
-            "saga": "Sagas Movies",
-            "raza": "Other"
-        }
-    },
-    {
-        "id": 698,
-        "nombre": "Super Saiyan Broly (Full Power)",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/brolyssul.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Morado",
-            "rareza": "Legend",
-            "estilo": "Energia",
-            "zenkai": "Sin zenkai",
-            "saga": "Sagas Movies",
-            "raza": "Saiyan"
-        }
-    },
-    {
-        "id": 699,
-        "nombre": "Super Saiyan Blue Gogeta",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/gogetassgssul.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Azul",
-            "rareza": "Legend",
-            "estilo": "Fisico",
-            "zenkai": "Sin zenkai",
-            "saga": "Sagas Movies",
-            "raza": "Saiyan"
-        }
-    },
-    {
-        "id": 700,
-        "nombre": "Ultra Ego Vegeta",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/vegetaul.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Morado",
-            "rareza": "Legend",
-            "estilo": "Fisico",
-            "zenkai": "Sin zenkai",
-            "saga": "Manga",
-            "raza": "Saiyan"
-        }
-    },
-    {
-        "id": 701,
-        "nombre": "Granolah",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/logo.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Verde",
-            "rareza": "Legend",
-            "estilo": "Energia",
-            "zenkai": "Sin zenkai",
-            "saga": "Manga",
-            "raza": "Cerealian"
-        }
-    },
-    {
-        "id": 702,
-        "nombre": "Moro",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/logo.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Morado",
-            "rareza": "Legend",
-            "estilo": "Energia",
-            "zenkai": "Sin zenkai",
-            "saga": "Manga",
-            "raza": "Other"
-        }
-    },
-    {
-        "id": 703,
-        "nombre": "Gas (Full Power)",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/logo.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Rojo",
-            "rareza": "Legend",
-            "estilo": "Fisico",
-            "zenkai": "Sin zenkai",
-            "saga": "Manga",
-            "raza": "Heeter"
-        }
-    },
-    {
-        "id": 704,
-        "nombre": "Black Frieza",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/friezagoldul.png",
-        "atributos": {
-            "genero": "Hombre",
-            "afinidad": "Morado",
-            "rareza": "Legend",
-            "estilo": "Fisico",
-            "zenkai": "Sin zenkai",
-            "saga": "Manga",
-            "raza": "Lineage of Evil"
-        }
-    },
-    {
-        "id": 705,
-        "nombre": "super saiyan bardock",
-        "anio": 2026,
-        "art_cart_url": "/assets/multimedia/arts/bardocklr.png",
-        "atributos": {
-            "genero": "hombre",
-            "afinidad": "rojo",
-            "rareza": "legend",
-            "estilo": "fisico",
-            "zenkai": "sin zenkai",
-            "saga": "anime original",
-            "raza": "saiyan"
         }
     }
 ]

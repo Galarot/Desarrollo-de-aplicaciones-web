@@ -83,21 +83,19 @@
         <section class="bg-slate-900/90 border-2 border-orange-600 rounded-2xl p-6 shadow-xl">
             <div class="flex flex-col sm:flex-row sm:items-end gap-3 mb-5">
                 <div class="flex-1">
-                    <h2 class="font-['Edo_SZ'] text-2xl text-orange-300 mb-2">characters.json</h2>
-                    <select id="character-picker" class="w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
-                        <option value="">Nuevo personaje</option>
-                        {% for character in characters %}
-                            <option value="{{ character.id }}">#{{ character.id }} - {{ character.nombre }}</option>
-                        {% endfor %}
-                    </select>
+                    <h2 class="font-['Edo_SZ'] text-2xl text-orange-300 mb-2">Personajes</h2>
+                    <input id="character-search" type="text" autocomplete="off" placeholder="Buscar personaje o escribir nuevo" class="w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white placeholder:text-gray-400">
+                    <input id="character-picker" type="hidden" value="">
+                    <div id="character-results" class="hidden mt-2 max-h-72 overflow-y-auto rounded-xl border border-orange-500 bg-slate-950/95 shadow-xl"></div>
                 </div>
                 <button type="button" id="load-character" class="px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg border border-white/20 text-white">
                     Cargar
                 </button>
             </div>
 
-            <form method="post" action="{{ path('app_admin_character_save') }}" class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-turbo="false">
+            <form method="post" action="{{ path('app_admin_character_save') }}" enctype="multipart/form-data" class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-turbo="false">
                 <input type="hidden" name="_token" value="{{ csrf_token('admin_character_save') }}">
+                <input id="character-art" name="art_cart_url" type="hidden">
                 <label class="text-white text-sm">ID
                     <input id="character-id" name="id" type="number" min="1" placeholder="Automatico si esta vacio" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
@@ -107,9 +105,19 @@
                 <label class="text-white text-sm">Anio
                     <input id="character-anio" name="anio" type="number" min="2018" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
-                <label class="text-white text-sm">Foto art cart
-                    <input id="character-art" name="art_cart_url" required placeholder="/assets/multimedia/arts/personaje.png" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
-                </label>
+                <div class="text-white text-sm sm:col-span-2">
+                    <span>Foto art cart</span>
+                    <div class="mt-2 grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 items-center">
+                        <div class="h-44 rounded-xl border border-orange-500 bg-slate-800 overflow-hidden flex items-center justify-center">
+                            <img id="character-art-preview" src="{{ asset('assets/multimedia/logo.png') }}" class="max-h-full max-w-full object-contain opacity-70" alt="Vista previa art cart">
+                        </div>
+                        <label class="block">
+                            <span class="block mb-2 text-gray-300">Subir imagen</span>
+                            <input id="character-art-file" name="art_cart_file" type="file" accept="image/png,image/jpeg,image/webp" class="w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white file:mr-4 file:rounded-md file:border-0 file:bg-orange-600 file:px-4 file:py-2 file:text-white">
+                            <span id="character-art-status" class="block mt-2 text-xs text-gray-400">Sin imagen seleccionada.</span>
+                        </label>
+                    </div>
+                </div>
                 <label class="text-white text-sm">Genero
                     <input id="character-genero" name="genero" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
@@ -142,30 +150,38 @@
         <section class="bg-slate-900/90 border-2 border-orange-600 rounded-2xl p-6 shadow-xl">
             <div class="flex flex-col sm:flex-row sm:items-end gap-3 mb-5">
                 <div class="flex-1">
-                    <h2 class="font-['Edo_SZ'] text-2xl text-orange-300 mb-2">splash.json</h2>
-                    <select id="splash-picker" class="w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
-                        <option value="">Nuevo splash</option>
-                        {% for splash in splashCharacters %}
-                            <option value="{{ splash.id }}">#{{ splash.id }} - {{ splash.nombre }}</option>
-                        {% endfor %}
-                    </select>
+                    <h2 class="font-['Edo_SZ'] text-2xl text-orange-300 mb-2">Splash Personajes</h2>
+                    <input id="splash-search" type="text" autocomplete="off" placeholder="Buscar splash o escribir nuevo" class="w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white placeholder:text-gray-400">
+                    <input id="splash-picker" type="hidden" value="">
+                    <div id="splash-results" class="hidden mt-2 max-h-72 overflow-y-auto rounded-xl border border-orange-500 bg-slate-950/95 shadow-xl"></div>
                 </div>
                 <button type="button" id="load-splash" class="px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg border border-white/20 text-white">
                     Cargar
                 </button>
             </div>
 
-            <form method="post" action="{{ path('app_admin_splash_save') }}" class="grid grid-cols-1 gap-4" data-turbo="false">
+            <form method="post" action="{{ path('app_admin_splash_save') }}" enctype="multipart/form-data" class="grid grid-cols-1 gap-4" data-turbo="false">
                 <input type="hidden" name="_token" value="{{ csrf_token('admin_splash_save') }}">
+                <input id="splash-art" name="art_url" type="hidden">
                 <label class="text-white text-sm">ID
                     <input id="splash-id" name="id" type="number" min="1" placeholder="Automatico si esta vacio" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm">Nombre
                     <input id="splash-nombre" name="nombre" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
-                <label class="text-white text-sm">Foto splash
-                    <input id="splash-art" name="art_url" required placeholder="/assets/multimedia/splash/personaje.png" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
-                </label>
+                <div class="text-white text-sm">
+                    <span>Foto splash</span>
+                    <div class="mt-2 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 items-center">
+                        <div class="h-40 rounded-xl border border-orange-500 bg-slate-800 overflow-hidden flex items-center justify-center">
+                            <img id="splash-art-preview" src="{{ asset('assets/multimedia/logo.png') }}" class="max-h-full max-w-full object-contain opacity-70" alt="Vista previa splash">
+                        </div>
+                        <label class="block">
+                            <span class="block mb-2 text-gray-300">Subir imagen</span>
+                            <input id="splash-art-file" name="splash_file" type="file" accept="image/png,image/jpeg,image/webp" class="w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white file:mr-4 file:rounded-md file:border-0 file:bg-orange-600 file:px-4 file:py-2 file:text-white">
+                            <span id="splash-art-status" class="block mt-2 text-xs text-gray-400">Sin imagen seleccionada.</span>
+                        </label>
+                    </div>
+                </div>
                 <div class="flex justify-end">
                     <button type="submit" class="font-['Edo_SZ'] px-6 py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400">
                         Guardar splash
@@ -174,6 +190,31 @@
             </form>
         </section>
     </div>
+
+    <section class="mt-8 bg-slate-900/90 border-2 border-cyan-500 rounded-2xl p-6 shadow-xl">
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(260px,420px)_1fr] gap-6 items-center">
+            <div>
+                <h2 class="font-['Edo_SZ'] text-2xl text-cyan-300 mb-2">Invocacion</h2>
+                <p class="text-gray-300 text-sm mb-4">Banner actual de la pagina de invocacion.</p>
+                <div class="rounded-xl border-2 border-cyan-400 bg-slate-950 overflow-hidden shadow-[0_0_24px_rgba(34,211,238,0.25)]">
+                    <img id="banner-preview" src="{{ asset('assets/multimedia/bannerprueba.png') }}?v={{ summonBannerVersion }}" class="w-full max-h-64 object-contain bg-black/30" alt="Banner de invocacion actual">
+                </div>
+            </div>
+
+            <form method="post" action="{{ path('app_admin_summon_banner_save') }}" enctype="multipart/form-data" class="flex flex-col gap-4" data-turbo="false">
+                <input type="hidden" name="_token" value="{{ csrf_token('admin_summon_banner_save') }}">
+                <label class="text-white text-sm">Cambiar banner
+                    <input id="banner-file" name="banner_file" type="file" accept="image/png,image/jpeg,image/webp" required class="mt-2 w-full p-3 bg-slate-800 border border-cyan-500 rounded-lg text-white file:mr-4 file:rounded-md file:border-0 file:bg-cyan-700 file:px-4 file:py-2 file:text-white">
+                </label>
+                <p id="banner-status" class="text-xs text-gray-400">La imagen se guardara como banner activo de invocacion.</p>
+                <div>
+                    <button type="submit" class="font-['Edo_SZ'] px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-800 text-white rounded-xl border-2 border-cyan-300">
+                        Guardar banner
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
 
     <div class="mt-8 flex justify-center">
         <a href="{{ path('app_home') }}" class="font-['Edo_SZ'] px-6 py-3 bg-slate-800 text-white rounded-xl border border-white/20 hover:bg-slate-700 transition-all">
@@ -193,15 +234,215 @@
             return document.getElementById(prefix + '-' + key);
         }
 
+        function normalizeText(value) {
+            return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function escapeHtml(value) {
+            return String(value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function isNewTerm(value, type) {
+            const normalized = normalizeText(value).trim();
+
+            return normalized === '' || normalized === 'nuevo' || normalized === `nuevo ${type}`;
+        }
+
+        function resetCharacterForm(prefillName) {
+            byId('character', 'id').value = '';
+            byId('character', 'nombre').value = prefillName || '';
+            byId('character', 'anio').value = '';
+            byId('character', 'art').value = '';
+            byId('character', 'genero').value = '';
+            byId('character', 'afinidad').value = '';
+            byId('character', 'rareza').value = '';
+            byId('character', 'estilo').value = '';
+            byId('character', 'zenkai').value = '';
+            byId('character', 'saga').value = '';
+            byId('character', 'raza').value = '';
+            document.getElementById('character-art-file').value = '';
+            setPreview('character-art-preview', 'character-art-status', '');
+        }
+
+        function resetSplashForm(prefillName) {
+            byId('splash', 'id').value = '';
+            byId('splash', 'nombre').value = prefillName || '';
+            byId('splash', 'art').value = '';
+            document.getElementById('splash-art-file').value = '';
+            setPreview('splash-art-preview', 'splash-art-status', '');
+        }
+
+        function setPreview(imageId, statusId, path) {
+            const preview = document.getElementById(imageId);
+            const status = document.getElementById(statusId);
+            if (!preview || !status) return;
+
+            if (path) {
+                preview.src = path;
+                preview.classList.remove('opacity-70');
+                status.textContent = path;
+            } else {
+                preview.src = "{{ asset('assets/multimedia/logo.png') }}";
+                preview.classList.add('opacity-70');
+                status.textContent = 'Sin imagen seleccionada.';
+            }
+        }
+
+        function bindFilePreview(inputId, imageId, statusId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(imageId);
+            const status = document.getElementById(statusId);
+            if (!input || !preview || !status) return;
+
+            input.addEventListener('change', () => {
+                const file = input.files && input.files[0];
+                if (!file) return;
+
+                preview.src = URL.createObjectURL(file);
+                preview.classList.remove('opacity-70');
+                status.textContent = file.name;
+            });
+        }
+
+        function renderCharacterResults(term) {
+            const results = document.getElementById('character-results');
+            const search = document.getElementById('character-search');
+            const selected = document.getElementById('character-picker');
+            const normalizedTerm = normalizeText(term);
+            const matches = characters
+                .filter((item) => normalizeText(item.nombre).includes(normalizedTerm))
+                .slice(0, 30);
+
+            selected.value = '';
+            results.innerHTML = `
+                <button type="button" data-new="1" class="w-full flex items-center gap-3 p-3 text-left text-white hover:bg-orange-600/20 border-b border-white/10">
+                    <div class="w-12 h-12 rounded-lg bg-slate-800 border border-orange-500 flex items-center justify-center font-bold text-orange-300">+</div>
+                    <div>
+                        <p class="font-bold">Nuevo personaje</p>
+                        <p class="text-xs text-gray-400">Crear registro nuevo${term && !isNewTerm(term, 'personaje') ? ': ' + escapeHtml(term) : ''}</p>
+                    </div>
+                </button>
+            ` + matches.map((character) => `
+                <button type="button" data-id="${character.id}" class="w-full flex items-center gap-3 p-3 text-left text-white hover:bg-orange-600/20 border-b border-white/10">
+                    <img src="${escapeHtml(character.art_cart_url || '/assets/multimedia/logo.png')}" class="w-12 h-12 rounded-lg object-cover border border-orange-500" alt="">
+                    <div class="min-w-0">
+                        <p class="font-bold truncate">#${character.id} - ${escapeHtml(character.nombre)}</p>
+                        <p class="text-xs text-yellow-200">${escapeHtml(character.atributos && character.atributos.rareza ? character.atributos.rareza : 'Sin rareza')}</p>
+                    </div>
+                </button>
+            `).join('');
+
+            results.classList.remove('hidden');
+
+            results.querySelectorAll('button').forEach((button) => {
+                button.addEventListener('click', () => {
+                    if (button.dataset.new) {
+                        selected.value = '';
+                        search.value = term && !isNewTerm(term, 'personaje') ? term : 'Nuevo personaje';
+                    } else {
+                        const character = characters.find((item) => Number(item.id) === Number(button.dataset.id));
+                        selected.value = button.dataset.id;
+                        search.value = character ? `#${character.id} - ${character.nombre}` : '';
+                    }
+
+                    results.classList.add('hidden');
+                });
+            });
+        }
+
+        function renderSplashResults(term) {
+            const results = document.getElementById('splash-results');
+            const search = document.getElementById('splash-search');
+            const selected = document.getElementById('splash-picker');
+            const normalizedTerm = normalizeText(term);
+            const matches = splashCharacters
+                .filter((item) => normalizeText(item.nombre).includes(normalizedTerm))
+                .slice(0, 30);
+
+            selected.value = '';
+            results.innerHTML = `
+                <button type="button" data-new="1" class="w-full flex items-center gap-3 p-3 text-left text-white hover:bg-orange-600/20 border-b border-white/10">
+                    <div class="w-14 h-12 rounded-lg bg-slate-800 border border-orange-500 flex items-center justify-center font-bold text-orange-300">+</div>
+                    <div>
+                        <p class="font-bold">Nuevo splash</p>
+                        <p class="text-xs text-gray-400">Crear registro nuevo${term && !isNewTerm(term, 'splash') ? ': ' + escapeHtml(term) : ''}</p>
+                    </div>
+                </button>
+            ` + matches.map((splash) => `
+                <button type="button" data-id="${splash.id}" class="w-full flex items-center gap-3 p-3 text-left text-white hover:bg-orange-600/20 border-b border-white/10">
+                    <img src="${escapeHtml(splash.art_url || '/assets/multimedia/logo.png')}" class="w-14 h-12 rounded-lg object-cover border border-orange-500" alt="">
+                    <div class="min-w-0">
+                        <p class="font-bold truncate">#${splash.id} - ${escapeHtml(splash.nombre)}</p>
+                    </div>
+                </button>
+            `).join('');
+
+            results.classList.remove('hidden');
+
+            results.querySelectorAll('button').forEach((button) => {
+                button.addEventListener('click', () => {
+                    if (button.dataset.new) {
+                        selected.value = '';
+                        search.value = term && !isNewTerm(term, 'splash') ? term : 'Nuevo splash';
+                    } else {
+                        const splash = splashCharacters.find((item) => Number(item.id) === Number(button.dataset.id));
+                        selected.value = button.dataset.id;
+                        search.value = splash ? `#${splash.id} - ${splash.nombre}` : '';
+                    }
+
+                    results.classList.add('hidden');
+                });
+            });
+        }
+
+        document.getElementById('character-search').addEventListener('input', (event) => {
+            renderCharacterResults(event.target.value.trim());
+        });
+
+        document.getElementById('character-search').addEventListener('focus', (event) => {
+            renderCharacterResults(event.target.value.trim());
+        });
+
+        document.getElementById('splash-search').addEventListener('input', (event) => {
+            renderSplashResults(event.target.value.trim());
+        });
+
+        document.getElementById('splash-search').addEventListener('focus', (event) => {
+            renderSplashResults(event.target.value.trim());
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('#character-search') && !event.target.closest('#character-results')) {
+                document.getElementById('character-results').classList.add('hidden');
+            }
+
+            if (!event.target.closest('#splash-search') && !event.target.closest('#splash-results')) {
+                document.getElementById('splash-results').classList.add('hidden');
+            }
+        });
+
         document.getElementById('load-character').addEventListener('click', () => {
             const id = Number(document.getElementById('character-picker').value);
+            const searchTerm = document.getElementById('character-search').value.trim();
             const character = characters.find((item) => Number(item.id) === id);
             const attrs = character && character.atributos ? character.atributos : {};
+
+            if (!character) {
+                resetCharacterForm(!isNewTerm(searchTerm, 'personaje') ? searchTerm : '');
+                return;
+            }
 
             byId('character', 'id').value = character ? character.id : '';
             byId('character', 'nombre').value = character ? character.nombre : '';
             byId('character', 'anio').value = character ? character.anio : '';
             byId('character', 'art').value = character ? character.art_cart_url : '';
+            document.getElementById('character-art-file').value = '';
+            setPreview('character-art-preview', 'character-art-status', character ? character.art_cart_url : '');
             byId('character', 'genero').value = attrs.genero || '';
             byId('character', 'afinidad').value = attrs.afinidad || '';
             byId('character', 'rareza').value = attrs.rareza || '';
@@ -213,12 +454,24 @@
 
         document.getElementById('load-splash').addEventListener('click', () => {
             const id = Number(document.getElementById('splash-picker').value);
+            const searchTerm = document.getElementById('splash-search').value.trim();
             const splash = splashCharacters.find((item) => Number(item.id) === id);
+
+            if (!splash) {
+                resetSplashForm(!isNewTerm(searchTerm, 'splash') ? searchTerm : '');
+                return;
+            }
 
             byId('splash', 'id').value = splash ? splash.id : '';
             byId('splash', 'nombre').value = splash ? splash.nombre : '';
             byId('splash', 'art').value = splash ? splash.art_url : '';
+            document.getElementById('splash-art-file').value = '';
+            setPreview('splash-art-preview', 'splash-art-status', splash ? splash.art_url : '');
         });
+
+        bindFilePreview('character-art-file', 'character-art-preview', 'character-art-status');
+        bindFilePreview('splash-art-file', 'splash-art-preview', 'splash-art-status');
+        bindFilePreview('banner-file', 'banner-preview', 'banner-status');
     })();
 </script>
 {% endblock %}

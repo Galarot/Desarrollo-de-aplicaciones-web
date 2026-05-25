@@ -9,12 +9,14 @@ const userId = document.body.getAttribute('data-user-id');
 let personajes = [];
 let elegidosEnRonda = new Set();
 let modoInfinito = false;
+let diarioCompletado = false;
 
 const input = document.getElementById("search-input");
 const lista = document.getElementById("result");
 const intentosVarios = document.getElementById("intentos-container");
 const winButtons = document.getElementById("win-buttons");
 const btnInfinite = document.getElementById("infinite-mode");
+const streakCounter = document.getElementById("classic-streak-count");
 
 let pruebaDia = {};
 
@@ -26,6 +28,50 @@ function getDailySeed() {
 function seededRandom(seed) {
     const x = Math.sin(seed) * 10000;
     return x - Math.floor(x);
+}
+
+function actualizarCristales(crystals) {
+    if (window.updateCrystalCounter && typeof crystals !== 'undefined') {
+        window.updateCrystalCounter(crystals);
+    }
+}
+
+function actualizarRacha(streak) {
+    if (streakCounter && typeof streak !== 'undefined') {
+        streakCounter.textContent = Number(streak || 0).toString();
+    }
+}
+
+function reclamarRecompensaInfinita() {
+    if (userId === 'guest') return;
+
+    fetch(API_BASE + '/rewards/infinite', { method: 'POST' })
+        .then(r => r.json())
+        .then(res => actualizarCristales(res.crystals))
+        .catch(err => console.error("Error al guardar recompensa infinita:", err));
+}
+
+function actualizarBloqueoDiario(completado) {
+    diarioCompletado = completado;
+
+    if (winButtons && completado) {
+        winButtons.classList.remove('hidden');
+    }
+
+    if (!input) return;
+
+    if (completado && !modoInfinito) {
+        input.value = "";
+        input.disabled = true;
+        input.placeholder = "Desafio diario clasico completado. Usa Modo Infinito.";
+        input.classList.add('opacity-60', 'cursor-not-allowed');
+        if (lista) lista.classList.add("hidden");
+        return;
+    }
+
+    input.disabled = false;
+    input.placeholder = modoInfinito ? "Modo infinito: escribe un personaje..." : "Escribe el nombre del personaje...";
+    input.classList.remove('opacity-60', 'cursor-not-allowed');
 }
 
 function seleccionasPerso() {
@@ -59,11 +105,20 @@ function sincronizarProgreso() {
         const savedSeed = localStorage.getItem(`dailyWonIndex_${userId}`);
         if (savedSeed === getDailySeed().toString()) {
             console.log("Progreso detectado en localStorage");
-            if (winButtons) winButtons.classList.remove('hidden');
+            actualizarBloqueoDiario(true);
+            if (userId === 'guest') {
+                actualizarRacha(1);
+            }
         }
 
         // Sincronizar con el servidor si está logueado
         if (userId !== 'guest') {
+            if (!diarioCompletado && input) {
+                input.disabled = true;
+                input.placeholder = "Comprobando desafio diario...";
+                input.classList.add('opacity-60', 'cursor-not-allowed');
+            }
+
             fetch(API_BASE + '/progress/check')
                 .then(r => {
                     if (!r.ok) throw new Error("Fallo en check progreso: " + r.status);
@@ -71,13 +126,22 @@ function sincronizarProgreso() {
                 })
                 .then(data => {
                     console.log("Respuesta del servidor (check):", data);
+                    if (data.streaks) {
+                        actualizarRacha(data.streaks.classic);
+                    }
+
                     if (data.classic) {
                         console.log("Servidor confirma victoria hoy");
-                        if (winButtons) winButtons.classList.remove('hidden');
                         localStorage.setItem(`dailyWonIndex_${userId}`, getDailySeed().toString());
+                        actualizarBloqueoDiario(true);
+                    } else {
+                        actualizarBloqueoDiario(false);
                     }
                 })
-                .catch(err => console.error("Error sincronizando progreso:", err));
+                .catch(err => {
+                    console.error("Error sincronizando progreso:", err);
+                    actualizarBloqueoDiario(false);
+                });
         }
     } catch (e) {
         console.error("Error crítico en sincronizarProgreso:", e);
@@ -89,6 +153,7 @@ sincronizarProgreso();
 
 btnInfinite.addEventListener('click', () => {
     modoInfinito = true;
+    actualizarBloqueoDiario(diarioCompletado);
     intentosVarios.innerHTML = "";
     elegidosEnRonda.clear();
     // No ocultamos winButtons, solo generamos nuevo personaje
@@ -115,6 +180,11 @@ fetch(API_BASE + '/characters')
     .catch(error => console.error('Error cargando personajes:', error));
 
 input.addEventListener('input', () => {
+    if (diarioCompletado && !modoInfinito) {
+        lista.classList.add("hidden");
+        return;
+    }
+
     const text = input.value.toLowerCase().trim();
     lista.classList.toggle("hidden", !text);
 
@@ -137,6 +207,11 @@ function elegir(event, id) {
     event.preventDefault();
     event.stopPropagation();
 
+    if (diarioCompletado && !modoInfinito) {
+        lista.classList.add("hidden");
+        return;
+    }
+
     const p = personajes.find(pers => pers.id === id);
     elegidosEnRonda.add(id);
     compararAtributos(p);
@@ -146,7 +221,7 @@ function elegir(event, id) {
 
         if (!modoInfinito) {
             localStorage.setItem(`dailyWonIndex_${userId}`, getDailySeed().toString());
-            winButtons.classList.remove('hidden');
+            actualizarBloqueoDiario(true);
 
             if (userId !== 'guest') {
                 console.log("Enviando victoria al servidor...");
@@ -156,9 +231,15 @@ function elegir(event, id) {
                         body: JSON.stringify({ mode: 'classic' })
                     })
                     .then(r => r.json())
-                    .then(res => console.log("Resultado de guardado:", res))
+                    .then(res => {
+                        console.log("Resultado de guardado:", res);
+                        actualizarCristales(res.crystals);
+                        actualizarRacha(res.streak);
+                    })
                     .catch(err => console.error("Error al guardar victoria:", err));
             }
+        } else {
+            reclamarRecompensaInfinita();
         }
 
         setTimeout(() => {

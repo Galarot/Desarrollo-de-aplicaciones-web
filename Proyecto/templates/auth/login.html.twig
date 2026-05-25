@@ -32,10 +32,10 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
             <input type="text" name="_username" value="{{ last_username }}" placeholder="Correo electrónico o nombre de usuario"
-                class="p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
+                class="font-sans p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
 
             <input type="password" name="_password" placeholder="Contraseña"
-                class="p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
+                class="font-sans p-4 bg-slate-800/80 border-2 border-orange-600/60 text-white rounded-xl placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300">
 
             <div class="flex items-center justify-between mt-2">
                 <a href="{{ path('app_register') }}" data-turbo="false"

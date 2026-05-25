@@ -11,6 +11,7 @@ let intentos = 0;
 let elegidosEnRonda = new Set();
 let esquina = '';
 let modoInfinitoArt = false;
+let diarioArtCompletado = false;
 
 const input = document.getElementById("searchInput");
 const lista = document.getElementById("suggestions");
@@ -19,6 +20,7 @@ const imagenArte = document.getElementById("artImage");
 const revelarArte = document.getElementById("artReveal");
 const contadorIntentos = document.getElementById("attempts");
 const btnInfiniteArt = document.getElementById("infinite-mode-art");
+const streakCounter = document.getElementById("artcart-streak-count");
 
 function getDailySeed() {
     const today = new Date();
@@ -28,6 +30,50 @@ function getDailySeed() {
 function seededRandom(seed) {
     const x = Math.sin(seed) * 10000;
     return x - Math.floor(x);
+}
+
+function actualizarCristales(crystals) {
+    if (window.updateCrystalCounter && typeof crystals !== 'undefined') {
+        window.updateCrystalCounter(crystals);
+    }
+}
+
+function actualizarRachaArt(streak) {
+    if (streakCounter && typeof streak !== 'undefined') {
+        streakCounter.textContent = Number(streak || 0).toString();
+    }
+}
+
+function reclamarRecompensaInfinita() {
+    if (userId === 'guest') return;
+
+    fetch(API_BASE + '/rewards/infinite', { method: 'POST' })
+        .then(r => r.json())
+        .then(res => actualizarCristales(res.crystals))
+        .catch(err => console.error("Error al guardar recompensa infinita art:", err));
+}
+
+function actualizarBloqueoDiarioArt(completado) {
+    diarioArtCompletado = completado;
+
+    if (btnInfiniteArt && completado) {
+        btnInfiniteArt.classList.remove('hidden');
+    }
+
+    if (!input) return;
+
+    if (completado && !modoInfinitoArt) {
+        input.value = "";
+        input.disabled = true;
+        input.placeholder = "Desafio diario Art Cart completado. Usa Modo Infinito.";
+        input.classList.add('opacity-60', 'cursor-not-allowed');
+        if (lista) lista.classList.add("hidden");
+        return;
+    }
+
+    input.disabled = false;
+    input.placeholder = modoInfinitoArt ? "Modo infinito: escribe un personaje..." : "Escribe el nombre del personaje...";
+    input.classList.remove('opacity-60', 'cursor-not-allowed');
 }
 
 function seleccionarPersonaje() {
@@ -61,22 +107,40 @@ function sincronizarProgresoArt() {
     // Verificar progreso local
     if (localStorage.getItem(`dailyWonArt_${userId}`) === getDailySeed().toString()) {
         console.log("Progreso Art detectado en localStorage");
-        btnInfiniteArt.classList.remove('hidden');
+        actualizarBloqueoDiarioArt(true);
+        if (userId === 'guest') {
+            actualizarRachaArt(1);
+        }
     }
 
     // Sincronizar con el servidor si está logueado
     if (userId !== 'guest') {
+        if (!diarioArtCompletado && input) {
+            input.disabled = true;
+            input.placeholder = "Comprobando desafio diario...";
+            input.classList.add('opacity-60', 'cursor-not-allowed');
+        }
+
         fetch(API_BASE + '/progress/check')
             .then(r => r.json())
             .then(data => {
                 console.log("Respuesta servidor Art (check):", data);
+                if (data.streaks) {
+                    actualizarRachaArt(data.streaks.artcart);
+                }
+
                 if (data.artcart) {
                     console.log("Servidor confirma victoria Art hoy");
-                    btnInfiniteArt.classList.remove('hidden');
                     localStorage.setItem(`dailyWonArt_${userId}`, getDailySeed().toString());
+                    actualizarBloqueoDiarioArt(true);
+                } else {
+                    actualizarBloqueoDiarioArt(false);
                 }
             })
-            .catch(err => console.error("Error sincronizando progreso art:", err));
+            .catch(err => {
+                console.error("Error sincronizando progreso art:", err);
+                actualizarBloqueoDiarioArt(false);
+            });
     }
 }
 
@@ -85,6 +149,7 @@ sincronizarProgresoArt();
 
 btnInfiniteArt.addEventListener('click', () => {
     modoInfinitoArt = true;
+    actualizarBloqueoDiarioArt(diarioArtCompletado);
     intentosVarios.innerHTML = "";
     elegidosEnRonda.clear();
     intentos = 0;
@@ -104,6 +169,11 @@ fetch(API_BASE + '/splash')
     .catch(error => console.error('Error cargando personajes:', error));
 
 input.addEventListener('input', () => {
+    if (diarioArtCompletado && !modoInfinitoArt) {
+        lista.classList.add("hidden");
+        return;
+    }
+
     const text = input.value.toLowerCase().trim();
     lista.classList.toggle("hidden", !text);
 
@@ -126,6 +196,11 @@ function elegir(event, id) {
     event.preventDefault();
     event.stopPropagation();
 
+    if (diarioArtCompletado && !modoInfinitoArt) {
+        lista.classList.add("hidden");
+        return;
+    }
+
     const p = personajes.find(pers => pers.id === id);
 
     elegidosEnRonda.add(id);
@@ -146,15 +221,23 @@ function elegir(event, id) {
 
         if (!modoInfinitoArt) {
             localStorage.setItem(`dailyWonArt_${userId}`, getDailySeed().toString());
-            btnInfiniteArt.classList.remove('hidden');
+            actualizarBloqueoDiarioArt(true);
 
             if (userId !== 'guest') {
                 fetch(API_BASE + '/progress/save', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ mode: 'artcart' })
-                });
+                })
+                    .then(r => r.json())
+                    .then(res => {
+                        actualizarCristales(res.crystals);
+                        actualizarRachaArt(res.streak);
+                    })
+                    .catch(err => console.error("Error al guardar victoria art:", err));
             }
+        } else {
+            reclamarRecompensaInfinita();
         }
 
         setTimeout(() => {

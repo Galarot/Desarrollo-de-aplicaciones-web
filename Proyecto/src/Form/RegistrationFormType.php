@@ -19,16 +19,16 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'attr' => ['class' => 'w-full p-3 bg-slate-900/90 border-2 border-orange-600 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-orange-400 transition-all'],
+                'attr' => ['class' => 'font-sans w-full p-3 bg-slate-900/90 border-2 border-orange-600 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-orange-400 transition-all'],
             ])
             ->add('username', TextType::class, [
-                'attr' => ['class' => 'w-full p-3 bg-slate-900/90 border-2 border-orange-600 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-orange-400 transition-all'],
+                'attr' => ['class' => 'font-sans w-full p-3 bg-slate-900/90 border-2 border-orange-600 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-orange-400 transition-all'],
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'invalid_message' => 'Las contraseñas deben coincidir.',
-                'options' => ['attr' => ['class' => 'w-full p-3 bg-slate-900/90 border-2 border-orange-600 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-orange-400 transition-all']],
+                'options' => ['attr' => ['class' => 'font-sans w-full p-3 bg-slate-900/90 border-2 border-orange-600 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-orange-400 transition-all']],
                 'required' => true,
                 'first_options'  => ['label' => 'Contraseña'],
                 'second_options' => ['label' => 'Repetir Contraseña'],
