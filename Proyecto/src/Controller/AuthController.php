@@ -14,6 +14,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AuthController extends AbstractController
 {
+    // hace el login de los usus
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -27,9 +28,11 @@ class AuthController extends AbstractController
         ]);
     }
 
+    // hace el logout de la sesion
     #[Route('/logout', name: 'app_logout')]
     public function logout(): void {}
 
+    // hace el registro de usus y admins
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em): Response
     {

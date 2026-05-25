@@ -1,47 +1,32 @@
-// DBLegendsdle - Juego Clásico
-// Sistema de adivinanza de personajes con comparación de atributos
-
 (function () {
 
-console.log("main.js cargado correctamente");
-const API_BASE = '/api';
-const userId = document.body.getAttribute('data-user-id');
-let personajes = [];
-let elegidosEnRonda = new Set();
-let modoInfinito = false;
-let diarioCompletado = false;
-
-const input = document.getElementById("search-input");
-const lista = document.getElementById("result");
-const intentosVarios = document.getElementById("intentos-container");
-const winButtons = document.getElementById("win-buttons");
-const btnInfinite = document.getElementById("infinite-mode");
-const streakCounter = document.getElementById("classic-streak-count");
-
-let pruebaDia = {};
-
+// saca la semilla diaria para el personaje
 function getDailySeed() {
     const today = new Date();
     return today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
 }
 
+// genera un numero al azar con una semilla
 function seededRandom(seed) {
     const x = Math.sin(seed) * 10000;
     return x - Math.floor(x);
 }
 
+// actualiza el contador de cristales en la pantalla
 function actualizarCristales(crystals) {
     if (window.updateCrystalCounter && typeof crystals !== 'undefined') {
         window.updateCrystalCounter(crystals);
     }
 }
 
+// actualiza el numero de la racha de victorias
 function actualizarRacha(streak) {
     if (streakCounter && typeof streak !== 'undefined') {
         streakCounter.textContent = Number(streak || 0).toString();
     }
 }
 
+// pide al servidor la recompensa del modo infinito
 function reclamarRecompensaInfinita() {
     if (userId === 'guest') return;
 
@@ -51,6 +36,7 @@ function reclamarRecompensaInfinita() {
         .catch(err => console.error("Error al guardar recompensa infinita:", err));
 }
 
+// bloquea el input si ya se ha ganado hoy
 function actualizarBloqueoDiario(completado) {
     diarioCompletado = completado;
 
@@ -74,6 +60,7 @@ function actualizarBloqueoDiario(completado) {
     input.classList.remove('opacity-60', 'cursor-not-allowed');
 }
 
+// elige el personaje que hay que adivinar
 function seleccionasPerso() {
     const idMin = 1;
     const idMax = 689;
@@ -84,34 +71,28 @@ function seleccionasPerso() {
             const seed = getDailySeed();
             const aleatorio = Math.floor(seededRandom(seed) * rango.length);
             pruebaDia = rango[aleatorio];
-            console.log("Objetivo del día:", pruebaDia.id, pruebaDia.nombre);
         } else {
             const aleatorio = Math.floor(Math.random() * rango.length);
             pruebaDia = rango[aleatorio];
-            console.log("Objetivo infinito:", pruebaDia.id, pruebaDia.nombre);
         }
     }
 }
 
+// mira en el servidor y local el progreso del usu
 function sincronizarProgreso() {
     try {
-        console.log("Iniciando sincronización para usuario:", userId);
         if (!userId) {
-            console.warn("userId no encontrado en el body");
             return;
         }
 
-        // Verificar progreso local
         const savedSeed = localStorage.getItem(`dailyWonIndex_${userId}`);
         if (savedSeed === getDailySeed().toString()) {
-            console.log("Progreso detectado en localStorage");
             actualizarBloqueoDiario(true);
             if (userId === 'guest') {
                 actualizarRacha(1);
             }
         }
 
-        // Sincronizar con el servidor si está logueado
         if (userId !== 'guest') {
             if (!diarioCompletado && input) {
                 input.disabled = true;
@@ -125,13 +106,11 @@ function sincronizarProgreso() {
                     return r.json();
                 })
                 .then(data => {
-                    console.log("Respuesta del servidor (check):", data);
                     if (data.streaks) {
                         actualizarRacha(data.streaks.classic);
                     }
 
                     if (data.classic) {
-                        console.log("Servidor confirma victoria hoy");
                         localStorage.setItem(`dailyWonIndex_${userId}`, getDailySeed().toString());
                         actualizarBloqueoDiario(true);
                     } else {
@@ -139,46 +118,41 @@ function sincronizarProgreso() {
                     }
                 })
                 .catch(err => {
-                    console.error("Error sincronizando progreso:", err);
                     actualizarBloqueoDiario(false);
                 });
         }
     } catch (e) {
-        console.error("Error crítico en sincronizarProgreso:", e);
     }
 }
 
-// Ejecutar sincronización inmediatamente
+// arranca la sincronizacion al cargar
 sincronizarProgreso();
 
+// pone el juego en modo infinito al dar al boton
 btnInfinite.addEventListener('click', () => {
     modoInfinito = true;
     actualizarBloqueoDiario(diarioCompletado);
     intentosVarios.innerHTML = "";
     elegidosEnRonda.clear();
-    // No ocultamos winButtons, solo generamos nuevo personaje
     seleccionasPerso();
 });
 
-// Cargar datos desde la API
-console.log("Cargando personajes desde la API...");
+// carga los personajes desde la api al empezar
 fetch(API_BASE + '/characters')
     .then(response => {
-        console.log("Respuesta API characters recibida:", response.status);
         if (!response.ok) throw new Error("Error HTTP: " + response.status);
         return response.json();
     })
     .then(data => {
-        console.log("Personajes procesados:", data.length);
         personajes = data;
         seleccionasPerso();
-        // Si hay texto en el input, actualizar el dropdown
         if (input && input.value.trim()) {
             input.dispatchEvent(new Event('input'));
         }
     })
     .catch(error => console.error('Error cargando personajes:', error));
 
+// busca personajes segun lo que escribes
 input.addEventListener('input', () => {
     if (diarioCompletado && !modoInfinito) {
         lista.classList.add("hidden");
@@ -203,6 +177,7 @@ input.addEventListener('input', () => {
         `).join('');
 });
 
+// hace la seleccion de un personaje de la lista
 function elegir(event, id) {
     event.preventDefault();
     event.stopPropagation();
@@ -217,14 +192,21 @@ function elegir(event, id) {
     compararAtributos(p);
 
     if (p.id === pruebaDia.id) {
-        alert("¡Has ganado!");
+        if (window.showVictoryModal) {
+            window.showVictoryModal(p.art_cart_url, () => {
+                if (modoInfinito) {
+                    intentosVarios.innerHTML = "";
+                    elegidosEnRonda.clear();
+                    seleccionasPerso();
+                }
+            });
+        }
 
         if (!modoInfinito) {
             localStorage.setItem(`dailyWonIndex_${userId}`, getDailySeed().toString());
             actualizarBloqueoDiario(true);
 
             if (userId !== 'guest') {
-                console.log("Enviando victoria al servidor...");
                 fetch(API_BASE + '/progress/save', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -232,7 +214,6 @@ function elegir(event, id) {
                     })
                     .then(r => r.json())
                     .then(res => {
-                        console.log("Resultado de guardado:", res);
                         actualizarCristales(res.crystals);
                         actualizarRacha(res.streak);
                     })
@@ -241,14 +222,6 @@ function elegir(event, id) {
         } else {
             reclamarRecompensaInfinita();
         }
-
-        setTimeout(() => {
-            if (modoInfinito) {
-                intentosVarios.innerHTML = "";
-                elegidosEnRonda.clear();
-                seleccionasPerso();
-            }
-        }, 2000);
     }
 
     input.value = "";
@@ -257,6 +230,7 @@ function elegir(event, id) {
 
 window.elegir = elegir;
 
+// compara los datos del user con el objetivo y pinta los cuadros
 function compararAtributos(usuario) {
     const fila = document.createElement("div");
     fila.className = "flex justify-center gap-2 mb-2 flex-nowrap min-w-max px-4";

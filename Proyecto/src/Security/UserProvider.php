@@ -15,13 +15,16 @@ class UserProvider implements UserProviderInterface
     {
     }
 
+    // busca al usu por su email o nombre de usuario
     public function loadUserByIdentifier(string $identifier): UserInterface
     {
+        $identifier = mb_strtolower(trim($identifier));
+
         $user = $this->entityManager->getRepository(User::class)
             ->createQueryBuilder('u')
-            ->where('LOWER(u.email) = :identifier')
-            ->orWhere('LOWER(u.username) = :identifier')
-            ->setParameter('identifier', mb_strtolower(trim($identifier)))
+            ->where('u.email = :identifier')
+            ->orWhere('u.username = :identifier')
+            ->setParameter('identifier', $identifier)
             ->getQuery()
             ->getOneOrNullResult();
 
@@ -34,6 +37,7 @@ class UserProvider implements UserProviderInterface
         return $user;
     }
 
+    // refresca los datos del usu desde la bd
     public function refreshUser(UserInterface $user): UserInterface
     {
         if (!$user instanceof User) {
@@ -49,12 +53,13 @@ class UserProvider implements UserProviderInterface
         return $refreshedUser;
     }
 
+    // mira si la clase de usu es la correcta
     public function supportsClass(string $class): bool
     {
         return User::class === $class || is_subclass_of($class, User::class);
     }
 
-    // For compatibility with Symfony versions that still call this method.
+    // carga al usu por el nombre (viejo symfony)
     public function loadUserByUsername(string $username): UserInterface
     {
         return $this->loadUserByIdentifier($username);

@@ -13,18 +13,19 @@ class AppFixtures extends Fixture
     {
     }
 
+    // carga los datos de prueba en la bd
     public function load(ObjectManager $manager): void
     {
-        // Crear un usuario administrador de prueba
+        // crea el admin por defecto
         $admin = new User();
-        $admin->setEmail('admin@dblegends.com');
+        $admin->setEmail('useradmin@gmail.com');
         $admin->setUsername('admin');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword($this->passwordHasher->hashPassword($admin, 'admin123'));
         
         $manager->persist($admin);
 
-        // Crear un usuario normal de prueba
+        // crea un usuario de prueba normal
         $user = new User();
         $user->setEmail('user@dblegends.com');
         $user->setUsername('testuser');

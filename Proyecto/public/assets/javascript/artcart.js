@@ -1,49 +1,32 @@
-// DBLegendsdle - Juego Art Cart
-// Sistema de adivinanza por arte/splash con revelación progresiva
-
 (function () {
 
-const API_BASE = '/api';
-const userId = document.body.getAttribute('data-user-id');
-let personajes = [];
-let personajeDelDia = {};
-let intentos = 0;
-let elegidosEnRonda = new Set();
-let esquina = '';
-let modoInfinitoArt = false;
-let diarioArtCompletado = false;
-
-const input = document.getElementById("searchInput");
-const lista = document.getElementById("suggestions");
-const intentosVarios = document.getElementById("guessesGrid");
-const imagenArte = document.getElementById("artImage");
-const revelarArte = document.getElementById("artReveal");
-const contadorIntentos = document.getElementById("attempts");
-const btnInfiniteArt = document.getElementById("infinite-mode-art");
-const streakCounter = document.getElementById("artcart-streak-count");
-
+// saca la semilla diaria para el modo artcart
 function getDailySeed() {
     const today = new Date();
     return today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
 }
 
+// genera un numero al azar con una semilla
 function seededRandom(seed) {
     const x = Math.sin(seed) * 10000;
     return x - Math.floor(x);
 }
 
+// actualiza el contador de cristales en la pantalla
 function actualizarCristales(crystals) {
     if (window.updateCrystalCounter && typeof crystals !== 'undefined') {
         window.updateCrystalCounter(crystals);
     }
 }
 
+// actualiza el numero de la racha de artcart
 function actualizarRachaArt(streak) {
     if (streakCounter && typeof streak !== 'undefined') {
         streakCounter.textContent = Number(streak || 0).toString();
     }
 }
 
+// pide al servidor la recompensa del modo infinito art
 function reclamarRecompensaInfinita() {
     if (userId === 'guest') return;
 
@@ -53,6 +36,7 @@ function reclamarRecompensaInfinita() {
         .catch(err => console.error("Error al guardar recompensa infinita art:", err));
 }
 
+// bloquea el input si ya se ha ganado hoy artcart
 function actualizarBloqueoDiarioArt(completado) {
     diarioArtCompletado = completado;
 
@@ -76,11 +60,12 @@ function actualizarBloqueoDiarioArt(completado) {
     input.classList.remove('opacity-60', 'cursor-not-allowed');
 }
 
+// elige el personaje de hoy para el arte
 function seleccionarPersonaje() {
     if (personajes.length > 0) {
         if (!modoInfinitoArt) {
             const seed = getDailySeed();
-            const aleatorio = Math.floor(seededRandom(seed + 1) * personajes.length); // +1 to differ from classic
+            const aleatorio = Math.floor(seededRandom(seed + 1) * personajes.length);
             personajeDelDia = personajes[aleatorio];
         } else {
             const aleatorio = Math.floor(Math.random() * personajes.length);
@@ -88,7 +73,6 @@ function seleccionarPersonaje() {
         }
 
         const esquinas = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
-        // For daily, use seed for consistent corner too
         if (!modoInfinitoArt) {
             esquina = esquinas[Math.floor(seededRandom(getDailySeed() + 2) * esquinas.length)];
         } else {
@@ -97,23 +81,18 @@ function seleccionarPersonaje() {
 
         imagenArte.src = personajeDelDia.art_url;
         actualizarZoom();
-
-        console.log("Personaje del día (Art):", personajeDelDia.nombre);
     }
 }
 
+// mira el progreso del usu en el modo artcart
 function sincronizarProgresoArt() {
-    console.log("Iniciando sincronización Art para usuario:", userId);
-    // Verificar progreso local
     if (localStorage.getItem(`dailyWonArt_${userId}`) === getDailySeed().toString()) {
-        console.log("Progreso Art detectado en localStorage");
         actualizarBloqueoDiarioArt(true);
         if (userId === 'guest') {
             actualizarRachaArt(1);
         }
     }
 
-    // Sincronizar con el servidor si está logueado
     if (userId !== 'guest') {
         if (!diarioArtCompletado && input) {
             input.disabled = true;
@@ -124,13 +103,11 @@ function sincronizarProgresoArt() {
         fetch(API_BASE + '/progress/check')
             .then(r => r.json())
             .then(data => {
-                console.log("Respuesta servidor Art (check):", data);
                 if (data.streaks) {
                     actualizarRachaArt(data.streaks.artcart);
                 }
 
                 if (data.artcart) {
-                    console.log("Servidor confirma victoria Art hoy");
                     localStorage.setItem(`dailyWonArt_${userId}`, getDailySeed().toString());
                     actualizarBloqueoDiarioArt(true);
                 } else {
@@ -138,15 +115,15 @@ function sincronizarProgresoArt() {
                 }
             })
             .catch(err => {
-                console.error("Error sincronizando progreso art:", err);
                 actualizarBloqueoDiarioArt(false);
             });
     }
 }
 
-// Ejecutar sincronización inmediatamente
+// arranca la sincronizacion art al cargar
 sincronizarProgresoArt();
 
+// activa el modo infinito para el arte
 btnInfiniteArt.addEventListener('click', () => {
     modoInfinitoArt = true;
     actualizarBloqueoDiarioArt(diarioArtCompletado);
@@ -154,12 +131,11 @@ btnInfiniteArt.addEventListener('click', () => {
     elegidosEnRonda.clear();
     intentos = 0;
     contadorIntentos.textContent = intentos;
-    // No ocultamos el botón, solo reiniciamos el juego
     imagenArte.style.transition = 'none';
     seleccionarPersonaje();
 });
 
-// Cargar datos desde la API
+// carga los splash arts desde la api
 fetch(API_BASE + '/splash')
     .then(response => response.json())
     .then(data => {
@@ -168,6 +144,7 @@ fetch(API_BASE + '/splash')
     })
     .catch(error => console.error('Error cargando personajes:', error));
 
+// busca personajes para el modo arte
 input.addEventListener('input', () => {
     if (diarioArtCompletado && !modoInfinitoArt) {
         lista.classList.add("hidden");
@@ -192,6 +169,7 @@ input.addEventListener('input', () => {
         `).join('');
 });
 
+// hace la seleccion de un personaje en artcart
 function elegir(event, id) {
     event.preventDefault();
     event.stopPropagation();
@@ -217,7 +195,18 @@ function elegir(event, id) {
         imagenArte.style.transform = 'scale(1.0)';
         imagenArte.style.transformOrigin = 'center';
 
-        alert("¡Has ganado!");
+        if (window.showVictoryModal) {
+            window.showVictoryModal(personajeDelDia.art_url, () => {
+                if (modoInfinitoArt) {
+                    intentosVarios.innerHTML = "";
+                    elegidosEnRonda.clear();
+                    intentos = 0;
+                    contadorIntentos.textContent = intentos;
+                    imagenArte.style.transition = 'none';
+                    seleccionarPersonaje();
+                }
+            });
+        }
 
         if (!modoInfinitoArt) {
             localStorage.setItem(`dailyWonArt_${userId}`, getDailySeed().toString());
@@ -239,17 +228,6 @@ function elegir(event, id) {
         } else {
             reclamarRecompensaInfinita();
         }
-
-        setTimeout(() => {
-            if (modoInfinitoArt) {
-                intentosVarios.innerHTML = "";
-                elegidosEnRonda.clear();
-                intentos = 0;
-                contadorIntentos.textContent = intentos;
-                imagenArte.style.transition = 'none';
-                seleccionarPersonaje();
-            }
-        }, 2000);
     } else {
         imagenArte.style.transition = 'transform 0.5s ease';
         actualizarZoom();
@@ -258,6 +236,7 @@ function elegir(event, id) {
 
 window.elegir = elegir;
 
+// mete una fila nueva con el intento de arte
 function agregarIntento(personaje, correcto) {
     const fila = document.createElement("div");
     const color = correcto ? 'border-green-500 bg-green-600/20' : 'border-red-500 bg-red-600/20';
@@ -271,6 +250,7 @@ function agregarIntento(personaje, correcto) {
     intentosVarios.insertBefore(fila, intentosVarios.firstChild);
 }
 
+// hace el zoom progresivo segun los intentos
 function actualizarZoom() {
     const zooms = ['5.0', '4.5', '4.0', '3.5', '3.0', '2.5', '2.0'];
     let zoom;

@@ -11,15 +11,18 @@
     let ownedCharacterIds = new Set();
     let authenticated = false;
 
+    // pone un mensaje en el panel de invocacion
     function setMessage(text, type) {
         message.textContent = text;
         message.className = 'min-h-6 text-center font-semibold ' + (type === 'error' ? 'text-red-200' : 'text-yellow-100');
     }
 
+    // pone una imagen por defecto si no hay ruta
     function normalizeImage(path) {
         return path || fallbackImage;
     }
 
+    // dibuja la carta de un personaje en la grid
     function renderCard(character, locked) {
         const card = document.createElement('div');
         card.className = (locked ? 'character-locked ' : '') + 'bg-slate-950/80 border border-orange-500/50 rounded-lg p-2 text-center min-w-0';
@@ -33,6 +36,7 @@
         return card;
     }
 
+    // pinta toda la lista de personajes del juego
     function renderCollection() {
         collectionGrid.innerHTML = '';
         characters.forEach((character) => {
@@ -40,6 +44,7 @@
         });
     }
 
+    // pinta los personajes que han salido en la tirada
     function renderResults(results) {
         resultsGrid.innerHTML = '';
         results.forEach((character) => {
@@ -47,12 +52,14 @@
         });
     }
 
+    // actualiza las gemas que se ven arriba
     function syncCounter(crystals) {
         if (window.updateCrystalCounter) {
             window.updateCrystalCounter(crystals);
         }
     }
 
+    // trae el estado del usu y su coleccion
     function loadStatus() {
         fetch(API_BASE + '/summon/status')
             .then((response) => response.json())
@@ -70,6 +77,7 @@
             .catch(() => setMessage('No se pudo cargar la invocacion.', 'error'));
     }
 
+    // maneja el click para tirar al banner
     summonButton.addEventListener('click', () => {
         if (!authenticated) {
             setMessage('Inicia sesion para hacer invocaciones.', 'error');
@@ -100,10 +108,12 @@
             });
     });
 
+    // muestra u oculta la lista de personajes
     collectionToggle.addEventListener('click', () => {
         collectionGrid.classList.toggle('hidden');
         collectionToggle.textContent = collectionGrid.classList.contains('hidden') ? 'Ver todos los personajes' : 'Ocultar personajes';
     });
 
+    
     loadStatus();
 })();

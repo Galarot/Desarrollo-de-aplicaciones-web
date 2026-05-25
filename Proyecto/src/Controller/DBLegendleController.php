@@ -14,12 +14,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DBLegendleController extends AbstractController
 {
+    // carga la pagina principal del juego
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
         return $this->render('db_legendle/index.html.twig');
     }
 
+    // mira si el usuario ha completado el desafio de hoy
     #[Route('/api/progress/check', name: 'api_progress_check')]
     public function checkProgress(EntityManagerInterface $em): JsonResponse
     {
@@ -27,9 +29,6 @@ class DBLegendleController extends AbstractController
         if (!$user) {
             return $this->json(['error' => 'No autenticado'], 401);
         }
-
-        // Log para debug (ver en logs del servidor o con dump)
-        error_log("Comprobando progreso para usuario: " . $user->getUserIdentifier());
 
         $today = (int)date('Ymd');
         $progress = $em->getRepository(DailyProgress::class)->findBy([
@@ -47,7 +46,6 @@ class DBLegendleController extends AbstractController
         ];
 
         foreach ($progress as $p) {
-            error_log("Encontrado progreso: " . $p->getGameMode() . " completed=" . $p->isCompleted());
             if ($p->isCompleted()) {
                 $result[$p->getGameMode()] = true;
             }
@@ -56,6 +54,7 @@ class DBLegendleController extends AbstractController
         return $this->json($result);
     }
 
+    // guarda que el usu ha ganado y le da cristales
     #[Route('/api/progress/save', name: 'api_progress_save', methods: ['POST'])]
     public function saveProgress(EntityManagerInterface $em): JsonResponse
     {
@@ -67,8 +66,6 @@ class DBLegendleController extends AbstractController
         $content = json_decode(file_get_contents('php://input'), true);
         $mode = $content['mode'] ?? null;
         
-        error_log("Guardando progreso: mode=$mode, user=" . $user->getUserIdentifier());
-
         if (!in_array($mode, ['classic', 'artcart'])) {
             return $this->json(['error' => 'Modo inválido'], 400);
         }
@@ -96,8 +93,6 @@ class DBLegendleController extends AbstractController
         $em->persist($progress);
         $em->flush();
 
-        error_log("Progreso guardado con éxito");
-
         return $this->json([
             'success' => true,
             'rewardGranted' => $rewardGranted,
@@ -106,6 +101,7 @@ class DBLegendleController extends AbstractController
         ]);
     }
 
+    // da cristales por ganar en modo infinito
     #[Route('/api/rewards/infinite', name: 'api_rewards_infinite', methods: ['POST'])]
     public function claimInfiniteReward(EntityManagerInterface $em): JsonResponse
     {
@@ -124,26 +120,29 @@ class DBLegendleController extends AbstractController
         ]);
     }
 
+    // saca todos los personajes de la base de datos
     #[Route('/api/characters', name: 'api_characters')]
     public function getCharacters(CharacterService $characterService): Response
     {
         $chars = $characterService->getAllCharacters();
-        error_log("API Characters: cargados " . count($chars) . " personajes");
         return $this->json($chars);
     }
 
+    // saca todos los splash arts disponibles
     #[Route('/api/splash', name: 'api_splash')]
     public function getSplash(CharacterService $characterService): Response
     {
         return $this->json($characterService->getAllSplash());
     }
 
+    // carga la vista del modo art cart
     #[Route('/artcart', name: 'app_artcart')]
     public function artcart(): Response
     {
         return $this->render('db_legendle/artcart.html.twig');
     }
 
+    // carga la vista de las invocaciones
     #[Route('/summon', name: 'app_summon')]
     public function summon(ParameterBagInterface $params): Response
     {
@@ -154,6 +153,7 @@ class DBLegendleController extends AbstractController
         ]);
     }
 
+    // mira los cristales y personajes que tiene el user
     #[Route('/api/summon/status', name: 'api_summon_status')]
     public function summonStatus(CharacterService $characterService): JsonResponse
     {
@@ -167,6 +167,7 @@ class DBLegendleController extends AbstractController
         ]);
     }
 
+    // hace una tirada de 10 personajes gastando cristales
     #[Route('/api/summon/pull', name: 'api_summon_pull', methods: ['POST'])]
     public function summonPull(CharacterService $characterService, EntityManagerInterface $em): JsonResponse
     {
@@ -202,6 +203,7 @@ class DBLegendleController extends AbstractController
         ]);
     }
 
+    // elige un personaje al azar segun su rareza
     private function pickWeightedCharacter(array $characters): ?array
     {
         $rarityWeights = [
@@ -241,28 +243,43 @@ class DBLegendleController extends AbstractController
         return $pool[array_rand($pool)];
     }
 
+    // calcula cuantos dias seguidos lleva ganando el usu
     private function calculateStreak(EntityManagerInterface $em, object $user, string $mode): int
     {
-        $progressRows = $em->getRepository(DailyProgress::class)->findBy([
-            'user' => $user,
-            'gameMode' => $mode,
-            'completed' => true,
-        ]);
-
-        $completedSeeds = [];
-        foreach ($progressRows as $progress) {
-            $completedSeeds[$progress->getSeed()] = true;
-        }
-
         $cursor = new \DateTimeImmutable('today');
-        if (!isset($completedSeeds[(int) $cursor->format('Ymd')])) {
-            $cursor = $cursor->modify('-1 day');
-        }
-
         $streak = 0;
-        while (isset($completedSeeds[(int) $cursor->format('Ymd')])) {
-            $streak++;
-            $cursor = $cursor->modify('-1 day');
+        $repo = $em->getRepository(DailyProgress::class);
+
+        while (true) {
+            $seed = (int) $cursor->format('Ymd');
+            $progress = $repo->findOneBy([
+                'user' => $user,
+                'gameMode' => $mode,
+                'seed' => $seed,
+                'completed' => true,
+            ]);
+
+            if ($progress) {
+                $streak++;
+                $cursor = $cursor->modify('-1 day');
+            } else {
+                if ($streak === 0) {
+                    $cursor = $cursor->modify('-1 day');
+                    $seed = (int) $cursor->format('Ymd');
+                    $progress = $repo->findOneBy([
+                        'user' => $user,
+                        'gameMode' => $mode,
+                        'seed' => $seed,
+                        'completed' => true,
+                    ]);
+                    if ($progress) {
+                        $streak++;
+                        $cursor = $cursor->modify('-1 day');
+                        continue;
+                    }
+                }
+                break;
+            }
         }
 
         return $streak;

@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/admin')]
 class AdminController extends AbstractController
 {
+    // carga la lista de usus y personajes para el panel
     #[Route('/users', name: 'app_admin_users')]
     public function index(EntityManagerInterface $em, ParameterBagInterface $params): Response
     {
@@ -29,6 +30,7 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // cambia los roles y el ban de los usus
     #[Route('/users/{id}/permissions', name: 'app_admin_user_permissions', methods: ['POST'])]
     public function updateUserPermissions(User $user, Request $request, EntityManagerInterface $em): RedirectResponse
     {
@@ -40,9 +42,11 @@ class AdminController extends AbstractController
         if ($request->request->has('role_admin')) {
             $roles[] = 'ROLE_ADMIN';
         }
+        $roles[] = 'ROLE_USER';
+        $roles = array_unique($roles);
 
         $user->setRoles($roles);
-        $user->setBanned($request->request->has('banned'));
+        $user->setBanned($request->request->get('banned') === '1');
         $em->flush();
 
         $this->addFlash('success', 'Permisos de usuario actualizados.');
@@ -50,6 +54,7 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_admin_users');
     }
 
+    // guarda o actualiza un personaje en el json
     #[Route('/characters/save', name: 'app_admin_character_save', methods: ['POST'])]
     public function saveCharacter(Request $request, ParameterBagInterface $params): RedirectResponse
     {
@@ -102,6 +107,7 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_admin_users');
     }
 
+    // guarda o actualiza un splash en el json
     #[Route('/splash/save', name: 'app_admin_splash_save', methods: ['POST'])]
     public function saveSplash(Request $request, ParameterBagInterface $params): RedirectResponse
     {
@@ -144,6 +150,7 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_admin_users');
     }
 
+    // sube el nuevo banner de invocaciones
     #[Route('/summon/banner/save', name: 'app_admin_summon_banner_save', methods: ['POST'])]
     public function saveSummonBanner(Request $request, ParameterBagInterface $params): RedirectResponse
     {
@@ -171,6 +178,7 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_admin_users');
     }
 
+    // lee los datos de un archivo json
     private function loadJson(ParameterBagInterface $params, string $fileName): array
     {
         $path = $this->getDataPath($params, $fileName);
@@ -183,6 +191,7 @@ class AdminController extends AbstractController
         return is_array($data) ? $data : [];
     }
 
+    // escribe los datos en un archivo json
     private function saveJson(ParameterBagInterface $params, string $fileName, array $rows): void
     {
         usort($rows, static fn (array $a, array $b): int => ($a['id'] ?? 0) <=> ($b['id'] ?? 0));
@@ -195,11 +204,13 @@ class AdminController extends AbstractController
         file_put_contents($this->getDataPath($params, $fileName), $json . PHP_EOL);
     }
 
+    // saca la ruta del archivo de datos
     private function getDataPath(ParameterBagInterface $params, string $fileName): string
     {
         return $params->get('kernel.project_dir') . '/data/' . $fileName;
     }
 
+    // saca la version del archivo para evitar cache
     private function getPublicFileVersion(ParameterBagInterface $params, string $relativePath): int
     {
         $path = $params->get('kernel.project_dir') . '/public/' . $relativePath;
@@ -207,6 +218,7 @@ class AdminController extends AbstractController
         return is_file($path) ? (int) filemtime($path) : time();
     }
 
+    // busca o genera un id para el json
     private function resolveJsonId(array $rows, mixed $rawId): int
     {
         $id = (int) $rawId;
@@ -219,6 +231,7 @@ class AdminController extends AbstractController
         return $ids ? max($ids) + 1 : 1;
     }
 
+    // busca una fila por id en el json
     private function findJsonRow(array $rows, int $id): ?array
     {
         foreach ($rows as $row) {
@@ -230,6 +243,7 @@ class AdminController extends AbstractController
         return null;
     }
 
+    // inserta o actualiza una fila en el array
     private function upsertJsonRow(array &$rows, array $row): void
     {
         foreach ($rows as $index => $existing) {
@@ -242,6 +256,7 @@ class AdminController extends AbstractController
         $rows[] = $row;
     }
 
+    // guarda una imagen subida en la carpeta de assets
     private function saveUploadedImage(ParameterBagInterface $params, UploadedFile $file, string $folder, int $id, string $name): string
     {
         $fileName = basename(str_replace('\\', '/', $file->getClientOriginalName()));
@@ -265,6 +280,7 @@ class AdminController extends AbstractController
         return '/assets/multimedia/' . $folder . '/' . $fileName;
     }
 
+    // guarda el banner de invocaciones
     private function saveBannerImage(ParameterBagInterface $params, UploadedFile $file): void
     {
         $extension = strtolower($file->guessExtension() ?: $file->getClientOriginalExtension() ?: 'png');
@@ -285,6 +301,7 @@ class AdminController extends AbstractController
         $file->move(dirname($targetPath), basename($targetPath));
     }
 
+    // limpia el nombre para la url
     private function slugify(string $value): string
     {
         $value = strtolower(trim($value));
@@ -293,4 +310,5 @@ class AdminController extends AbstractController
 
         return $value !== '' ? $value : 'imagen';
     }
+}
 }

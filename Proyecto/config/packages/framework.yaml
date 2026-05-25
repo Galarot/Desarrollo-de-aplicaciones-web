@@ -4,6 +4,9 @@ framework:
   http_method_override: false
   handle_all_throwables: true
 
+  # Habilitar compresion HTTP
+  http_cache: true
+
   session:
     handler_id: null
     cookie_secure: auto
