@@ -16,12 +16,14 @@ class DBLegendleController extends AbstractController
 {
     // carga la pagina principal del juego
     #[Route('/', name: 'app_home')]
-    public function index(): Response
+    public function index(CharacterService $characterService): Response
     {
-        return $this->render('db_legendle/index.html.twig');
+        return $this->render('db_legendle/index.html.twig', [
+            'globalConfig' => $characterService->getGlobalConfig(),
+        ]);
     }
 
-    // mira si el usuario ha completado el desafio de hoy
+    // mira si el usu ha completado el desafio de hoy
     #[Route('/api/progress/check', name: 'api_progress_check')]
     public function checkProgress(EntityManagerInterface $em): JsonResponse
     {
@@ -87,11 +89,19 @@ class DBLegendleController extends AbstractController
 
         $rewardGranted = !$progress->isCompleted();
         $progress->setCompleted(true);
-        if ($rewardGranted) {
-            $user->addCrystals(1000);
-        }
         $em->persist($progress);
         $em->flush();
+
+        if ($rewardGranted) {
+            $user->addCrystals(1000);
+            
+            // da 3000 mas si la racha llega a multiplo de 10
+            $streak = $this->calculateStreak($em, $user, $mode);
+            if ($streak > 0 && $streak % 10 === 0) {
+                $user->addCrystals(3000);
+            }
+            $em->flush();
+        }
 
         return $this->json([
             'success' => true,
@@ -120,7 +130,7 @@ class DBLegendleController extends AbstractController
         ]);
     }
 
-    // saca todos los personajes de la base de datos
+    // saca todos los personajes del json
     #[Route('/api/characters', name: 'api_characters')]
     public function getCharacters(CharacterService $characterService): Response
     {
@@ -128,7 +138,7 @@ class DBLegendleController extends AbstractController
         return $this->json($chars);
     }
 
-    // saca todos los splash arts disponibles
+    // saca todos los splash arts del json
     #[Route('/api/splash', name: 'api_splash')]
     public function getSplash(CharacterService $characterService): Response
     {

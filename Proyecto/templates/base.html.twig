@@ -2,7 +2,7 @@
 <html lang="en" data-turbo="false">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
     <title>{% block title %}DBLegendsdle{% endblock %}</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/multimedia/logo.png') }}">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -12,7 +12,9 @@
     {% block stylesheets %}{% endblock %}
 </head>
 
-<body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed flex flex-col" data-user-id="{{ app.user ? app.user.id : 'guest' }}">
+<body class="m-0 min-h-screen bg-[linear-gradient(to_top,var(--gray-900),var(--slate-600))] bg-fixed flex flex-col" 
+      data-user-id="{{ app.user ? app.user.id : 'guest' }}"
+      data-is-admin="{{ is_granted('ROLE_ADMIN') ? 'true' : 'false' }}">
 
     <div class="fixed top-4 left-4 z-50 flex items-center gap-2 px-3 py-2 bg-slate-900/90 border-2 border-cyan-400 rounded-xl shadow-[0_0_18px_rgba(34,211,238,0.35)] backdrop-blur-md">
         <img src="{{ asset('assets/multimedia/ccs.png') }}" class="w-7 h-7 object-contain" alt="CCS">
@@ -80,6 +82,14 @@
     </div>
 
     <script>
+        // Fuerza el recalculo del layout al cargar para evitar el bug de "pantalla a la izquierda"
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                window.dispatchEvent(new Event('resize'));
+            }, 100);
+        });
+
         window.showVictoryModal = function(imageSrc, onClose) {
             const modal = document.getElementById('victory-modal');
             const img = document.getElementById('victory-img');

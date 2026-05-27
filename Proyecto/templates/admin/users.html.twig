@@ -87,6 +87,20 @@
         </div>
     </section>
 
+    <section class="mb-8 bg-slate-900/90 border-2 border-orange-600 rounded-2xl p-6 shadow-xl">
+        <h2 class="font-['Edo_SZ'] text-2xl text-orange-300 mb-5">Configuracion Global</h2>
+        <form id="global-config-form" method="post" action="{{ path('app_admin_config_save') }}" class="flex flex-col sm:flex-row items-end gap-4" data-turbo="false">
+            <input type="hidden" name="_token" value="{{ csrf_token('admin_config_save') }}">
+            <div class="flex-1 w-full">
+                <label class="block text-white text-sm mb-2">Texto de ultima actualizacion (Modo Clasico)</label>
+                <input type="text" name="last_update_text" value="{{ globalConfig.last_update_text ?? 'Legend Super Vegeto' }}" class="w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+            </div>
+            <button type="submit" id="save-config-btn" class="px-6 py-3 bg-orange-600 hover:bg-orange-500 rounded-lg border border-orange-300 text-white font-bold font-['Edo_SZ']">
+                Guardar
+            </button>
+        </form>
+    </section>
+
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section class="bg-slate-900/90 border-2 border-orange-600 rounded-2xl p-6 shadow-xl">
             <div class="flex flex-col sm:flex-row sm:items-end gap-3 mb-5">
@@ -108,10 +122,10 @@
                     <input id="character-id" name="id" type="number" min="1" placeholder="Automatico si esta vacio" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm">Nombre
-                    <input id="character-nombre" name="nombre" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-nombre" name="nombre" required list="list-character-nombre" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm">Anio
-                    <input id="character-anio" name="anio" type="number" min="2018" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-anio" name="anio" type="number" min="2018" required list="list-character-anio" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <div class="text-white text-sm sm:col-span-2">
                     <span>Foto art cart</span>
@@ -127,31 +141,48 @@
                     </div>
                 </div>
                 <label class="text-white text-sm">Genero
-                    <input id="character-genero" name="genero" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-genero" name="genero" required list="list-character-genero" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm">Afinidad
-                    <input id="character-afinidad" name="afinidad" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-afinidad" name="afinidad" required list="list-character-afinidad" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm">Rareza
-                    <input id="character-rareza" name="rareza" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-rareza" name="rareza" required list="list-character-rareza" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm">Estilo
-                    <input id="character-estilo" name="estilo" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-estilo" name="estilo" required list="list-character-estilo" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm">Zenkai
-                    <input id="character-zenkai" name="zenkai" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-zenkai" name="zenkai" required list="list-character-zenkai" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm">Saga
-                    <input id="character-saga" name="saga" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-saga" name="saga" required list="list-character-saga" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
                 <label class="text-white text-sm sm:col-span-2">Raza/Ocupacion
-                    <input id="character-raza" name="raza" required class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
+                    <input id="character-raza" name="raza" required list="list-character-raza" class="mt-1 w-full p-3 bg-slate-800 border border-orange-500 rounded-lg text-white">
                 </label>
-                <div class="sm:col-span-2 flex justify-end">
+
+                <datalist id="list-character-nombre"></datalist>
+                <datalist id="list-character-anio"></datalist>
+                <datalist id="list-character-genero"></datalist>
+                <datalist id="list-character-afinidad"></datalist>
+                <datalist id="list-character-rareza"></datalist>
+                <datalist id="list-character-estilo"></datalist>
+                <datalist id="list-character-zenkai"></datalist>
+                <datalist id="list-character-saga"></datalist>
+                <datalist id="list-character-raza"></datalist>
+                <div class="sm:col-span-2 flex justify-end gap-3">
+                    <button type="button" id="delete-character-btn" class="hidden font-['Edo_SZ'] px-6 py-3 bg-red-600 hover:bg-red-500 text-white rounded-xl border-2 border-red-400">
+                        Eliminar
+                    </button>
                     <button type="submit" class="font-['Edo_SZ'] px-6 py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400">
                         Guardar personaje
                     </button>
                 </div>
+            </form>
+            <form id="delete-character-form" method="post" action="{{ path('app_admin_character_delete') }}" class="hidden">
+                <input type="hidden" name="_token" value="{{ csrf_token('admin_character_delete') }}">
+                <input type="hidden" name="id" id="delete-character-id">
             </form>
         </section>
 
@@ -190,11 +221,18 @@
                         </label>
                     </div>
                 </div>
-                <div class="flex justify-end">
+                <div class="flex justify-end gap-3">
+                    <button type="button" id="delete-splash-btn" class="hidden font-['Edo_SZ'] px-6 py-3 bg-red-600 hover:bg-red-500 text-white rounded-xl border-2 border-red-400">
+                        Eliminar
+                    </button>
                     <button type="submit" class="font-['Edo_SZ'] px-6 py-3 bg-gradient-to-r from-orange-600 to-red-700 text-white rounded-xl border-2 border-orange-400">
                         Guardar splash
                     </button>
                 </div>
+            </form>
+            <form id="delete-splash-form" method="post" action="{{ path('app_admin_splash_delete') }}" class="hidden">
+                <input type="hidden" name="_token" value="{{ csrf_token('admin_splash_delete') }}">
+                <input type="hidden" name="id" id="delete-splash-id">
             </form>
         </section>
     </div>
@@ -209,14 +247,14 @@
                 </div>
             </div>
 
-            <form method="post" action="{{ path('app_admin_summon_banner_save') }}" enctype="multipart/form-data" class="flex flex-col gap-4" data-turbo="false">
+            <form id="summon-banner-form" method="post" action="{{ path('app_admin_summon_banner_save') }}" enctype="multipart/form-data" class="flex flex-col gap-4" data-turbo="false">
                 <input type="hidden" name="_token" value="{{ csrf_token('admin_summon_banner_save') }}">
                 <label class="text-white text-sm">Cambiar banner
                     <input id="banner-file" name="banner_file" type="file" accept="image/png,image/jpeg,image/webp" required class="mt-2 w-full p-3 bg-slate-800 border border-cyan-500 rounded-lg text-white file:mr-4 file:rounded-md file:border-0 file:bg-cyan-700 file:px-4 file:py-2 file:text-white">
                 </label>
                 <p id="banner-status" class="text-xs text-gray-400">La imagen se guardara como banner activo de invocacion.</p>
                 <div>
-                    <button type="submit" class="font-['Edo_SZ'] px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-800 text-white rounded-xl border-2 border-cyan-300">
+                    <button type="submit" id="save-banner-btn" class="font-['Edo_SZ'] px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-800 text-white rounded-xl border-2 border-cyan-300">
                         Guardar banner
                     </button>
                 </div>
@@ -228,6 +266,24 @@
         <a href="{{ path('app_home') }}" class="font-['Edo_SZ'] px-6 py-3 bg-slate-800 text-white rounded-xl border border-white/20 hover:bg-slate-700 transition-all">
             Volver al Inicio
         </a>
+    </div>
+
+    {# Modal de Confirmación #}
+    <div id="delete-confirm-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative w-full max-w-md bg-slate-900 border-2 border-orange-600 rounded-3xl p-8 shadow-[0_0_50px_rgba(249,115,22,0.3)] animate-zoom-in">
+            <h3 id="confirm-modal-title" class="font-['Edo_SZ'] text-3xl text-white text-center mb-4">¿Estás seguro?</h3>
+            <p id="confirm-modal-desc" class="text-gray-300 text-center mb-8">Esta acción no se puede deshacer.</p>
+            
+            <div class="flex flex-col gap-4">
+                <button id="confirm-delete-btn" class="font-['Edo_SZ'] w-full py-4 bg-orange-600 hover:bg-orange-500 text-white rounded-2xl border-2 border-orange-400 shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all">
+                    Confirmar
+                </button>
+                <button id="cancel-delete-btn" class="font-['Edo_SZ'] w-full py-4 bg-slate-700 hover:bg-slate-600 text-white rounded-2xl border-2 border-white/20 transition-all">
+                    Rechazar (Cancelar)
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -275,6 +331,7 @@
             byId('character', 'raza').value = '';
             document.getElementById('character-art-file').value = '';
             setPreview('character-art-preview', 'character-art-status', '');
+            document.getElementById('delete-character-btn').classList.add('hidden');
         }
 
         function resetSplashForm(prefillName) {
@@ -283,7 +340,32 @@
             byId('splash', 'art').value = '';
             document.getElementById('splash-art-file').value = '';
             setPreview('splash-art-preview', 'splash-art-status', '');
+            document.getElementById('delete-splash-btn').classList.add('hidden');
         }
+
+        function populateDatalists() {
+            const fields = {
+                'nombre': characters.map(c => c.nombre),
+                'anio': characters.map(c => c.anio),
+                'genero': characters.map(c => c.atributos?.genero),
+                'afinidad': characters.map(c => c.atributos?.afinidad),
+                'rareza': characters.map(c => c.atributos?.rareza),
+                'estilo': characters.map(c => c.atributos?.estilo),
+                'zenkai': characters.map(c => c.atributos?.zenkai),
+                'saga': characters.map(c => c.atributos?.saga),
+                'raza': characters.map(c => c.atributos?.raza)
+            };
+
+            for (const [key, values] of Object.entries(fields)) {
+                const datalist = document.getElementById(`list-character-${key}`);
+                if (!datalist) continue;
+
+                const uniqueValues = [...new Set(values.filter(v => v !== undefined && v !== null && v !== ''))].sort();
+                datalist.innerHTML = uniqueValues.map(v => `<option value="${escapeHtml(v)}">`).join('');
+            }
+        }
+
+        populateDatalists();
 
         function setPreview(imageId, statusId, path) {
             const preview = document.getElementById(imageId);
@@ -458,6 +540,7 @@
             byId('character', 'zenkai').value = attrs.zenkai || '';
             byId('character', 'saga').value = attrs.saga || '';
             byId('character', 'raza').value = attrs.raza || '';
+            document.getElementById('delete-character-btn').classList.toggle('hidden', !character);
         });
 
         document.getElementById('load-splash').addEventListener('click', () => {
@@ -475,11 +558,69 @@
             byId('splash', 'art').value = splash ? splash.art_url : '';
             document.getElementById('splash-art-file').value = '';
             setPreview('splash-art-preview', 'splash-art-status', splash ? splash.art_url : '');
+            document.getElementById('delete-splash-btn').classList.toggle('hidden', !splash);
         });
 
         bindFilePreview('character-art-file', 'character-art-preview', 'character-art-status');
         bindFilePreview('splash-art-file', 'splash-art-preview', 'splash-art-status');
         bindFilePreview('banner-file', 'banner-preview', 'banner-status');
+
+        // Logica del modal de confirmacion
+        const deleteModal = document.getElementById('delete-confirm-modal');
+        const confirmBtn = document.getElementById('confirm-delete-btn');
+        const cancelBtn = document.getElementById('cancel-delete-btn');
+        const modalTitle = document.getElementById('confirm-modal-title');
+        const modalDesc = document.getElementById('confirm-modal-desc');
+        let currentDeleteForm = null;
+
+        function showGenericConfirm(formId, title, desc, btnText) {
+            currentDeleteForm = document.getElementById(formId);
+            modalTitle.textContent = title || '¿Estás seguro?';
+            modalDesc.textContent = desc || 'Esta acción no se puede deshacer.';
+            confirmBtn.textContent = btnText || 'Confirmar';
+            
+            // Cambiar color si es eliminar
+            if (btnText && btnText.toLowerCase().includes('eliminar')) {
+                confirmBtn.className = "font-['Edo_SZ'] w-full py-4 bg-red-600 hover:bg-red-500 text-white rounded-2xl border-2 border-red-400 shadow-[0_0_20px_rgba(220,38,38,0.4)] transition-all";
+            } else {
+                confirmBtn.className = "font-['Edo_SZ'] w-full py-4 bg-orange-600 hover:bg-orange-500 text-white rounded-2xl border-2 border-orange-400 shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all";
+            }
+            
+            deleteModal.classList.remove('hidden');
+        }
+
+        function showDeleteConfirm(formId, idInputId, idValue) {
+            currentDeleteForm = document.getElementById(formId);
+            if (idInputId && idValue) {
+                document.getElementById(idInputId).value = idValue;
+            }
+            showGenericConfirm(formId, '¿Eliminar registro?', 'El registro se borrará permanentemente de la base de datos.', 'Continuar (Eliminar)');
+        }
+
+        cancelBtn.addEventListener('click', () => {
+            deleteModal.classList.add('hidden');
+            currentDeleteForm = null;
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            if (currentDeleteForm) {
+                currentDeleteForm.submit();
+            }
+        });
+
+        document.getElementById('delete-character-btn').addEventListener('click', () => {
+            const id = document.getElementById('character-id').value;
+            if (id) {
+                showDeleteConfirm('delete-character-form', 'delete-character-id', id);
+            }
+        });
+
+        document.getElementById('delete-splash-btn').addEventListener('click', () => {
+            const id = document.getElementById('splash-id').value;
+            if (id) {
+                showDeleteConfirm('delete-splash-form', 'delete-splash-id', id);
+            }
+        });
     })();
 </script>
 {% endblock %}

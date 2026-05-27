@@ -1,22 +1,23 @@
 (function () {
     const API_BASE = '/api';
     const userId = document.body.getAttribute('data-user-id');
+    const isAdmin = document.body.getAttribute('data-is-admin') === 'true';
     let personajes = [];
     let personajeDelDia = {};
-    let intentos = 0;
     let elegidosEnRonda = new Set();
-    let esquina = '';
     let modoInfinitoArt = false;
     let diarioArtCompletado = false;
+    let intentos = 0;
+    let esquina = 'top-left';
 
     const input = document.getElementById("searchInput");
     const lista = document.getElementById("suggestions");
     const intentosVarios = document.getElementById("guessesGrid");
-    const imagenArte = document.getElementById("artImage");
-    const revelarArte = document.getElementById("artReveal");
-    const contadorIntentos = document.getElementById("attempts");
     const btnInfiniteArt = document.getElementById("infinite-mode-art");
+    const contadorIntentos = document.getElementById("attempts");
     const streakCounter = document.getElementById("artcart-streak-count");
+    const revelarArte = document.getElementById("artReveal");
+    const imagenArte = document.getElementById("artImage");
 
 // saca la semilla diaria para el modo artcart
 function getDailySeed() {
@@ -40,7 +41,8 @@ function actualizarCristales(crystals) {
 // actualiza el numero de la racha de artcart
 function actualizarRachaArt(streak) {
     if (streakCounter && typeof streak !== 'undefined') {
-        streakCounter.textContent = Number(streak || 0).toString();
+        const valorReal = userId === 'guest' ? 0 : streak;
+        streakCounter.textContent = Number(valorReal || 0).toString();
     }
 }
 
@@ -98,17 +100,19 @@ function seleccionarPersonaje() {
         }
 
         imagenArte.src = personajeDelDia.art_url;
-        console.log("Personaje objetivo (Art Cart):", personajeDelDia.nombre);
+        if (isAdmin) {
+            console.log("Personaje objetivo (ArtCart):", personajeDelDia.nombre);
+        }
         actualizarZoom();
     }
 }
 
-// mira el progreso del usu en el modo artcart
+// mira el progreso del user en el modo artcart
 function sincronizarProgresoArt() {
     if (localStorage.getItem(`dailyWonArt_${userId}`) === getDailySeed().toString()) {
         actualizarBloqueoDiarioArt(true);
         if (userId === 'guest') {
-            actualizarRachaArt(1);
+            actualizarRachaArt(0);
         }
     }
 
@@ -143,16 +147,18 @@ function sincronizarProgresoArt() {
 sincronizarProgresoArt();
 
 // activa el modo infinito para el arte
-btnInfiniteArt.addEventListener('click', () => {
-    modoInfinitoArt = true;
-    actualizarBloqueoDiarioArt(diarioArtCompletado);
-    intentosVarios.innerHTML = "";
-    elegidosEnRonda.clear();
-    intentos = 0;
-    contadorIntentos.textContent = intentos;
-    imagenArte.style.transition = 'none';
-    seleccionarPersonaje();
-});
+if (btnInfiniteArt) {
+    btnInfiniteArt.addEventListener('click', () => {
+        modoInfinitoArt = true;
+        actualizarBloqueoDiarioArt(diarioArtCompletado);
+        intentosVarios.innerHTML = "";
+        elegidosEnRonda.clear();
+        intentos = 0;
+        contadorIntentos.textContent = intentos;
+        imagenArte.style.transition = 'none';
+        seleccionarPersonaje();
+    });
+}
 
 // carga los splash arts desde la api
 fetch(API_BASE + '/splash')
@@ -164,29 +170,31 @@ fetch(API_BASE + '/splash')
     .catch(error => console.error('Error cargando personajes:', error));
 
 // busca personajes para el modo arte
-input.addEventListener('input', () => {
-    if (diarioArtCompletado && !modoInfinitoArt) {
-        lista.classList.add("hidden");
-        return;
-    }
+if (input) {
+    input.addEventListener('input', () => {
+        if (diarioArtCompletado && !modoInfinitoArt) {
+            lista.classList.add("hidden");
+            return;
+        }
 
-    const text = input.value.toLowerCase().trim();
-    lista.classList.toggle("hidden", !text);
+        const text = input.value.toLowerCase().trim();
+        lista.classList.toggle("hidden", !text);
 
-    if (!text) return;
+        if (!text) return;
 
-    lista.innerHTML = personajes
-        .filter(p =>
-            p.nombre.toLowerCase().includes(text) &&
-            !elegidosEnRonda.has(p.id)
-        )
-        .map(p => `
-            <div onclick="elegir(event, ${p.id})" class="flex items-center p-3 hover:bg-orange-600/20 cursor-pointer border-b border-white/10 text-white font-['Edo_SZ']">
-                <img src="${p.art_url}" class="w-10 h-10 rounded-full border border-orange-500 mr-3" onerror="this.src='https://via.placeholder.com/40'">
-                <span>${p.nombre}</span>
-            </div>
-        `).join('');
-});
+        lista.innerHTML = personajes
+            .filter(p =>
+                p.nombre.toLowerCase().includes(text) &&
+                !elegidosEnRonda.has(p.id)
+            )
+            .map(p => `
+                <div onclick="elegir(event, ${p.id})" class="flex items-center p-3 hover:bg-orange-600/20 cursor-pointer border-b border-white/10 text-white font-['Edo_SZ']">
+                    <img src="${p.art_url}" class="w-10 h-10 rounded-full border border-orange-500 mr-3" onerror="this.src='/assets/multimedia/logo.png'">
+                    <span>${p.nombre}</span>
+                </div>
+            `).join('');
+    });
+}
 
 // hace la seleccion de un personaje en artcart
 function elegir(event, id) {

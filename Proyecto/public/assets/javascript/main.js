@@ -1,6 +1,7 @@
 (function () {
     const API_BASE = '/api';
     const userId = document.body.getAttribute('data-user-id');
+    const isAdmin = document.body.getAttribute('data-is-admin') === 'true';
     let personajes = [];
     let pruebaDia = {};
     let elegidosEnRonda = new Set();
@@ -13,6 +14,8 @@
     const btnInfinite = document.getElementById("infinite-mode");
     const winButtons = document.getElementById("win-buttons");
     const streakCounter = document.getElementById("classic-streak-count");
+    const attemptsDisplay = document.getElementById("attempts");
+    let countAttempts = 0;
 
 // saca la semilla diaria para el personaje
 function getDailySeed() {
@@ -36,7 +39,8 @@ function actualizarCristales(crystals) {
 // actualiza el numero de la racha de victorias
 function actualizarRacha(streak) {
     if (streakCounter && typeof streak !== 'undefined') {
-        streakCounter.textContent = Number(streak || 0).toString();
+        const valorReal = userId === 'guest' ? 0 : streak;
+        streakCounter.textContent = Number(valorReal || 0).toString();
     }
 }
 
@@ -77,7 +81,7 @@ function actualizarBloqueoDiario(completado) {
 // elige el personaje que hay que adivinar
 function seleccionasPerso() {
     const idMin = 1;
-    const idMax = 691;
+    const idMax = 700;
     const rango = personajes.filter(p => p.id >= idMin && p.id <= idMax);
 
     if (personajes.length > 0) {
@@ -89,7 +93,9 @@ function seleccionasPerso() {
             const aleatorio = Math.floor(Math.random() * rango.length);
             pruebaDia = rango[aleatorio];
         }
-        console.log("Personaje objetivo:", pruebaDia.nombre);
+        if (isAdmin) {
+            console.log("Personaje objetivo:", pruebaDia.nombre);
+        }
     }
 }
 
@@ -104,7 +110,7 @@ function sincronizarProgreso() {
         if (savedSeed === getDailySeed().toString()) {
             actualizarBloqueoDiario(true);
             if (userId === 'guest') {
-                actualizarRacha(1);
+                actualizarRacha(0);
             }
         }
 
@@ -149,6 +155,8 @@ btnInfinite.addEventListener('click', () => {
     actualizarBloqueoDiario(diarioCompletado);
     intentosVarios.innerHTML = "";
     elegidosEnRonda.clear();
+    countAttempts = 0;
+    if (attemptsDisplay) attemptsDisplay.textContent = "0";
     seleccionasPerso();
 });
 
@@ -204,6 +212,8 @@ function elegir(event, id) {
 
     const p = personajes.find(pers => pers.id === id);
     elegidosEnRonda.add(id);
+    countAttempts++;
+    if (attemptsDisplay) attemptsDisplay.textContent = countAttempts;
     compararAtributos(p);
 
     if (p.id === pruebaDia.id) {

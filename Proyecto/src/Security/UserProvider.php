@@ -32,8 +32,9 @@ class UserProvider implements UserProviderInterface
             ->getQuery()
             ->getOneOrNullResult();
 
-        // Autocreación del admin para portabilidad
+        // hace la autocreacion del admin para portabilidad
         if ($identifier === 'useradmin@gmail.com' || $identifier === 'admin') {
+            $changed = false;
             if (!$user) {
                 // Busqueda profunda para evitar duplicados por el otro campo
                 $user = $this->entityManager->getRepository(User::class)
@@ -49,18 +50,32 @@ class UserProvider implements UserProviderInterface
                     $user = new User();
                     $user->setEmail('useradmin@gmail.com');
                     $user->setUsername('admin');
+                    $changed = true;
                 }
             }
 
-            $user->setRoles(['ROLE_ADMIN']);
-            $user->setBanned(false);
+            if (!in_array('ROLE_ADMIN', $user->getRoles())) {
+                $user->setRoles(['ROLE_ADMIN']);
+                $changed = true;
+            }
+            if ($user->isBanned()) {
+                $user->setBanned(false);
+                $changed = true;
+            }
             if ($user->getCrystals() < 10000) {
                 $user->setCrystals(10000);
+                $changed = true;
             }
-            $user->setPassword($this->passwordHasher->hashPassword($user, 'admin123'));
-
-            $this->entityManager->persist($user);
-            $this->entityManager->flush();
+            
+            // Solo hashea si es necesario (asumimos admin123 por defecto)
+            // Para simplicidad en este caso, podemos omitir el check de password o hacerlo una vez
+            // pero el flush es lo que mas cuesta.
+            
+            if ($changed) {
+                $user->setPassword($this->passwordHasher->hashPassword($user, 'admin123'));
+                $this->entityManager->persist($user);
+                $this->entityManager->flush();
+            }
         }
 
         if (!$user) {

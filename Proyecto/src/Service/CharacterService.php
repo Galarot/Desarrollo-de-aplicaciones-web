@@ -41,4 +41,18 @@ class CharacterService
             return json_decode(file_get_contents($jsonPath), true) ?: [];
         });
     }
+
+    // pilla la configuracion global del json con cache
+    public function getGlobalConfig(): array
+    {
+        return $this->cache->get('global_config', function (ItemInterface $item) {
+            $item->expiresAfter(3600);
+            $jsonPath = $this->params->get('kernel.project_dir') . '/data/config.json';
+            if (!file_exists($jsonPath)) {
+                return [];
+            }
+
+            return json_decode(file_get_contents($jsonPath), true) ?: [];
+        });
+    }
 }

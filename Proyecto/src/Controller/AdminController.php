@@ -12,14 +12,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+use Psr\Cache\CacheItemPoolInterface;
+
 #[Route('/admin')]
 class AdminController extends AbstractController
 {
+    public function __construct(private CacheItemPoolInterface $cache)
+    {
+    }
+
     // carga la lista de usus y personajes para el panel
     #[Route('/users', name: 'app_admin_users')]
     public function index(EntityManagerInterface $em, ParameterBagInterface $params): Response
     {
         $users = $em->getRepository(User::class)->findAll();
+        $config = $this->loadJson($params, 'config.json');
 
         return $this->render('admin/users.html.twig', [
             'users' => $users,
@@ -27,7 +34,26 @@ class AdminController extends AbstractController
             'splashCharacters' => $this->loadJson($params, 'splash.json'),
             'summonBannerUrl' => '/assets/multimedia/bannerprueba.png',
             'summonBannerVersion' => $this->getPublicFileVersion($params, 'assets/multimedia/bannerprueba.png'),
+            'globalConfig' => $config,
         ]);
+    }
+
+    // guarda la configuracion global del juego
+    #[Route('/config/save', name: 'app_admin_config_save', methods: ['POST'])]
+    public function saveGlobalConfig(Request $request, ParameterBagInterface $params): RedirectResponse
+    {
+        if (!$this->isCsrfTokenValid('admin_config_save', (string) $request->request->get('_token'))) {
+            throw $this->createAccessDeniedException('Token CSRF no valido.');
+        }
+
+        $config = $this->loadJson($params, 'config.json');
+        $config['last_update_text'] = trim((string) $request->request->get('last_update_text'));
+
+        $this->saveJson($params, 'config.json', $config);
+        $this->cache->deleteItem('global_config');
+        $this->addFlash('success', 'Configuracion actualizada.');
+
+        return $this->redirectToRoute('app_admin_users');
     }
 
     // cambia los roles y el ban de los usus
@@ -102,7 +128,8 @@ class AdminController extends AbstractController
 
         $this->upsertJsonRow($characters, $character);
         $this->saveJson($params, 'characters.json', $characters);
-        $this->addFlash('success', 'Personaje guardado en characters.json.');
+        $this->cache->deleteItem('characters_data');
+        $this->addFlash('success', 'Personaje guardado y cache limpia.');
 
         return $this->redirectToRoute('app_admin_users');
     }
@@ -145,7 +172,66 @@ class AdminController extends AbstractController
 
         $this->upsertJsonRow($splashCharacters, $splash);
         $this->saveJson($params, 'splash.json', $splashCharacters);
-        $this->addFlash('success', 'Personaje guardado en splash.json.');
+        $this->cache->deleteItem('splash_data');
+        $this->addFlash('success', 'Splash guardado y cache limpia.');
+
+        return $this->redirectToRoute('app_admin_users');
+    }
+
+    // borra un personaje del json
+    #[Route('/characters/delete', name: 'app_admin_character_delete', methods: ['POST'])]
+    public function deleteCharacter(Request $request, ParameterBagInterface $params): RedirectResponse
+    {
+        if (!$this->isCsrfTokenValid('admin_character_delete', (string) $request->request->get('_token'))) {
+            throw $this->createAccessDeniedException('Token CSRF no valido.');
+        }
+
+        $id = (int) $request->request->get('id');
+        if ($id <= 0) {
+            $this->addFlash('error', 'ID de personaje no valido para borrar.');
+            return $this->redirectToRoute('app_admin_users');
+        }
+
+        $characters = $this->loadJson($params, 'characters.json');
+        $newCharacters = array_filter($characters, static fn (array $c): bool => (int) ($c['id'] ?? 0) !== $id);
+
+        if (count($characters) === count($newCharacters)) {
+            $this->addFlash('error', 'No se encontro el personaje con ID ' . $id);
+            return $this->redirectToRoute('app_admin_users');
+        }
+
+        $this->saveJson($params, 'characters.json', array_values($newCharacters));
+        $this->cache->deleteItem('characters_data');
+        $this->addFlash('success', 'Personaje borrado y cache limpia.');
+
+        return $this->redirectToRoute('app_admin_users');
+    }
+
+    // borra un splash del json
+    #[Route('/splash/delete', name: 'app_admin_splash_delete', methods: ['POST'])]
+    public function deleteSplash(Request $request, ParameterBagInterface $params): RedirectResponse
+    {
+        if (!$this->isCsrfTokenValid('admin_splash_delete', (string) $request->request->get('_token'))) {
+            throw $this->createAccessDeniedException('Token CSRF no valido.');
+        }
+
+        $id = (int) $request->request->get('id');
+        if ($id <= 0) {
+            $this->addFlash('error', 'ID de splash no valido para borrar.');
+            return $this->redirectToRoute('app_admin_users');
+        }
+
+        $splash = $this->loadJson($params, 'splash.json');
+        $newSplash = array_filter($splash, static fn (array $s): bool => (int) ($s['id'] ?? 0) !== $id);
+
+        if (count($splash) === count($newSplash)) {
+            $this->addFlash('error', 'No se encontro el splash con ID ' . $id);
+            return $this->redirectToRoute('app_admin_users');
+        }
+
+        $this->saveJson($params, 'splash.json', array_values($newSplash));
+        $this->cache->deleteItem('splash_data');
+        $this->addFlash('success', 'Splash borrado y cache limpia.');
 
         return $this->redirectToRoute('app_admin_users');
     }
@@ -192,11 +278,13 @@ class AdminController extends AbstractController
     }
 
     // escribe los datos en un archivo json
-    private function saveJson(ParameterBagInterface $params, string $fileName, array $rows): void
+    private function saveJson(ParameterBagInterface $params, string $fileName, array $data): void
     {
-        usort($rows, static fn (array $a, array $b): int => ($a['id'] ?? 0) <=> ($b['id'] ?? 0));
+        if (isset($data[0]) || empty($data)) {
+            usort($data, static fn (array $a, array $b): int => ($a['id'] ?? 0) <=> ($b['id'] ?? 0));
+        }
 
-        $json = json_encode($rows, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         if ($json === false) {
             throw new \RuntimeException('No se pudo generar el JSON.');
         }
@@ -289,15 +377,8 @@ class AdminController extends AbstractController
         }
 
         $targetPath = $params->get('kernel.project_dir') . '/public/assets/multimedia/bannerprueba.png';
-        $contents = file_get_contents($file->getPathname());
-        $image = $contents !== false && function_exists('imagecreatefromstring') && function_exists('imagepng') ? imagecreatefromstring($contents) : false;
-
-        if ($image) {
-            imagepng($image, $targetPath);
-            imagedestroy($image);
-            return;
-        }
-
+        
+        // Si es webp o falla el procesamiento de imagen, lo movemos directamente para evitar el error de falta de soporte WEBP en GD
         $file->move(dirname($targetPath), basename($targetPath));
     }
 

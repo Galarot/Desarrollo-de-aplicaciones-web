@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libonig-dev \
     libxml2-dev \
+    libfcgi-bin \
     && rm -rf /var/lib/apt/lists/*
 
 # Instalar extensiones de PHP necesarias para Symfony y MySQL
